@@ -119,6 +119,7 @@ export default function Home() {
   const [processedCanvas, setProcessedCanvas] = useState<HTMLCanvasElement | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const presetInputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<any>(null);
   
@@ -247,7 +248,7 @@ export default function Home() {
       <Header 
         onExport={handleDownload}
         onImportClick={() => fileInputRef.current?.click()}
-        onImportPreset={() => setIsImportPresetDialogOpen(true)}
+        onImportPreset={() => presetInputRef.current?.click()}
       />
       
       <input 
@@ -257,6 +258,38 @@ export default function Home() {
         accept="image/png, image/jpeg, image/webp"
         onChange={handleImageUpload}
         data-testid="input-file-upload"
+      />
+
+      <input 
+        type="file" 
+        ref={presetInputRef} 
+        className="hidden" 
+        accept=".json,.txt"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              try {
+                const content = event.target?.result as string;
+                const config = JSON.parse(content);
+                setConfig(config);
+                if (config.meta?.artist) {
+                  setSelectedMaster(config.meta.artist);
+                }
+                toast({ title: "Paramètres Importés", description: "La configuration a été appliquée avec succès." });
+              } catch (err) {
+                toast({ 
+                  title: "Erreur d'import", 
+                  description: "Format de fichier invalide. Assurez-vous qu'il s'agit d'un JSON ou TXT valide.", 
+                  variant: "destructive" 
+                });
+              }
+            };
+            reader.readAsText(file);
+          }
+        }}
+        data-testid="input-preset-import"
       />
 
       <main className="flex-1 flex overflow-hidden relative z-10">
