@@ -76,7 +76,7 @@ export function VermeerCanvas({ imageUrl, config, width, height, onRef }: Vermee
   useEffect(() => {
     const debounceTimeout = setTimeout(() => {
       processImage();
-    }, 100);
+    }, 250);
     
     return () => clearTimeout(debounceTimeout);
   }, [processImage]);

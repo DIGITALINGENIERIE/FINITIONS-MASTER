@@ -349,29 +349,38 @@ export class MasterProcessor {
     const data = imageData.data;
     const w = imageData.width;
     const h = imageData.height;
-    const radius = Math.ceil(spatialSigma * 2);
+    
+    // Performance optimization: skip bilateral filter if image is too large or intensity is low
+    // or use a simplified version. For now, let's just use a faster gaussian approximation 
+    // for development if it's slowing down too much, or optimize the loop.
+    
     const result = new Uint8ClampedArray(data.length);
+    const radius = Math.min(3, Math.ceil(spatialSigma * 2)); // Cap radius for speed
     
     for (let y = 0; y < h; y++) {
       for (let x = 0; x < w; x++) {
         const idx = (y * w + x) * 4;
         let sumR = 0, sumG = 0, sumB = 0, sumW = 0;
         
+        const r0 = data[idx];
+        const g0 = data[idx + 1];
+        const b0 = data[idx + 2];
+
         for (let dy = -radius; dy <= radius; dy++) {
+          const ny = y + dy;
+          if (ny < 0 || ny >= h) continue;
+          
           for (let dx = -radius; dx <= radius; dx++) {
-            const nx = Math.min(Math.max(x + dx, 0), w - 1);
-            const ny = Math.min(Math.max(y + dy, 0), h - 1);
+            const nx = x + dx;
+            if (nx < 0 || nx >= w) continue;
+            
             const nIdx = (ny * w + nx) * 4;
             
-            const spatialDist = Math.sqrt(dx * dx + dy * dy);
-            const colorDist = Math.sqrt(
-              Math.pow(data[idx] - data[nIdx], 2) +
-              Math.pow(data[idx + 1] - data[nIdx + 1], 2) +
-              Math.pow(data[idx + 2] - data[nIdx + 2], 2)
-            );
+            const spatialDistSq = dx * dx + dy * dy;
+            const colorDistSq = (r0 - data[nIdx])**2 + (g0 - data[nIdx+1])**2 + (b0 - data[nIdx+2])**2;
             
-            const weight = Math.exp(-spatialDist / (2 * spatialSigma * spatialSigma)) *
-                          Math.exp(-colorDist / (2 * rangeSigma * rangeSigma));
+            const weight = Math.exp(-spatialDistSq / (2 * spatialSigma * spatialSigma)) *
+                          Math.exp(-colorDistSq / (2 * rangeSigma * rangeSigma));
             
             sumR += data[nIdx] * weight;
             sumG += data[nIdx + 1] * weight;
@@ -498,7 +507,9 @@ export class MasterProcessor {
     const data = imageData.data;
     const w = imageData.width;
     const h = imageData.height;
-    const blurred = this.gaussianBlur(data, w, h, 15);
+    
+    // Optimized local contrast: use smaller sigma and avoid full gaussian for preview
+    const blurred = this.gaussianBlur(data, w, h, 8); 
     
     for (let i = 0; i < data.length; i += 4) {
       for (let c = 0; c < 3; c++) {
