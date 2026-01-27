@@ -1,0 +1,1037 @@
+# 📋 PROMPT COMPLET POUR LE PROJET "VERMEER ENGINE"
+
+---
+
+## 🎯 DESCRIPTION DU PROJET
+
+Créer une application web professionnelle de post-traitement d'images appelée **"VERMEER ENGINE"** qui applique algorithmiquement les caractéristiques stylistiques du peintre Johannes Vermeer sur n'importe quelle image importée.
+
+L'application doit permettre d'appliquer 5 "ADN algorithmiques" distincts, chacun basé sur une analyse scientifique approfondie de 30+ œuvres de Vermeer, avec des paramètres ajustables en temps réel.
+
+---
+
+## 🏗️ ARCHITECTURE GÉNÉRALE
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    VERMEER ENGINE                        │
+│                 Professional Art Processor               │
+└─────────────────────────────────────────────────────────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        ▼                  ▼                  ▼
+    INPUT              PROCESSING          OUTPUT
+    
+[Image Upload]  →  [5 ADN Engines]  →  [Download]
+  - JPG/PNG          1. Lumières           - PNG
+  - WebP             2. Couleurs           - JPG
+  - HEIC             3. Compositions       - WebP
+  Max 4K res         4. Finitions          High Quality
+                     5. Sujet/Icono
+```
+
+---
+
+## 📥 INPUT - SYSTÈME D'IMPORT
+
+### Spécifications techniques :
+- **Formats acceptés** : JPG, PNG, WebP, HEIC, BMP
+- **Résolution maximale** : 4096 x 4096 pixels (4K)
+- **Taille fichier max** : 25 MB
+- **Méthode d'upload** : 
+  - Drag & drop zone élégante
+  - Click to browse
+  - Paste from clipboard (Ctrl+V)
+
+### Interface d'upload :
+```
+┌─────────────────────────────────────────┐
+│   📸 IMPORT YOUR IMAGE                  │
+│                                         │
+│   ┌───────────────────────────────┐    │
+│   │                               │    │
+│   │     [Upload Icon]             │    │
+│   │                               │    │
+│   │  Drag & drop your image here  │    │
+│   │  or click to browse           │    │
+│   │                               │    │
+│   │  Supported: JPG, PNG, WebP    │    │
+│   │  Max size: 25MB, 4K res       │    │
+│   │                               │    │
+│   └───────────────────────────────┘    │
+│                                         │
+│   or paste from clipboard (Ctrl+V)     │
+└─────────────────────────────────────────┘
+```
+
+### Validation :
+- Vérification format
+- Vérification dimensions
+- Affichage miniature + métadonnées (résolution, poids)
+- Bouton "Change Image" pour remplacer
+
+---
+
+## 🎨 CANVAS PRINCIPAL - ZONE DE PRÉVISUALISATION
+
+### Spécifications du Canvas :
+
+**Layout responsive professionnel** :
+```
+┌────────────────────────────────────────────────────────┐
+│  VERMEER ENGINE - Professional Art Processor           │
+├────────────────────────────────────────────────────────┤
+│                                                        │
+│  ┌──────────────────────────────────────────────┐    │
+│  │                                              │    │
+│  │                                              │    │
+│  │          CANVAS PREVIEW AREA                 │    │
+│  │          (1920x1080 viewport)                │    │
+│  │                                              │    │
+│  │         [Image with live effects]            │    │
+│  │                                              │    │
+│  │                                              │    │
+│  └──────────────────────────────────────────────┘    │
+│                                                        │
+│  [🔍 Zoom: 100%] [↔️ Fit] [⟲ Reset View]              │
+│  [👁️ Show Original] [⚡ Before/After Split]            │
+│                                                        │
+└────────────────────────────────────────────────────────┘
+```
+
+**Caractéristiques techniques** :
+- **Rendu temps réel** : Updates < 100ms après ajustement paramètres
+- **WebGL accelerated** : Utilisation GPU pour performances optimales
+- **Zoom/Pan** : Navigation fluide de l'image (molette souris, pinch)
+- **Before/After** : Split screen vertical avec slider interactif
+- **Quality** : Rendu anti-aliased, couleurs 16-bit par canal
+
+**Contrôles du Canvas** :
+- Zoom : 25% → 400%
+- Fit to screen (auto)
+- Reset view
+- Toggle original (touche Espace)
+- Split view avant/après (slider draggable)
+
+---
+
+## 🎛️ DASHBOARD - PANNEAU DE CONTRÔLE DES ADN
+
+### Layout du Dashboard :
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  🧬 VERMEER DNA CONTROLS                                │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  SELECT DNA TO APPLY:                                   │
+│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐              │
+│  │  💡 │ │  🎨 │ │  📐 │ │  🖌️ │ │  👤 │              │
+│  │ LUM │ │ COL │ │ COM │ │ FIN │ │ SUJ │              │
+│  └─────┘ └─────┘ └─────┘ └─────┘ └─────┘              │
+│   [ON]    [OFF]   [OFF]   [ON]    [OFF]                │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│  ACTIVE DNA PARAMETERS:                                 │
+│                                                         │
+│  💡 ADN LUMIÈRES (ACTIVE)                               │
+│  ├─ Window Position        [========|==] 80%           │
+│  ├─ Light/Dark Ratio (60/40) [======|====] 60%         │
+│  ├─ Shadow Softness        [=======|===] 70%           │
+│  ├─ Blue Tint in Shadows   [====|======] 40%           │
+│  ├─ Atmospheric Diffusion  [=====|=====] 50%           │
+│  └─ Reflections Intensity  [===|=======] 30%           │
+│                                                         │
+│  🖌️ ADN FINITIONS (ACTIVE)                             │
+│  ├─ Crackle Intensity      [======|====] 60%           │
+│  ├─ Crackle Size           [====|======] 40%           │
+│  ├─ Brush Strokes Visible  [=======|===] 70%           │
+│  ├─ Brush Stroke Direction [====|======] 45°           │
+│  ├─ Glazing Layers         [=====|=====] 50%           │
+│  ├─ Aging/Yellowing        [===|=======] 35%           │
+│  └─ Varnish Effect         [====|======] 45%           │
+│                                                         │
+│  [📋 Load Preset ▼] [💾 Save Current] [🔄 Reset All]   │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Fonctionnalités du Dashboard :
+
+#### 1. **Sélection des ADN** (Toggle switches)
+- Chaque ADN peut être activé/désactivé individuellement
+- Visual feedback : couleur différente quand actif
+- Icon + label clair pour chaque ADN
+- Indication du nombre d'ADN actifs : "2/5 DNA active"
+
+#### 2. **Paramètres par ADN** (Sliders professionnels)
+
+**Design des sliders** :
+- Track claire avec gradient
+- Handle ergonomique (facile à saisir)
+- Valeur affichée en % ou en unité appropriée
+- Tooltip au survol avec description du paramètre
+- Reset individuel par paramètre (double-clic)
+
+**Organisation** :
+- Accordéon : seuls les ADN actifs sont déployés
+- Groupes logiques de paramètres
+- Labels explicites en français
+- Real-time preview durant l'ajustement
+
+#### 3. **Système de Presets**
+
+```
+PRESETS INCLUS:
+├─ "Vermeer Classic" (tous ADN à valeurs moyennes)
+├─ "Light Touch" (ADN Lumières + Couleurs uniquement)
+├─ "Full Renaissance" (tous ADN à intensité maximale)
+├─ "Subtle Enhancement" (tous ADN à 30-40%)
+└─ "Custom" (utilisateur peut sauvegarder)
+
+FONCTIONS:
+- Load preset → applique instantanément
+- Save current → stockage localStorage
+- Export/Import preset → fichier JSON
+- Reset all → retour valeurs par défaut
+```
+
+---
+
+## ⚙️ BACKEND - LES 5 ADN ALGORITHMIQUES
+
+### Architecture de traitement :
+
+```javascript
+class VermeerEngine {
+  constructor(inputImage) {
+    this.canvas = createCanvas();
+    this.context = this.canvas.getContext('2d', {
+      willReadFrequently: true,
+      alpha: true
+    });
+    this.originalImage = inputImage;
+    this.processedImage = null;
+    
+    // Les 5 processeurs ADN
+    this.processors = {
+      lumieres: new ADN_Lumieres(),
+      couleurs: new ADN_Couleurs(),
+      compositions: new ADN_Compositions(),
+      finitions: new ADN_Finitions(),
+      sujet: new ADN_Sujet()
+    };
+  }
+  
+  // Pipeline de traitement
+  async process(activeADN, parameters) {
+    let workingImage = this.originalImage;
+    
+    // Applique chaque ADN actif dans l'ordre optimal
+    const processingOrder = [
+      'compositions',  // D'abord recomposer
+      'lumieres',      // Puis lumière
+      'couleurs',      // Puis couleurs
+      'sujet',         // Puis sujet/icono
+      'finitions'      // Finalement textures
+    ];
+    
+    for (const adn of processingOrder) {
+      if (activeADN[adn]) {
+        workingImage = await this.processors[adn].apply(
+          workingImage, 
+          parameters[adn]
+        );
+      }
+    }
+    
+    this.processedImage = workingImage;
+    return this.processedImage;
+  }
+}
+```
+
+### Détails techniques par ADN :
+
+#### **1. ADN LUMIÈRES** 💡
+
+**Paramètres ajustables** :
+- `windowPosition` (0-100%) : Position de la source lumineuse gauche
+- `lightDarkRatio` (40-80%) : Ratio clair/obscur (défaut: 60%)
+- `shadowSoftness` (0-100%) : Douceur des ombres (blur radius)
+- `shadowBlueTint` (0-100%) : Intensité teinte bleue dans ombres
+- `atmosphericDiffusion` (0-100%) : Diffusion atmosphérique subtile
+- `reflectionsIntensity` (0-100%) : Intensité des reflets (yeux, perles)
+
+**Techniques d'application** :
+```javascript
+class ADN_Lumieres {
+  apply(image, params) {
+    // 1. Analyse de l'image pour détecter zones claires/sombres
+    const luminosityMap = this.analyzeLuminosity(image);
+    
+    // 2. Application ratio 60/40
+    const balancedImage = this.applyLightDarkRatio(
+      image, 
+      luminosityMap,
+      params.lightDarkRatio
+    );
+    
+    // 3. Gradient directionnel gauche → droite
+    const gradientImage = this.applyDirectionalGradient(
+      balancedImage,
+      params.windowPosition,
+      192  // angle caractéristique Vermeer
+    );
+    
+    // 4. Ombres douces avec teinte bleue
+    const shadowedImage = this.applySoftShadows(
+      gradientImage,
+      params.shadowSoftness,
+      params.shadowBlueTint,
+      7200  // température Kelvin
+    );
+    
+    // 5. Diffusion atmosphérique
+    const diffusedImage = this.applyAtmosphericScattering(
+      shadowedImage,
+      params.atmosphericDiffusion
+    );
+    
+    // 6. Reflets précis
+    const finalImage = this.addSubtleReflections(
+      diffusedImage,
+      params.reflectionsIntensity
+    );
+    
+    return finalImage;
+  }
+  
+  // Méthodes de traitement pixel-level
+  applyLightDarkRatio(image, luminosityMap, targetRatio) {
+    // Ajuste la distribution tonale pour atteindre ratio cible
+    // Utilise curves adjustment et histogram equalization
+  }
+  
+  applySoftShadows(image, softness, blueTint, tempK) {
+    // Applique blur gaussien sur zones sombres
+    // Shift hue de -8° dans les ombres
+    // Color temperature adjustment
+  }
+}
+```
+
+#### **2. ADN COULEURS** 🎨
+
+**Paramètres ajustables** :
+- `globalSaturation` (0-100%) : Désaturation générale (Vermeer: ~60%)
+- `colorTemperature` (0-100%) : Balance chaud/froid (défaut: neutre-frais)
+- `harmonicShift` (0-100%) : Application harmonies chromatiques
+- `ultramarine` (0-100%) : Boost bleu outremer caractéristique
+- `yellowOchre` (0-100%) : Boost jaune ocre
+- `leadWhite` (0-100%) : Luminosité des blancs
+
+**Techniques** :
+- LUT (Look-Up Tables) pour harmonies chromatiques
+- Selective color grading
+- Temperature shift avec préservation des teintes
+
+#### **3. ADN COMPOSITIONS** 📐
+
+**Paramètres ajustables** :
+- `goldenRatio` (0-100%) : Force de la grille dorée
+- `centralFocus` (0-100%) : Centrage du sujet principal
+- `depthLayers` (0-100%) : Séparation plans avant/arrière
+- `geometricBalance` (0-100%) : Équilibre géométrique
+
+**Techniques** :
+- Détection des éléments principaux (AI-assisted)
+- Warping subtil pour aligner sur proportions dorées
+- Depth map generation
+- Vignetting subtil
+
+#### **4. ADN FINITIONS** 🖌️ (LE PLUS CRUCIAL)
+
+**Paramètres ajustables** :
+- `crackleIntensity` (0-100%) : Intensité des craquelures
+- `crackleSize` (0-100%) : Taille moyenne des craquelures
+- `cracklePattern` : Type (aléatoire, radial, âge)
+- `brushStrokesVisible` (0-100%) : Visibilité coups de pinceau
+- `brushDirection` (0-360°) : Direction dominante pinceaux
+- `brushSize` (0-100%) : Taille des coups de pinceau
+- `glazingLayers` (0-100%) : Effet glacis superposés
+- `impasto` (0-100%) : Relief de la peinture
+- `agingYellow` (0-100%) : Jaunissement du vernis ancien
+- `varnishEffect` (0-100%) : Effet vernis brillant/mat
+
+**Techniques d'application** :
+
+```javascript
+class ADN_Finitions {
+  apply(image, params) {
+    let processedImage = image;
+    
+    // 1. APPLICATION CRAQUELURES
+    if (params.crackleIntensity > 0) {
+      const crackleTexture = this.generateCrackleTexture(
+        params.crackleSize,
+        params.cracklePattern,
+        image.width,
+        image.height
+      );
+      
+      processedImage = this.blendCrackles(
+        processedImage,
+        crackleTexture,
+        params.crackleIntensity,
+        'multiply'  // blend mode
+      );
+    }
+    
+    // 2. COUPS DE PINCEAU
+    if (params.brushStrokesVisible > 0) {
+      const brushTexture = this.generateBrushStrokes(
+        params.brushSize,
+        params.brushDirection,
+        image.width,
+        image.height
+      );
+      
+      processedImage = this.applyBrushTexture(
+        processedImage,
+        brushTexture,
+        params.brushStrokesVisible
+      );
+    }
+    
+    // 3. GLACIS (transparence superposée)
+    if (params.glazingLayers > 0) {
+      processedImage = this.applyGlazingEffect(
+        processedImage,
+        params.glazingLayers
+      );
+    }
+    
+    // 4. IMPASTO (relief)
+    if (params.impasto > 0) {
+      const normalMap = this.generateImpastoNormalMap(
+        processedImage,
+        params.impasto
+      );
+      
+      processedImage = this.applyNormalMap(
+        processedImage,
+        normalMap
+      );
+    }
+    
+    // 5. VIEILLISSEMENT
+    if (params.agingYellow > 0) {
+      processedImage = this.applyAging(
+        processedImage,
+        params.agingYellow
+      );
+    }
+    
+    // 6. VERNIS
+    if (params.varnishEffect > 0) {
+      processedImage = this.applyVarnish(
+        processedImage,
+        params.varnishEffect
+      );
+    }
+    
+    return processedImage;
+  }
+  
+  // GÉNÉRATION CRAQUELURES PROCÉDURALES
+  generateCrackleTexture(size, pattern, width, height) {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    
+    // Algorithme de Voronoi pour craquelures réalistes
+    const points = this.generateVoronoiPoints(size, width, height);
+    const cells = this.computeVoronoiCells(points, width, height);
+    
+    // Dessine les craquelures aux frontières des cellules
+    ctx.strokeStyle = 'rgba(50, 40, 30, 0.6)';
+    ctx.lineWidth = 0.5;
+    
+    for (const cell of cells) {
+      ctx.beginPath();
+      for (const edge of cell.edges) {
+        ctx.moveTo(edge.start.x, edge.start.y);
+        ctx.lineTo(edge.end.x, edge.end.y);
+      }
+      ctx.stroke();
+    }
+    
+    // Ajout de variations (craquelures secondaires)
+    this.addSecondaryCracks(ctx, cells, size);
+    
+    return canvas;
+  }
+  
+  // GÉNÉRATION COUPS DE PINCEAU
+  generateBrushStrokes(size, direction, width, height) {
+    // Perlin noise + direction flow field
+    const flowField = this.generateFlowField(direction, width, height);
+    
+    // Dessine des strokes suivant le flow field
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    
+    for (let i = 0; i < 5000; i++) {
+      this.drawBrushStroke(ctx, flowField, size);
+    }
+    
+    return canvas;
+  }
+}
+```
+
+**Textures incluses** :
+- 5 patterns de craquelures (fine, moyenne, large, radiale, aléatoire)
+- 10 brush textures (différentes tailles et orientations)
+- 3 varnish overlays (mat, satiné, brillant)
+- Normal maps pour impasto
+
+#### **5. ADN SUJET & ICONOGRAPHIE** 👤
+
+**Paramètres ajustables** :
+- `portraitEnhancement` (0-100%) : Amélioration visages
+- `fabricTexture` (0-100%) : Texture tissus (soie, satin)
+- `jewelrySheen` (0-100%) : Éclat perles/bijoux
+- `stillLifeDetail` (0-100%) : Détails nature morte
+
+**Techniques** :
+- Face detection et enhancement
+- Texture synthesis pour tissus
+- Specular highlights pour objets brillants
+
+---
+
+## 📤 OUTPUT - EXPORT DE L'IMAGE
+
+### Interface d'export :
+
+```
+┌─────────────────────────────────────────┐
+│  💾 EXPORT YOUR MASTERPIECE             │
+├─────────────────────────────────────────┤
+│                                         │
+│  Output Format:                         │
+│  ○ PNG (lossless, best quality)         │
+│  ● JPG (smaller file size)              │
+│  ○ WebP (modern, balanced)              │
+│                                         │
+│  Quality (JPG/WebP):                    │
+│  [==================] 95%               │
+│                                         │
+│  Resolution:                            │
+│  ● Original (3840 x 2160)               │
+│  ○ HD (1920 x 1080)                     │
+│  ○ Custom: [____] x [____]              │
+│                                         │
+│  Color Profile:                         │
+│  ● sRGB (standard)                      │
+│  ○ Adobe RGB (pro)                      │
+│                                         │
+│  Metadata:                              │
+│  ☑ Include processing parameters        │
+│  ☑ Timestamp                            │
+│  ☐ Watermark "Vermeer Engine"          │
+│                                         │
+│  ┌───────────────────────────────┐     │
+│  │   [⬇ DOWNLOAD IMAGE]          │     │
+│  └───────────────────────────────┘     │
+│                                         │
+│  Estimated file size: 8.2 MB            │
+└─────────────────────────────────────────┘
+```
+
+### Spécifications techniques :
+
+**Formats disponibles** :
+- **PNG** : Qualité maximale, lossless, transparency support
+- **JPG** : Qualité réglable (60-100%), plus petit fichier
+- **WebP** : Compromis qualité/taille, moderne
+
+**Métadonnées embarquées** :
+```json
+{
+  "generator": "Vermeer Engine v1.0",
+  "timestamp": "2026-01-23T14:30:00Z",
+  "originalFile": "portrait.jpg",
+  "appliedDNA": {
+    "lumieres": {
+      "active": true,
+      "parameters": {
+        "lightDarkRatio": 60,
+        "shadowSoftness": 70,
+        "blueTint": 40
+      }
+    },
+    "finitions": {
+      "active": true,
+      "parameters": {
+        "crackleIntensity": 60,
+        "brushStrokes": 50
+      }
+    }
+  },
+  "processingTime": "3.2s"
+}
+```
+
+**Options avancées** :
+- Watermark optionnel (logo subtil)
+- Batch export (si plusieurs variations)
+- Export des paramètres seuls (JSON preset)
+
+---
+
+## 🎨 DESIGN SYSTEM - CHARTE GRAPHIQUE PROFESSIONNELLE
+
+### Palette de couleurs :
+
+```css
+/* Primary - Vermeer Blue */
+--primary: #2C5F8D;          /* Bleu Vermeer */
+--primary-light: #4A8BC2;
+--primary-dark: #1A3A5C;
+
+/* Secondary - Gold accents */
+--secondary: #D4AF37;        /* Or Renaissance */
+--secondary-light: #F4CF67;
+--secondary-dark: #B8941F;
+
+/* Neutrals */
+--bg-dark: #1A1A1A;          /* Background sombre élégant */
+--bg-medium: #2D2D2D;
+--bg-light: #3A3A3A;
+--surface: #252525;
+
+/* Text */
+--text-primary: #F5F5F5;
+--text-secondary: #B0B0B0;
+--text-disabled: #6B6B6B;
+
+/* Accents */
+--success: #4CAF50;
+--warning: #FF9800;
+--error: #F44336;
+```
+
+### Typographie :
+
+```css
+/* Headings - Élégant serif */
+--font-heading: 'Playfair Display', 'Cormorant', serif;
+
+/* Body - Clean sans-serif */
+--font-body: 'Inter', 'Roboto', sans-serif;
+
+/* Monospace - Code/parameters */
+--font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+/* Sizes */
+--text-xs: 0.75rem;
+--text-sm: 0.875rem;
+--text-base: 1rem;
+--text-lg: 1.125rem;
+--text-xl: 1.25rem;
+--text-2xl: 1.5rem;
+--text-3xl: 2rem;
+```
+
+### Composants UI :
+
+**Buttons** :
+```css
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(44, 95, 141, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 95, 141, 0.4);
+}
+```
+
+**Sliders** :
+```css
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--primary) 0%,
+    var(--primary) var(--value),
+    var(--bg-light) var(--value),
+    var(--bg-light) 100%
+  );
+}
+
+.slider::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--secondary);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+```
+
+**Cards/Panels** :
+```css
+.panel {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+```
+
+### Animations :
+
+```css
+/* Smooth transitions partout */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Loading spinner élégant */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Fade in pour l'image processed */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Pulse pour les boutons actifs */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+```
+
+---
+
+## 🚀 FONCTIONNALITÉS AVANCÉES
+
+### 1. **Comparison Modes**
+
+**Split View** :
+- Slider vertical draggable
+- Gauche = original, Droite = processed
+- Smooth animation lors du drag
+
+**Toggle View** :
+- Touche Espace = toggle rapide
+- Fade transition
+
+**Zoom Sync** :
+- Zoom identique sur les deux vues
+- Pan synchronisé
+
+### 2. **History & Undo**
+
+```javascript
+class HistoryManager {
+  constructor(maxSteps = 20) {
+    this.history = [];
+    this.currentIndex = -1;
+    this.maxSteps = maxSteps;
+  }
+  
+  pushState(state) {
+    // Remove states after current index
+    this.history = this.history.slice(0, this.currentIndex + 1);
+    
+    // Add new state
+    this.history.push(state);
+    
+    // Limit history size
+    if (this.history.length > this.maxSteps) {
+      this.history.shift();
+    } else {
+      this.currentIndex++;
+    }
+  }
+  
+  undo() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      return this.history[this.currentIndex];
+    }
+    return null;
+  }
+  
+  redo() {
+    if (this.currentIndex < this.history.length - 1) {
+      this.currentIndex++;
+      return this.history[this.currentIndex];
+    }
+    return null;
+  }
+}
+```
+
+**Shortcuts** :
+- `Ctrl+Z` : Undo
+- `Ctrl+Shift+Z` : Redo
+- `Ctrl+S` : Export
+- `Space` : Toggle original
+- `R` : Reset all
+
+### 3. **Performance Optimization**
+
+**Progressive rendering** :
+- Low-res preview pendant ajustement
+- High-res render 500ms après dernier changement
+- WebWorkers pour traitement lourd
+
+**Caching** :
+- Cache des textures générées
+- Cache des états intermédiaires
+- LocalStorage pour presets
+
+### 4. **Responsive Design**
+
+**Desktop (> 1200px)** :
+- Canvas large + sidebar droite
+- Tous contrôles visibles
+
+**Tablet (768px - 1200px)** :
+- Canvas réduit + sidebar collapsible
+- Groupes de paramètres en accordéon
+
+**Mobile (< 768px)** :
+- Canvas plein écran
+- Controls en bottom sheet draggable
+- Touch gestures (pinch zoom, swipe compare)
+
+---
+
+## 📊 INDICATEURS DE PERFORMANCE
+
+### Métriques à afficher :
+
+```
+┌─────────────────────────────────┐
+│  ⚡ PERFORMANCE                 │
+├─────────────────────────────────┤
+│  Processing time: 2.8s          │
+│  Canvas FPS: 60                 │
+│  Active DNA: 2/5                │
+│  Memory usage: 145 MB           │
+│                                 │
+│  Quality score: ████████░░ 85%  │
+│  └─ Vermeer authenticity        │
+└─────────────────────────────────┘
+```
+
+**Vermeer Authenticity Score** :
+- Calculé en fonction des paramètres actifs
+- Compare aux valeurs "optimales" des ADN
+- Affiche un score 0-100%
+
+---
+
+## 🔒 ROBUSTESSE & GESTION D'ERREURS
+
+### Validation des inputs :
+
+```javascript
+class ImageValidator {
+  validate(file) {
+    const errors = [];
+    
+    // Format
+    if (!this.isSupportedFormat(file)) {
+      errors.push('Format non supporté. Utilisez JPG, PNG ou WebP.');
+    }
+    
+    // Taille
+    if (file.size > 25 * 1024 * 1024) {
+      errors.push('Fichier trop volumineux (max 25MB).');
+    }
+    
+    // Dimensions
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+    await img.decode();
+    
+    if (img.width > 4096 || img.height > 4096) {
+      errors.push('Résolution trop élevée (max 4096x4096).');
+    }
+    
+    if (img.width < 512 || img.height < 512) {
+      errors.push('Résolution trop faible (min 512x512).');
+    }
+    
+    return {
+      valid: errors.length === 0,
+      errors: errors
+    };
+  }
+}
+```
+
+### Messages d'erreur élégants :
+
+```
+┌─────────────────────────────────┐
+│  ⚠️ ERREUR                       │
+├─────────────────────────────────┤
+│  Le fichier est trop volumineux │
+│  Taille actuelle: 32 MB         │
+│  Limite: 25 MB                  │
+│                                 │
+│  Suggestions:                   │
+│  • Réduire la résolution        │
+│  • Compresser l'image           │
+│  • Utiliser format WebP         │
+│                                 │
+│  [OK, compris]                  │
+└─────────────────────────────────┘
+```
+
+### Loading states :
+
+```
+┌─────────────────────────────────┐
+│  ⏳ PROCESSING...                │
+├─────────────────────────────────┤
+│                                 │
+│  [████████████░░░░░░░] 65%      │
+│                                 │
+│  Applying ADN Finitions...      │
+│  (Generating crackle texture)   │
+│                                 │
+│  Estimated time: 8s             │
+└─────────────────────────────────┘
+```
+
+---
+
+## 📱 STRUCTURE DU CODE
+
+### Architecture React :
+
+```
+src/
+├── components/
+│   ├── ImageUploader/
+│   │   ├── ImageUploader.jsx
+│   │   ├── DragDropZone.jsx
+│   │   └── FileValidator.js
+│   │
+│   ├── Canvas/
+│   │   ├── MainCanvas.jsx
+│   │   ├── CanvasControls.jsx
+│   │   ├── ZoomPan.js
+│   │   └── SplitView.jsx
+│   │
+│   ├── Dashboard/
+│   │   ├── DNASelector.jsx
+│   │   ├── ParameterPanel.jsx
+│   │   ├── Slider.jsx
+│   │   └── PresetManager.jsx
+│   │
+│   └── Export/
+│       ├── ExportPanel.jsx
+│       ├── FormatSelector.jsx
+│       └── MetadataEditor.jsx
+│
+├── processors/
+│   ├── VermeerEngine.js
+│   ├── ADN_Lumieres.js
+│   ├── ADN_Couleurs.js
+│   ├── ADN_Compositions.js
+│   ├── ADN_Finitions.js
+│   └── ADN_Sujet.js
+│
+├── utils/
+│   ├── imageProcessing.js
+│   ├── colorManipulation.js
+│   ├── textureGeneration.js
+│   └── mathUtils.js
+│
+├── assets/
+│   ├── textures/
+│   │   ├── crackle_fine.png
+│   │   ├── crackle_medium.png
+│   │   ├── brush_01.png
+│   │   └── varnish_overlay.png
+│   │
+│   └── presets/
+│       ├── vermeer_classic.json
+│       └── light_touch.json
+│
+└── styles/
+    ├── global.css
+    └── components/
+```
+
+---
+
+## 🎯 RÉSUMÉ DES ATTENTES
+
+### Ce que l'application DOIT faire :
+
+✅ **Upload** : Drag & drop, formats multiples, validation  
+✅ **Canvas** : Preview temps réel, zoom/pan, before/after  
+✅ **Dashboard** : 5 ADN toggle, paramètres ajustables, presets  
+✅ **Processing** : Application algorithmique des ADN (pas d'IA générative)  
+✅ **Finitions** : CRAQUELURES, coups de pinceau, glacis, vieillissement  
+✅ **Export** : Multi-formats, haute qualité, métadonnées  
+✅ **Design** : Pro, élégant, thème sombre Renaissance  
+✅ **Performance** : < 100ms updates, WebGL, workers  
+
+### Ce que l'application NE DOIT PAS faire :
+
+❌ Utiliser l'IA générative pour créer l'image  
+❌ Modifier le contenu (c'est du post-processing)  
+❌ Nécessiter une connexion serveur (tout client-side)  
+❌ Avoir une UI amateur ou confuse  
+
+---
+
+## 🚀 PRÊT À DÉVELOPPER
+
+**Ce prompt contient** :
+- Architecture complète
+- Spécifications techniques détaillées
+- Design system professionnel
+- Structure du code
+- Gestion d'erreurs
+- Performance optimizations
+
+**Il ne manque que** :
+- Les 5 fichiers ADN algorithmiques (que tu vas fournir)
+- Les textures de craquelures/pinceaux (générables ou à fournir)
+
+**Tu peux maintenant fournir ce prompt + les 5 ADN à un développeur ou à une IA de coding (comme Replit Agent, Claude, etc.) pour créer l'application.**
+
+---
+
+**Prêt à recevoir les 5 ADN ?** 🎨✨

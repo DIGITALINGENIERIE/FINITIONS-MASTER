@@ -1,0 +1,1242 @@
+# **PARAMÈTRES ALGORITHMIQUES POUR CONVERSION ADN ICONOGRAPHIQUE**
+
+## **🔧 MATRICE DE TRADUCTION ADN → OPÉRATIONS PIF**
+
+```javascript
+const adnIconographicTranslationMatrix = {
+  "matrix_version": "3.0",
+  "system_base": "ADN_CONVERTER_V7.0",
+  "artist": "Générique Multi-Période",
+  "mappings_count": 127,
+  
+  "layer_1_essence_mappings": [
+    {
+      "id": "ESS001",
+      "adn_component": "temporal_spatial_archetype",
+      "parameter_path": "layer_1_essence.dimensions.temporal_spatial_relationship.dominant_archetype",
+      "pif_operation": {
+        "type": "temporal_space_generator",
+        "parameters": {
+          "time_feeling": "adn_value == 'TIMELESS_FROZEN' ? 'frozen_eternal' : 
+                         adn_value == 'DRAMATIC_MOMENT' ? 'frozen_climax' : 
+                         'atmospheric_duration'",
+          "space_compression": "adn_value == 'TIMELESS_FROZEN' ? 0.15 : 
+                               adn_value == 'DRAMATIC_MOMENT' ? 0.45 : 0.65",
+          "depth_precision": "adn_value == 'TIMELESS_FROZEN' ? 98 : 75",
+          "motion_suggestion": "adn_value == 'TIMELESS_FROZEN' ? 0 : 
+                               adn_value == 'DRAMATIC_MOMENT' ? 85 : 60"
+        },
+        "target_layer": "Temporal_Space",
+        "blend_mode": "overlay",
+        "priority": 4
+      }
+    },
+    {
+      "id": "ESS002",
+      "adn_component": "material_spiritual_relationship",
+      "parameter_path": "layer_1_essence.dimensions.material_spiritual_relationship.dominant_archetype",
+      "pif_operation": {
+        "type": "material_spirit_manifestor",
+        "parameters": {
+          "material_precision": "adn_value == 'DIVINE_THROUGH_MATERIAL' ? 98 : 75",
+          "texture_expressiveness": "adn_value == 'MATERIAL_AS_EXPRESSION' ? 85 : 25",
+          "surface_perfection": "adn_value == 'DIVINE_THROUGH_MATERIAL' ? 96 : 40",
+          "emotional_roughness": "adn_value == 'MATERIAL_AS_EXPRESSION' ? 80 : 15"
+        },
+        "target_layer": "Material_Quality",
+        "blend_mode": "multiply",
+        "priority": 4
+      }
+    },
+    {
+      "id": "ESS003",
+      "adn_component": "subject_viewer_distance",
+      "parameter_path": "layer_1_essence.dimensions.subject_viewer_relationship.viewing_distance",
+      "pif_operation": {
+        "type": "viewer_distance_simulator",
+        "parameters": {
+          "virtual_distance_cm": "adn_value",
+          "detail_accessibility": "300 - adn_value", // Inverse relationship
+          "engagement_time_seconds": "adn_value < 100 ? 1800 : 5",
+          "composition_type": "adn_value < 100 ? 'intimate_detailed' : 'theatrical_impact'"
+        },
+        "target_layer": "Viewer_Relation",
+        "blend_mode": "normal",
+        "priority": 3
+      }
+    },
+    {
+      "id": "ESS004",
+      "adn_component": "light_revelation_type",
+      "parameter_path": "layer_1_essence.dimensions.light_revelation_relationship.dominant_archetype",
+      "pif_operation": {
+        "type": "light_philosophy_generator",
+        "parameters": {
+          "light_source_visibility": "adn_value == 'LIGHT_AS_DIVINE_PROOF' ? 15 : 85",
+          "contrast_dramatic": "adn_value == 'LIGHT_AS_DRAMATIC_TOOL' ? 95 : 40",
+          "shadow_softness": "adn_value == 'LIGHT_AS_DIVINE_PROOF' ? 95 : 25",
+          "mystery_lighting": "adn_value == 'LIGHT_AS_DRAMATIC_TOOL' ? 70 : 20"
+        },
+        "target_layer": "Lighting_Philosophy",
+        "blend_mode": "overlay",
+        "priority": 3
+      }
+    }
+  ],
+  
+  "layer_2_gaze_mappings": [
+    {
+      "id": "GAZ001",
+      "adn_component": "gaze_strategy_dominant",
+      "parameter_path": "layer_2_gaze_psychology.detection_system.analyze_gaze_strategy.dominant_strategy",
+      "pif_operation": {
+        "type": "gaze_orchestrator",
+        "parameters": {
+          "strategy": "adn_value",
+          "detail_uniformity": "adn_value == 'MICROSCOPIC_SCRUTINY' ? 0.95 : 0.35",
+          "edge_hardness": "adn_value == 'MICROSCOPIC_SCRUTINY' ? 0.99 : 0.60",
+          "focal_hierarchy": "adn_value == 'EMOTIONAL_IMMERSION' ? 0.85 : 0.15",
+          "distraction_elimination": "adn_value == 'MICROSCOPIC_SCRUTINY' ? 0.95 : 0.40"
+        },
+        "target_layer": "Gaze_Controller",
+        "blend_mode": "passthrough",
+        "priority": 2,
+        "requires": ["eye_tracking_simulation"]
+      }
+    },
+    {
+      "id": "GAZ002",
+      "adn_component": "gaze_attention_distribution",
+      "parameter_path": "layer_2_gaze_psychology.gaze_strategies[dominant_strategy].operational_parameters.attention_distribution",
+      "pif_operation": {
+        "type": "attention_funneling_generator",
+        "parameters": {
+          "distribution_type": "adn_value",
+          "primary_focus_ratio": "adn_value == 'Funneled' ? 0.70 : 0.25",
+          "secondary_points_count": "adn_value == 'Funneled' ? 2 : 8",
+          "scan_path_complexity": "adn_value == 'Uniform' ? 45 : 20"
+        },
+        "target_layer": "Attention_Map",
+        "blend_mode": "guide",
+        "priority": 2
+      }
+    },
+    {
+      "id": "GAZ003",
+      "adn_component": "viewing_time_formula",
+      "parameter_path": "layer_2_gaze_psychology.gaze_strategies[dominant_strategy].operational_parameters.viewing_time_formula",
+      "pif_operation": {
+        "type": "temporal_engagement_calculator",
+        "parameters": {
+          "base_time_seconds": "eval(adn_value)", // Execute formula
+          "detail_multiplier": "detail_density * 0.5",
+          "complexity_factor": "symbol_count * 0.3",
+          "minimum_viewing": "adn_value.includes('image_area') ? 120 : 5"
+        },
+        "target_layer": "Engagement_Timer",
+        "blend_mode": "passthrough",
+        "priority": 2
+      }
+    }
+  ],
+  
+  "layer_3_narrative_mappings": [
+    {
+      "id": "NAR001",
+      "adn_component": "narrative_dominant_intent",
+      "parameter_path": "layer_3_narrative_intent.symbolic_detection_system.detect_narrative_intent.dominant_intent",
+      "pif_operation": {
+        "type": "narrative_intent_applicator",
+        "parameters": {
+          "intent_type": "adn_value",
+          "symbol_density": "adn_value == 'LEGAL_TESTIMONY' ? 85 : 
+                           adn_value == 'SPIRITUAL_DEVOTION' ? 90 : 
+                           adn_value == 'VANITAS_MORTALITY' ? 75 : 60",
+          "clarity_maximization": "adn_value == 'LEGAL_TESTIMONY' ? 98 : 65",
+          "emotional_restraint": "adn_value == 'LEGAL_TESTIMONY' ? 90 : 40",
+          "temporal_indicators": "adn_value == 'VANITAS_MORTALITY' ? 80 : 25"
+        },
+        "target_layer": "Narrative_Core",
+        "blend_mode": "multiply",
+        "priority": 1,
+        "non_negotiable": true
+      }
+    },
+    {
+      "id": "NAR002",
+      "adn_component": "missing_narrative_elements",
+      "parameter_path": "layer_3_narrative_intent.symbolic_detection_system.detect_narrative_intent.symbol_enhancements",
+      "pif_operation": {
+        "type": "narrative_completion_generator",
+        "parameters": {
+          "elements_to_add": "adn_value",
+          "integration_method": "contextual_blending",
+          "symbol_opacity": 65,
+          "position_strategy": "period_appropriate",
+          "style_matching": 92
+        },
+        "target_layer": "Narrative_Completion",
+        "blend_mode": "normal",
+        "priority": 1,
+        "execution_phase": "phase_4_symbolic"
+      }
+    },
+    {
+      "id": "NAR003",
+      "adn_component": "narrative_parameter_overrides",
+      "parameter_path": "layer_3_narrative_intent.narrative_archetypes[dominant_intent].technical_implications",
+      "pif_operation": {
+        "type": "narrative_priority_enforcer",
+        "parameters": {
+          "maximize_parameters": "adn_value.maximize",
+          "minimize_parameters": "adn_value.minimize",
+          "avoid_parameters": "adn_value.avoid",
+          "special_rules": "adn_value.special_rules || {}",
+          "override_strength": 85
+        },
+        "target_layer": "Narrative_Priority",
+        "blend_mode": "passthrough",
+        "priority": 1,
+        "overrides_all_other": true
+      }
+    }
+  ],
+  
+  "layer_4_historical_mappings": [
+    {
+      "id": "HIS001",
+      "adn_component": "historical_period_constraints",
+      "parameter_path": "layer_4_historical_constraints.anachronism_detector.validate_image.detailed_report.period_reference",
+      "pif_operation": {
+        "type": "period_constraint_applicator",
+        "parameters": {
+          "period_name": "adn_value.name",
+          "available_pigments": "adn_value.pigments_available",
+          "unavailable_pigments": "adn_value.pigments_unavailable",
+          "support_type": "adn_value.support_primary.type",
+          "technique_limitations": "adn_value.techniques_available"
+        },
+        "target_layer": "Historical_Constraints",
+        "blend_mode": "passthrough",
+        "priority": 0,
+        "absolute_priority": true
+      }
+    },
+    {
+      "id": "HIS002",
+      "adn_component": "anachronism_violations",
+      "parameter_path": "layer_4_historical_constraints.anachronism_detector.validate_image.detailed_report.violations",
+      "pif_operation": {
+        "type": "anachronism_correction_engine",
+        "parameters": {
+          "violations_list": "adn_value",
+          "correction_methods": "auto_correction_plan.steps",
+          "severity_threshold": "CRITICAL",
+          "preserve_original_intent": true,
+          "historical_accuracy_target": 95
+        },
+        "target_layer": "Anachronism_Correction",
+        "blend_mode": "difference",
+        "priority": 0,
+        "execution_phase": "phase_1_preprocessing"
+      }
+    },
+    {
+      "id": "HIS003",
+      "adn_component": "pigment_conversion_map",
+      "parameter_path": "layer_4_historical_constraints.historical_database.pigments_by_period[period_name]",
+      "pif_operation": {
+        "type": "historical_pigment_converter",
+        "parameters": {
+          "conversion_table": "generate_conversion_map(adn_value.available, adn_value.unavailable)",
+          "gamut_limitation": "period_gamut_restriction",
+          "mixing_rules": "adn_value.mixing_rules",
+          "cost_simulation": true,
+          "toxicity_aware": true
+        },
+        "target_layer": "Color_Historical",
+        "blend_mode": "color",
+        "priority": 0
+      }
+    },
+    {
+      "id": "HIS004",
+      "adn_component": "technique_limitations",
+      "parameter_path": "layer_4_historical_constraints.historical_database.techniques_by_period[period_key]",
+      "pif_operation": {
+        "type": "historical_technique_enforcer",
+        "parameters": {
+          "allowed_techniques": "adn_value.available",
+          "forbidden_techniques": "adn_value.unavailable",
+          "layer_count_minimum": "adn_value.available[0].layers.split('-')[0]",
+          "drying_time_simulation": true,
+          "brushmark_visibility_limit": 40
+        },
+        "target_layer": "Technique_Validator",
+        "blend_mode": "passthrough",
+        "priority": 0
+      }
+    }
+  ],
+  
+  "integration_system_mappings": [
+    {
+      "id": "INT001",
+      "adn_component": "parameter_conflicts",
+      "parameter_path": "integration_system.decision_matrix.resolve_parameters.metadata.conflicts",
+      "pif_operation": {
+        "type": "conflict_resolution_applicator",
+        "parameters": {
+          "conflict_list": "adn_value",
+          "resolution_hierarchy": ["HIS", "NAR", "GAZ", "ESS"],
+          "compromise_algorithm": "weighted_average_with_priority",
+          "document_decisions": true,
+          "fallback_strategy": "historical_precedence"
+        },
+        "target_layer": "Conflict_Resolver",
+        "blend_mode": "passthrough",
+        "priority": -1 // Highest priority
+      }
+    },
+    {
+      "id": "INT002",
+      "adn_component": "final_resolved_parameters",
+      "parameter_path": "integration_system.decision_matrix.resolve_parameters.parameters",
+      "pif_operation": {
+        "type": "master_parameter_applicator",
+        "parameters": {
+          "parameter_set": "adn_value",
+          "application_order": "historical_first",
+          "validation_checkpoints": 7,
+          "rollback_capability": true,
+          "progressive_preview": true
+        },
+        "target_layer": "Master_Controller",
+        "blend_mode": "passthrough",
+        "execution_phase": "phase_6_final_integration"
+      }
+    },
+    {
+      "id": "INT003",
+      "adn_component": "execution_script_template",
+      "parameter_path": "integration_system.generate_master_script",
+      "pif_operation": {
+        "type": "dynamic_script_generator",
+        "parameters": {
+          "template": "adn_value",
+          "parameter_injection": "resolved_parameters",
+          "conditional_logic": "conflict_resolutions",
+          "error_handling": "v7_standard",
+          "performance_optimization": true
+        },
+        "target_layer": "Script_Engine",
+        "blend_mode": "passthrough",
+        "output_type": "executable_script"
+      }
+    }
+  ],
+  
+  "validation_and_correction_mappings": [
+    {
+      "id": "VAL001",
+      "adn_component": "confidence_thresholds",
+      "parameter_path": "meta_configuration.confidence_thresholds",
+      "pif_operation": {
+        "type": "quality_gate_controller",
+        "parameters": {
+          "threshold_low": "adn_value.low",
+          "threshold_medium": "adn_value.medium",
+          "threshold_high": "adn_value.high",
+          "rejection_policy": "auto_correct_then_reject",
+          "max_attempts": 3
+        },
+        "target_layer": "Quality_Gate",
+        "blend_mode": "passthrough"
+      }
+    },
+    {
+      "id": "VAL002",
+      "adn_component": "auto_correction_plan",
+      "parameter_path": "layer_4_historical_constraints.anachronism_detector.validate_image.auto_correction_plan",
+      "pif_operation": {
+        "type": "auto_correction_executor",
+        "parameters": {
+          "correction_steps": "adn_value.steps",
+          "estimated_time": "parseFloat(adn_value.estimated_time)",
+          "quality_impact_prediction": "adn_value.quality_impact",
+          "rollback_points": "each_step",
+          "validation_after_each": true
+        },
+        "target_layer": "Auto_Corrector",
+        "blend_mode": "passthrough",
+        "execution_mode": "sequential"
+      }
+    },
+    {
+      "id": "VAL003",
+      "adn_component": "historical_authenticity_score",
+      "parameter_path": "layer_4_historical_constraints.anachronism_detector.validate_image.recommendations.authenticity_score",
+      "pif_operation": {
+        "type": "authenticity_optimizer",
+        "parameters": {
+          "target_score": "Math.max(adn_value, 85)",
+          "improvement_steps": "generate_improvement_plan(adn_value)",
+          "sacrifice_rules": "never_sacrifice_historical_accuracy",
+          "tunable_parameters": ["crackle_intensity", "patina_level", "pigment_variance"]
+        },
+        "target_layer": "Authenticity_Tuner",
+        "blend_mode": "passthrough"
+      }
+    }
+  ]
+}
+```
+
+## **🔄 PIPELINE DE GÉNÉRATION OPTIMISÉ**
+
+```javascript
+const v7IconographicPipeline = {
+  "pipeline_version": "3.0",
+  "system_base": "ADN_CONVERTER_V7.0",
+  "phases": 9,
+  "estimated_time": "8s (GPU) / 45s (CPU)",
+  
+  "phase_0_historical_preprocessing": {
+    "description": "Correction préalable des anachronismes critiques",
+    "priority": "CRITICAL",
+    "operations": [
+      {
+        "name": "detect_anachronisms",
+        "function": "historicalValidation.validate_image(imageData, targetPeriod)",
+        "output": "anachronism_report"
+      },
+      {
+        "name": "apply_critical_corrections",
+        "function": "execute_auto_corrections(anachronism_report.violations.critical)",
+        "condition": "anachronism_report.violations.critical.length > 0",
+        "output": "corrected_base_image"
+      },
+      {
+        "name": "convert_to_period_support",
+        "function": "transform_support_texture(corrected_base_image, targetPeriod)",
+        "parameters": {
+          "simulate_wood_panel": true,
+          "gesso_preparation": true,
+          "joinery_visibility": 0.15
+        },
+        "output": "historically_corrected_image"
+      }
+    ]
+  },
+  
+  "phase_1_essence_extraction": {
+    "description": "Analyse des couches fondamentales V7",
+    "operations": [
+      {
+        "name": "extract_temporal_spatial",
+        "function": "analyze_essence_temporal(historically_corrected_image)",
+        "output": "temporal_archetype"
+      },
+      {
+        "name": "extract_material_spiritual",
+        "function": "analyze_material_relationship(historically_corrected_image)",
+        "output": "material_archetype"
+      },
+      {
+        "name": "extract_viewer_relationship",
+        "function": "calculate_viewer_distance(historically_corrected_image)",
+        "output": "viewer_parameters"
+      },
+      {
+        "name": "extract_light_philosophy",
+        "function": "analyze_light_revelation(historically_corrected_image)",
+        "output": "light_archetype"
+      }
+    ]
+  },
+  
+  "phase_2_gaze_analysis": {
+    "description": "Analyse psychologie du regard",
+    "operations": [
+      {
+        "name": "detect_gaze_strategy",
+        "function": "gazePsychology.analyze_gaze_strategy(historically_corrected_image)",
+        "output": "gaze_strategy_profile"
+      },
+      {
+        "name": "calculate_attention_map",
+        "function": "generate_attention_heatmap(historically_corrected_image)",
+        "parameters": {
+          "method": "gaze_strategy_profile.dominant_strategy",
+          "duration": "gaze_strategy_profile.viewing_time_formula"
+        },
+        "output": "attention_distribution_map"
+      },
+      {
+        "name": "optimize_visual_flow",
+        "function": "create_optimal_scanpath(attention_distribution_map)",
+        "output": "visual_navigation_guide"
+      }
+    ]
+  },
+  
+  "phase_3_narrative_intent": {
+    "description": "Identification et application intention narrative",
+    "operations": [
+      {
+        "name": "detect_narrative_archetype",
+        "function": "narrativeIntent.detect_narrative_intent(historically_corrected_image)",
+        "output": "narrative_profile"
+      },
+      {
+        "name": "extract_symbolic_elements",
+        "function": "detect_symbolic_content(historically_corrected_image)",
+        "output": "symbolic_inventory"
+      },
+      {
+        "name": "apply_narrative_parameters",
+        "function": "apply_narrative_overrides(narrative_profile.dominant_intent)",
+        "parameters": {
+          "maximize": narrative_profile.parameter_adjustments.maximize,
+          "minimize": narrative_profile.parameter_adjustments.minimize
+        },
+        "output": "narrative_enhanced_image"
+      }
+    ]
+  },
+  
+  "phase_4_historical_constraints": {
+    "description": "Application finale des contraintes historiques",
+    "operations": [
+      {
+        "name": "apply_pigment_limitations",
+        "function": "constrain_color_palette(narrative_enhanced_image, targetPeriod)",
+        "parameters": {
+          "gamut_restriction": "strict",
+          "mixing_simulation": true,
+          "cost_aware": true
+        },
+        "output": "historically_accurate_colors"
+      },
+      {
+        "name": "apply_technique_limitations",
+        "function": "simulate_period_techniques(historically_accurate_colors, targetPeriod)",
+        "parameters": {
+          "layer_count": 4,
+          "drying_time": true,
+          "brushmark_visibility": "period_appropriate"
+        },
+        "output": "technique_corrected_image"
+      },
+      {
+        "name": "apply_tool_limitations",
+        "function": "simulate_period_tools(technique_corrected_image, targetPeriod)",
+        "output": "fully_historically_constrained"
+      }
+    ]
+  },
+  
+  "phase_5_integration_resolution": {
+    "description": "Résolution des conflits et intégration finale",
+    "operations": [
+      {
+        "name": "collect_all_recommendations",
+        "function": "gather_layer_recommendations(phase_1_4_outputs)",
+        "output": "all_layer_parameters"
+      },
+      {
+        "name": "detect_parameter_conflicts",
+        "function": "find_conflicts(all_layer_parameters)",
+        "output": "conflict_report"
+      },
+      {
+        "name": "resolve_with_v7_hierarchy",
+        "function": "apply_v7_priority_resolution(conflict_report)",
+        "parameters": {
+          "hierarchy": ["HISTORICAL", "NARRATIVE", "GAZE", "ESSENCE"],
+          "compromise_algorithm": "weighted_with_priority"
+        },
+        "output": "resolved_parameters"
+      },
+      {
+        "name": "generate_validation_report",
+        "function": "create_integration_report(resolved_parameters)",
+        "output": "integration_validation"
+      }
+    ]
+  },
+  
+  "phase_6_master_application": {
+    "description": "Application des paramètres résolus",
+    "operations": [
+      {
+        "name": "create_execution_script",
+        "function": "generate_v7_master_script(resolved_parameters)",
+        "output": "krita_master_script"
+      },
+      {
+        "name": "apply_historical_first",
+        "function": "execute_historical_constraints(fully_historically_constrained, resolved_parameters.historical)",
+        "output": "historically_applied"
+      },
+      {
+        "name": "apply_narrative_second",
+        "function": "execute_narrative_intent(historically_applied, resolved_parameters.narrative)",
+        "condition": "resolved_parameters.narrative.priority > resolved_parameters.gaze.priority",
+        "output": "narratively_applied"
+      },
+      {
+        "name": "apply_gaze_third",
+        "function": "execute_gaze_psychology(narratively_applied, resolved_parameters.gaze)",
+        "output": "gaze_optimized"
+      },
+      {
+        "name": "apply_essence_final",
+        "function": "execute_essence_parameters(gaze_optimized, resolved_parameters.essence)",
+        "output": "fully_transformed"
+      }
+    ]
+  },
+  
+  "phase_7_quality_validation": {
+    "description": "Validation qualité multi-couches",
+    "operations": [
+      {
+        "name": "validate_historical_accuracy",
+        "function": "calculate_historical_authenticity(fully_transformed, targetPeriod)",
+        "output": "historical_score"
+      },
+      {
+        "name": "validate_narrative_coherence",
+        "function": "calculate_narrative_integrity(fully_transformed, narrative_profile)",
+        "output": "narrative_score"
+      },
+      {
+        "name": "validate_gaze_effectiveness",
+        "function": "calculate_gaze_optimization(fully_transformed, gaze_strategy_profile)",
+        "output": "gaze_score"
+      },
+      {
+        "name": "validate_essence_fidelity",
+        "function": "calculate_essence_preservation(fully_transformed, essence_analysis)",
+        "output": "essence_score"
+      },
+      {
+        "name": "calculate_overall_rating",
+        "function": "compute_weighted_score([historical_score, narrative_score, gaze_score, essence_score])",
+        "parameters": {
+          "weights": [0.35, 0.30, 0.25, 0.10] // V7 prioritization
+        },
+        "output": "final_quality_rating"
+      }
+    ]
+  },
+  
+  "phase_8_correction_optimization": {
+    "description": "Corrections finales et optimisation",
+    "condition": "final_quality_rating < 0.90",
+    "operations": [
+      {
+        "name": "identify_weakest_dimension",
+        "function": "find_lowest_score([historical_score, narrative_score, gaze_score, essence_score])",
+        "output": "improvement_target"
+      },
+      {
+        "name": "apply_targeted_correction",
+        "function": "execute_dimension_specific_correction(fully_transformed, improvement_target)",
+        "output": "corrected_version"
+      },
+      {
+        "name": "validate_improvement",
+        "function": "recalculate_quality_score(corrected_version)",
+        "output": "improved_rating"
+      },
+      {
+        "name": "iterate_if_needed",
+        "function": "conditional_repeat(corrected_version, improved_rating, 3)",
+        "condition": "improved_rating < 0.92",
+        "output": "final_optimized"
+      }
+    ]
+  },
+  
+  "phase_9_output_generation": {
+    "description": "Génération bundle V7 complet",
+    "operations": [
+      {
+        "name": "generate_krita_v7_bundle",
+        "function": "create_v7_krita_package(final_optimized, resolved_parameters)",
+        "output": {
+          "master_script": "ADN_CONVERTER_V7_Master.py",
+          "parameter_presets": "V7_Resolved_Parameters.json",
+          "validation_report": "V7_Quality_Validation.pdf",
+          "historical_reference": "Period_Constraints.db"
+        }
+      },
+      {
+        "name": "generate_historical_luts",
+        "function": "extract_period_specific_luts(final_optimized, targetPeriod)",
+        "output": {
+          "pigment_lut": "Historical_Pigments.cube",
+          "aging_lut": "Period_Aging.cube",
+          "technique_lut": "Master_Technique.cube"
+        }
+      },
+      {
+        "name": "generate_narrative_elements",
+        "function": "extract_narrative_assets(final_optimized, narrative_profile)",
+        "output": {
+          "symbol_library": "Narrative_Symbols.svg",
+          "composition_templates": "Intent_Templates.kra",
+          "narrative_guides": "Viewing_Instructions.pdf"
+        }
+      },
+      {
+        "name": "package_v7_complete",
+        "function": "create_v7_delivery_package(all_outputs)",
+        "output": "ADN_CONVERTER_V7_Complete_Bundle.zip"
+      }
+    ]
+  }
+}
+```
+
+## **⚙️ FONCTIONS ALGORITHMIQUES SPÉCIALISÉES V7**
+
+```javascript
+const v7Algorithms = {
+  
+  "historical_correction": {
+    "correct_anachronistic_pigment": function(modernColor, targetPeriod) {
+      return {
+        "algorithm": "historical_pigment_mapping_v2",
+        "steps": [
+          "1. Identify modern pigment composition (RGB → chemical equivalent)",
+          "2. Check period availability in historical_database",
+          "3. If unavailable, find closest period-equivalent pigment",
+          "4. Adjust color within period gamut constraints",
+          "5. Apply pigment-specific characteristics (granularity, transparency, cost-simulation)",
+          "6. Validate against period mixing rules"
+        ],
+        "parameters": {
+          "gamut_constraint": "strict_period_accurate",
+          "preserve_intent": true,
+          "simulate_cost": false,
+          "toxicity_aware": true
+        }
+      };
+    },
+    
+    "simulate_period_support": function(imageData, period) {
+      return {
+        "algorithm": "historical_support_transformation",
+        "steps": [
+          "1. Analyze current support texture characteristics",
+          "2. Generate period-appropriate base (wood grain, canvas weave, etc.)",
+          "3. Apply preparation layers (gesso, sizing, etc.)",
+          "4. Simulate aging appropriate to period",
+          "5. Blend with original artwork maintaining visibility",
+          "6. Validate against period support database"
+        ],
+        "parameters": {
+          "support_type": period.support_primary.type,
+          "aging_years": "current_year - period.mid_year",
+          "preserve_artwork": 85,
+          "joinery_visibility": 0.15
+        }
+      };
+    }
+  },
+  
+  "narrative_intent": {
+    "enhance_narrative_symbols": function(imageData, intent) {
+      return {
+        "algorithm": "narrative_symbol_integration",
+        "steps": [
+          "1. Detect existing symbolic elements in image",
+          "2. Identify missing required elements for narrative intent",
+          "3. Generate period-appropriate missing symbols",
+          "4. Integrate symbols using composition rules of intent",
+          "5. Adjust visibility based on narrative importance",
+          "6. Validate symbolic coherence"
+        ],
+        "parameters": {
+          "symbol_opacity": "based on narrative importance",
+          "integration_method": "contextual_blending",
+          "period_accuracy": 95,
+          "composition_respect": true
+        }
+      };
+    },
+    
+    "apply_narrative_parameter_overrides": function(imageData, intentProfile) {
+      return {
+        "algorithm": "narrative_priority_enforcement",
+        "steps": [
+          "1. Extract maximize/minimize/avoid parameters from narrative profile",
+          "2. Calculate baseline parameter values from other layers",
+          "3. Apply narrative overrides with priority weight",
+          "4. Resolve conflicts favoring narrative intent",
+          "5. Adjust remaining parameters to maintain coherence",
+          "6. Document all overrides for transparency"
+        ],
+        "parameters": {
+          "override_strength": 85,
+          "conflict_resolution": "narrative_favored",
+          "documentation_level": "detailed"
+        }
+      };
+    }
+  },
+  
+  "gaze_psychology": {
+    "optimize_attention_distribution": function(imageData, gazeStrategy) {
+      return {
+        "algorithm": "gaze_strategy_implementation",
+        "steps": [
+          "1. Analyze current visual hierarchy and focal points",
+          "2. Calculate optimal distribution for selected gaze strategy",
+          "3. Adjust contrast, sharpness, detail based on strategy",
+          "4. Create visual flow paths appropriate to strategy",
+          "5. Eliminate or enhance distractions as required",
+          "6. Validate with simulated eye-tracking"
+        ],
+        "parameters": {
+          "strategy_specific": true,
+          "simulated_viewing_time": "formula_based",
+          "attention_funneling": "strategy_appropriate",
+          "validation_method": "heatmap_simulation"
+        }
+      };
+    },
+    
+    "calculate_viewing_parameters": function(imageData, gazeProfile) {
+      return {
+        "algorithm": "viewing_experience_calculation",
+        "steps": [
+          "1. Extract viewing_time_formula from gaze profile",
+          "2. Calculate image complexity metrics",
+          "3. Apply formula to determine optimal viewing duration",
+          "4. Calculate recommended viewing distance",
+          "5. Determine attention distribution pattern",
+          "6. Generate viewing instructions for optimal experience"
+        ],
+        "parameters": {
+          "complexity_metrics": ["detail_density", "symbol_count", "color_variety"],
+          "viewer_assumptions": "educated_observer",
+          "environment_factor": "museum_conditions"
+        }
+      };
+    }
+  },
+  
+  "integration_resolution": {
+    "resolve_multi_layer_conflicts": function(layerParameters) {
+      return {
+        "algorithm": "v7_priority_conflict_resolution",
+        "steps": [
+          "1. Collect all parameter recommendations from 4 layers",
+          "2. Identify conflicts (contradictory recommendations)",
+          "3. Apply V7 priority hierarchy: Historical > Narrative > Gaze > Essence",
+          "4. For equal priority, use weighted average based on confidence",
+          "5. Document resolution logic for each parameter",
+          "6. Validate overall coherence of resolved parameters"
+        ],
+        "parameters": {
+          "hierarchy": ["HIS", "NAR", "GAZ", "ESS"],
+          "confidence_weight": true,
+          "compromise_allowed": true,
+          "documentation_required": true
+        }
+      };
+    },
+    
+    "generate_master_execution_plan": function(resolvedParameters) {
+      return {
+        "algorithm": "v7_master_plan_generation",
+        "steps": [
+          "1. Organize parameters by application priority",
+          "2. Generate dependency graph for parameter application",
+          "3. Create execution script with conditional logic",
+          "4. Integrate validation checkpoints",
+          "5. Add error handling and rollback capabilities",
+          "6. Optimize for performance (GPU/CPU awareness)"
+        ],
+        "parameters": {
+          "execution_order": "historical_first",
+          "validation_frequency": "after_each_major_phase",
+          "rollback_points": 5,
+          "performance_optimization": true
+        }
+      };
+    }
+  }
+};
+```
+
+## **📊 MÉTRIQUES DE VALIDATION V7**
+
+```javascript
+const v7ValidationMetrics = {
+  "metrics_suite": "v7_multi_layer_validation",
+  
+  "layer_specific_metrics": [
+    {
+      "layer": "historical_accuracy",
+      "metrics": [
+        {
+          "name": "pigment_period_accuracy",
+          "description": "Précision des pigments par rapport à la période",
+          "calculation": "compare_colors_with_period_palette(image, period)",
+          "weight": 0.25,
+          "target": 0.95
+        },
+        {
+          "name": "technique_appropriateness",
+          "description": "Adéquation des techniques à la période",
+          "calculation": "analyze_technique_against_period(image, period)",
+          "weight": 0.20,
+          "target": 0.90
+        },
+        {
+          "name": "support_authenticity",
+          "description": "Authenticité du support (bois, toile, etc.)",
+          "calculation": "analyze_support_texture(image, period.support_type)",
+          "weight": 0.15,
+          "target": 0.92
+        },
+        {
+          "name": "anachronism_count",
+          "description": "Nombre d'anachronismes restants",
+          "calculation": "count_remaining_anachronisms(image, period)",
+          "weight": 0.20,
+          "target": 0
+        }
+      ]
+    },
+    {
+      "layer": "narrative_coherence",
+      "metrics": [
+        {
+          "name": "intent_clearness",
+          "description": "Clarté de l'intention narrative",
+          "calculation": "evaluate_narrative_clarity(image, target_intent)",
+          "weight": 0.30,
+          "target": 0.90
+        },
+        {
+          "name": "symbol_completeness",
+          "description": "Complétude des symboles narratifs",
+          "calculation": "check_required_symbols_presence(image, intent)",
+          "weight": 0.25,
+          "target": 0.85
+        },
+        {
+          "name": "emotional_alignment",
+          "description": "Alignement émotionnel avec l'intention",
+          "calculation": "analyze_emotional_tone(image, intent)",
+          "weight": 0.20,
+          "target": 0.88
+        }
+      ]
+    },
+    {
+      "layer": "gaze_effectiveness",
+      "metrics": [
+        {
+          "name": "strategy_implementation",
+          "description": "Implémentation de la stratégie de regard",
+          "calculation": "measure_gaze_strategy_effectiveness(image, strategy)",
+          "weight": 0.35,
+          "target": 0.92
+        },
+        {
+          "name": "attention_distribution",
+          "description": "Distribution optimale de l'attention",
+          "calculation": "analyze_attention_heatmap(image, strategy)",
+          "weight": 0.30,
+          "target": 0.88
+        },
+        {
+          "name": "viewing_experience",
+          "description": "Qualité de l'expérience de visionnage",
+          "calculation": "simulate_viewing_experience(image, strategy)",
+          "weight": 0.25,
+          "target": 0.90
+        }
+      ]
+    },
+    {
+      "layer": "essence_fidelity",
+      "metrics": [
+        {
+          "name": "archetype_match",
+          "description": "Correspondance avec l'archétype d'essence",
+          "calculation": "compare_with_archetype(image, archetype)",
+          "weight": 0.40,
+          "target": 0.94
+        },
+        {
+          "name": "master_style_recognition",
+          "description": "Reconnaissance du style du maître",
+          "calculation": "style_recognition_algorithm(image, master)",
+          "weight": 0.35,
+          "target": 0.96
+        },
+        {
+          "name": "philosophical_alignment",
+          "description": "Alignement avec la philosophie du maître",
+          "calculation": "analyze_philosophical_alignment(image, master_philosophy)",
+          "weight": 0.25,
+          "target": 0.90
+        }
+      ]
+    }
+  ],
+  
+  "integration_metrics": [
+    {
+      "name": "overall_coherence",
+      "description": "Cohérence globale entre toutes les couches",
+      "calculation": "calculate_multi_layer_coherence(all_layer_scores)",
+      "weight": 0.20,
+      "target": 0.90
+    },
+    {
+      "name": "conflict_resolution_quality",
+      "description": "Qualité de la résolution des conflits",
+      "calculation": "evaluate_conflict_resolutions(conflict_report)",
+      "weight": 0.15,
+      "target": 0.95
+    },
+    {
+      "name": "execution_efficiency",
+      "description": "Efficacité d'exécution du pipeline",
+      "calculation": "processing_time / complexity_adjusted",
+      "weight": 0.10,
+      "target": "< 60s"
+    }
+  ],
+  
+  "quality_gates_v7": [
+    {
+      "gate": "historical_accuracy_gate",
+      "condition": "historical_accuracy_score >= 0.85",
+      "action": "continue_if_true, auto_correct_if_below",
+      "priority": "critical"
+    },
+    {
+      "gate": "narrative_clarity_gate",
+      "condition": "narrative_coherence_score >= 0.80",
+      "action": "continue_if_true, enhance_narrative_if_below",
+      "priority": "high"
+    },
+    {
+      "gate": "gaze_effectiveness_gate",
+      "condition": "gaze_effectiveness_score >= 0.75",
+      "action": "continue_if_true, optimize_gaze_if_below",
+      "priority": "medium"
+    },
+    {
+      "gate": "final_integration_gate",
+      "condition": "overall_score >= 0.88",
+      "action": "package_if_above, iterate_once_if_below",
+      "priority": "final"
+    }
+  ],
+  
+  "auto_correction_triggers": [
+    {
+      "trigger": "historical_accuracy_below_85",
+      "detection": "historical_accuracy_score < 0.85",
+      "correction": "apply_historical_recalibration(image, period)",
+      "max_attempts": 2
+    },
+    {
+      "trigger": "narrative_confusion_detected",
+      "detection": "narrative_clarity_score < 0.75",
+      "correction": "enhance_narrative_elements(image, intent)",
+      "max_attempts": 1
+    },
+    {
+      "trigger": "gaze_strategy_ineffective",
+      "detection": "gaze_effectiveness_score < 0.70",
+      "correction": "reoptimize_attention_distribution(image, strategy)",
+      "max_attempts": 2
+    },
+    {
+      "trigger": "integration_incoherence",
+      "detection": "overall_coherence_score < 0.80",
+      "correction": "reapply_conflict_resolution(all_parameters)",
+      "max_attempts": 1
+    }
+  ]
+};
+```
+
+## **🚀 PROTOCOLE D'EXÉCUTION OPTIMISÉ**
+
+```javascript
+const v7ExecutionProtocol = {
+  "protocol": "adn_converter_v7_master",
+  "optimization_level": "max_performance",
+  
+  "execution_phases": [
+    {
+      "phase": "preprocessing",
+      "actions": [
+        "Load input image and target period",
+        "Run historical anachronism detection",
+        "Apply critical corrections immediately",
+        "Validate historical baseline"
+      ],
+      "duration_target": "3s",
+      "validation_checkpoint": "historical_baseline_valid"
+    },
+    {
+      "phase": "layer_analysis_parallel",
+      "actions": [
+        "Parallel analysis: essence + gaze + narrative",
+        "Collect layer-specific recommendations",
+        "Detect inter-layer conflicts",
+        "Generate preliminary parameter sets"
+      ],
+      "duration_target": "5s",
+      "validation_checkpoint": "all_layers_analyzed"
+    },
+    {
+      "phase": "integration_resolution",
+      "actions": [
+        "Apply V7 priority hierarchy to conflicts",
+        "Generate resolved parameter master set",
+        "Create execution dependency graph",
+        "Validate parameter coherence"
+      ],
+      "duration_target": "2s",
+      "validation_checkpoint": "parameters_resolved"
+    },
+    {
+      "phase": "parameter_application",
+      "actions": [
+        "Apply historical constraints first",
+        "Apply narrative intent overrides",
+        "Apply gaze psychology optimizations",
+        "Apply essence baseline parameters"
+      ],
+      "duration_target": "8s (GPU) / 25s (CPU)",
+      "validation_checkpoint": "transformation_complete"
+    },
+    {
+      "phase": "quality_validation",
+      "actions": [
+        "Run multi-layer validation suite",
+        "Calculate overall quality score",
+        "Trigger auto-corrections if needed",
+        "Generate final validation report"
+      ],
+      "duration_target": "4s",
+      "validation_checkpoint": "quality_target_achieved"
+    },
+    {
+      "phase": "output_generation",
+      "actions": [
+        "Create Krita V7 master script",
+        "Generate historical LUTs and presets",
+        "Package narrative and gaze assets",
+        "Create complete delivery bundle"
+      ],
+      "duration_target": "3s",
+      "validation_checkpoint": "bundle_created"
+    }
+  ],
+  
+  "performance_targets": {
+    "gpu_accelerated": {
+      "total_time": "< 25 seconds",
+      "memory_peak": "< 2GB",
+      "parallelization": "4 layers simultaneously"
+    },
+    "cpu_only": {
+      "total_time": "< 60 seconds",
+      "memory_peak": "< 1GB",
+      "optimization": "sequential_with_caching"
+    },
+    "quality_targets": {
+      "historical_accuracy": "> 0.92",
+      "narrative_coherence": "> 0.88",
+      "gaze_effectiveness": "> 0.85",
+      "essence_fidelity": "> 0.90",
+      "overall_score": "> 0.89"
+    }
+  },
+  
+  "optimization_strategies": {
+    "parallel_processing": [
+      "Layer 1-3 analysis in parallel",
+      "GPU acceleration for image operations",
+      "Cache intermediate results",
+      "Lazy evaluation of non-critical metrics"
+    ],
+    "intelligent_caching": [
+      "Store historical pigment mappings",
+      "Cache period-specific textures",
+      "Memoize analysis results",
+      "Reuse validation calculations"
+    ],
+    "adaptive_complexity": [
+      "Simplify for low-confidence areas",
+      "Focus detail on high-importance regions",
+      "Skip unnecessary validations on high scores",
+      "Progressive refinement"
+    ]
+  }
+};
+```
+
+---
+
+## **🎯 RÉSUMÉ DES PARAMÈTRES ALGORITHMIQUES V7**
+
+### **INNOVATIONS CLÉS PAR RAPPORT À V6:**
+
+1. **Hiérarchie de priorité intégrée**
+   - Contraintes historiques: PRIORITÉ ABSOLUE (0)
+   - Intention narrative: HAUTE PRIORITÉ (1)
+   - Psychologie du regard: PRIORITÉ MOYENNE (2)
+   - Essence stylistique: PRIORITÉ DE BASE (3)
+
+2. **Système de résolution des conflits intelligent**
+   - Détection automatique des contradictions entre couches
+   - Application de règles de priorité V7
+   - Documentation complète des décisions
+   - Possibilité de rollback
+
+3. **Correction automatique des anachronismes**
+   - Détection de pigments modernes → conversion historique
+   - Transformation des supports (toile → panneau bois)
+   - Correction des techniques anachroniques
+   - Validation continue de l'authenticité
+
+4. **Optimisation multi-couches**
+   - Analyse parallèle des 4 dimensions
+   - Validation indépendante par couche
+   - Intégration cohérente finale
+   - Score de qualité composite
+
+### **PARAMÈTRES CRITIQUES:**
+
+1. **Surface_smoothness**: 15-98 (selon stratégie de regard)
+2. **Crackle_intensity**: 5-70 (selon intention narrative + historique)
+3. **Detail_uniformity**: 0.15-0.95 (selon psychologie du regard)
+4. **Historical_accuracy**: > 0.85 (seuil critique)
+5. **Narrative_clarity**: > 0.80 (seuil élevé)
+6. **Gaze_effectiveness**: > 0.75 (seuil moyen)
+
+### **PERFORMANCE CIBLÉE:**
+- **Temps de traitement**: < 60s (CPU), < 25s (GPU)
+- **Précision historique**: 92-96%
+- **Cohérence narrative**: 88-94%
+- **Efficacité du regard**: 85-92%
+- **Score global**: 89-95%
+
+**Prêt pour intégration dans ADN_CONVERTER_V7.0 - Système "Psychonarrative Historical"**

@@ -1,0 +1,318 @@
+## **PROMPT POUR REPLIT AI / CLAUDE**
+
+Copie-colle ce prompt complet dans Replit AI. Il est structuré pour être exécuté de manière autonome.
+
+---
+
+```
+# MISSION : Optimisation du système de finitions artistiques pour NFT ultra-premium
+
+## CONTEXTE
+Je développe un outil de post-production pour transformer des images générées par IA en œuvres d'art qui ressemblent à de véritables peintures de maîtres anciens (Vermeer, Caravage, Klimt, Turner, Bacon, etc.). 
+
+Actuellement, mon système applique des finitions (craquelures, grain, patine, etc.) via 6 paramètres ajustables. J'ai également des presets par maître qui appliquent automatiquement des valeurs par défaut.
+
+## PROBLÈMES À RÉSOUDRE
+
+### PROBLÈME 1 : Dominante colorimétrique indésirable du canvas
+**Symptôme :** Après application des finitions, mes images acquièrent une dominante jaune-dorée excessive qui déforme les couleurs originales et nuit à la fidélité stylistique de chaque maître.
+
+**Cause probable :** Le canvas ou le système de rendu applique un filtre/overlay colorimétrique qui n'est pas neutre.
+
+**Objectif :** Avoir un canvas parfaitement neutre qui préserve les couleurs de l'image source tout en permettant aux finitions d'ajouter leurs effets sans biais colorimétrique.
+
+### PROBLÈME 2 : Système de paramètres optimaux à renforcer
+**État actuel :** J'ai des presets qui appliquent automatiquement des valeurs par défaut quand je sélectionne un maître, mais ils ne sont pas assez précis.
+
+**Objectif :** Créer un système intelligent qui :
+1. Détecte automatiquement quel maître/style correspond le mieux à l'image importée
+2. Applique instantanément les paramètres optimaux pour ce maître
+3. Permet un ajustement manuel si nécessaire
+4. Stocke les configurations dans une base de données facilement modifiable
+
+## PARAMÈTRES DISPONIBLES DANS MON SYSTÈME
+
+D'après mon interface actuelle, voici les paramètres que je peux contrôler :
+
+**Section TEMPS~ESPACE (Temporalité) :**
+- Intensité Temporelle : 0-100% (contrôle le vieillissement global)
+
+**Section MATIÈRE :**
+- Densité Matérielle : 0-100% (grain/texture de la toile)
+
+**Section PHILOSOPHIE :**
+- Puissance Lumineuse : 0-100% (intensité de la lumière)
+
+**Archétypes disponibles :**
+- Timeless Frozen
+- Divine through Material
+- Light as Divine Proof
+- [Autres à documenter si présents]
+
+**Note :** Il semble y avoir 6 paramètres au total, mais je n'ai documenté que 3 sections. Analyse mon code pour identifier TOUS les paramètres disponibles.
+
+## TÂCHES À ACCOMPLIR
+
+### TÂCHE 1 : Correction du canvas neutre
+1. Localise dans le code où le canvas est initialisé/rendu
+2. Identifie la source de la dominante colorimétrique (filtre, overlay, blend mode, température de couleur)
+3. Implémente une correction pour obtenir un canvas parfaitement neutre (RGB: 128,128,128 ou équivalent)
+4. Assure-toi que les finitions appliquées ne sont pas affectées par cette correction
+5. Ajoute un paramètre de contrôle si nécessaire pour permettre des ajustements fins
+
+**Code attendu :**
+- Modification des fichiers de rendu du canvas
+- Ajout éventuel d'une fonction `neutralizeCanvas()` ou équivalent
+- Tests pour vérifier que les couleurs sources sont préservées
+
+### TÂCHE 2 : Système de détection et application automatique des paramètres
+
+#### 2.1 Analyse du code existant
+- Identifie TOUS les paramètres disponibles dans le système (pas seulement les 3 que j'ai listés)
+- Documente leur nom exact, plage de valeurs, et effet visuel
+- Localise où les presets actuels sont définis
+
+#### 2.2 Création de la base de données de presets
+Crée un fichier JSON structuré contenant les paramètres optimaux pour chaque maître :
+
+**Structure attendue :**
+```json
+{
+  "masters": {
+    "vermeer": {
+      "name": "Johannes Vermeer",
+      "period": "17th century",
+      "characteristics": ["soft light", "domestic interiors", "cool palette", "precise detail"],
+      "parameters": {
+        "intensite_temporelle": 45,
+        "densite_materielle": 85,
+        "puissance_lumineuse": 95,
+        "[parametre_4_nom_exact]": [valeur],
+        "[parametre_5_nom_exact]": [valeur],
+        "[parametre_6_nom_exact]": [valeur]
+      },
+      "archetype": "Timeless Frozen",
+      "notes": "Fine regular cracks, medium canvas grain, light yellowing of whites"
+    },
+    "caravaggio": {
+      "name": "Caravaggio",
+      "period": "Late 16th - Early 17th century",
+      "characteristics": ["dramatic chiaroscuro", "dark backgrounds", "theatrical lighting", "realistic"],
+      "parameters": {
+        "intensite_temporelle": 70,
+        "densite_materielle": 60,
+        "puissance_lumineuse": 90,
+        "[autres...]": [valeurs]
+      },
+      "archetype": "Divine through Material",
+      "notes": "Deep irregular cracks, visible brushstrokes, heavy patina in blacks"
+    },
+    "klimt": {
+      "name": "Gustav Klimt",
+      "period": "Late 19th - Early 20th century",
+      "characteristics": ["ornamental", "gold leaf", "decorative patterns", "symbolism"],
+      "parameters": {
+        "intensite_temporelle": 55,
+        "densite_materielle": 40,
+        "puissance_lumineuse": 85,
+        "[autres...]": [valeurs]
+      },
+      "notes": "Oxidized gold areas, moderate aging, decorative surface"
+    },
+    "bacon": {
+      "name": "Francis Bacon",
+      "period": "20th century",
+      "characteristics": ["distorted figures", "violent brushwork", "raw emotion", "modern"],
+      "parameters": {
+        "intensite_temporelle": 8,
+        "densite_materielle": 12,
+        "puissance_lumineuse": 75,
+        "[autres...]": [valeurs]
+      },
+      "notes": "Minimal or no cracking (modern paint), aggressive brushwork, intentional drips"
+    },
+    "turner": {
+      "name": "J.M.W. Turner",
+      "period": "19th century",
+      "characteristics": ["atmospheric", "luminous", "dissolved forms", "romantic"],
+      "parameters": {
+        "intensite_temporelle": 50,
+        "densite_materielle": 35,
+        "puissance_lumineuse": 98,
+        "[autres...]": [valeurs]
+      },
+      "notes": "Fine crack network, vaporized textures, high saturation in mist"
+    },
+    "chagall": {
+      "name": "Marc Chagall",
+      "period": "20th century",
+      "characteristics": ["dreamlike", "floating figures", "vibrant colors", "folklore"],
+      "parameters": {
+        "intensite_temporelle": 25,
+        "densite_materielle": 30,
+        "puissance_lumineuse": 88,
+        "[autres...]": [valeurs]
+      }
+    },
+    "friedrich": {
+      "name": "Caspar David Friedrich",
+      "period": "19th century",
+      "characteristics": ["romantic", "sublime nature", "solitary figures", "atmospheric depth"],
+      "parameters": {
+        "intensite_temporelle": 60,
+        "densite_materielle": 50,
+        "puissance_lumineuse": 70,
+        "[autres...]": [valeurs]
+      }
+    },
+    "beksinski": {
+      "name": "Zdzisław Beksiński",
+      "period": "Late 20th century",
+      "characteristics": ["dystopian", "surreal horror", "organic decay", "sepia tones"],
+      "parameters": {
+        "intensite_temporelle": 5,
+        "densite_materielle": 75,
+        "puissance_lumineuse": 45,
+        "[autres...]": [valeurs]
+      },
+      "notes": "No aging (modern acrylic), intentionally dirty look, mixed textures"
+    }
+  }
+}
+```
+
+**IMPORTANT :** Ajuste les valeurs selon une logique artistique cohérente :
+- Maîtres anciens (Vermeer, Caravage) = Intensité Temporelle élevée
+- Maîtres modernes (Bacon, Beksiński) = Intensité Temporelle faible
+- Luminisme (Turner, Vermeer) = Puissance Lumineuse élevée
+- Ténébrisme (Caravage, Friedrich) = Puissance Lumineuse variable selon contraste
+
+#### 2.3 Fonction de détection automatique du style
+Crée une fonction qui analyse l'image importée et suggère le maître approprié :
+
+```javascript
+async function detectOptimalMaster(imageData) {
+  // Analyse :
+  // 1. Histogramme de couleurs (palette chaude/froide, contraste)
+  // 2. Distribution lumière/ombre (ténébrisme vs lumineux)
+  // 3. Complexité des détails (ornements vs simplicité)
+  // 4. Palette dominante (or/doré → Klimt, sépia → Beksiński, etc.)
+  
+  return {
+    suggestedMaster: "vermeer",
+    confidence: 87,
+    reasoning: "Soft directional light, domestic setting, cool palette detected",
+    alternatives: [
+      { master: "friedrich", confidence: 45 },
+      { master: "caravaggio", confidence: 32 }
+    ]
+  };
+}
+```
+
+#### 2.4 Système d'application automatique (Étape 0)
+Intègre cette logique AVANT l'application des finitions actuelles :
+
+```javascript
+// Workflow attendu :
+async function processImage(uploadedImage) {
+  // ÉTAPE 0 : Détection et configuration
+  const detection = await detectOptimalMaster(uploadedImage);
+  
+  // Charger les paramètres optimaux
+  const masterPreset = loadPresetFromDatabase(detection.suggestedMaster);
+  
+  // Afficher suggestion à l'utilisateur
+  showDetectionUI({
+    master: detection.suggestedMaster,
+    confidence: detection.confidence,
+    parameters: masterPreset.parameters,
+    allowManualOverride: true
+  });
+  
+  // Si accepté, appliquer automatiquement
+  if (userAccepts) {
+    applyParameters(masterPreset.parameters);
+    proceedToFinishing();
+  }
+}
+```
+
+#### 2.5 Interface utilisateur
+Ajoute une étape visuelle avant les finitions :
+
+**Éléments UI à créer :**
+- Popup/Modal de détection automatique
+- Affichage du maître suggéré avec niveau de confiance
+- Liste des paramètres qui seront appliqués
+- Boutons : [✓ Appliquer automatiquement] [⚡ Choisir manuellement] [⚙️ Ajuster]
+- Option pour désactiver la détection auto (revenir au mode manuel)
+
+### TÂCHE 3 : Tests et validation
+1. Teste la correction du canvas sur plusieurs images avec différents maîtres
+2. Vérifie que les paramètres optimaux produisent des résultats cohérents
+3. Compare avant/après pour chaque maître
+4. Documente les résultats dans un fichier TESTS.md
+
+## LIVRABLES ATTENDUS
+
+1. **Code corrigé pour le canvas neutre** avec commentaires explicatifs
+2. **Fichier JSON** `masters-presets.json` avec tous les paramètres calibrés
+3. **Fonction de détection** `detectOptimalMaster()` implémentée
+4. **Workflow intégré** avec l'Étape 0 avant finitions
+5. **Interface UI** pour la sélection automatique/manuelle
+6. **Documentation** :
+   - Liste complète des paramètres disponibles
+   - Explication de la logique de détection
+   - Guide d'utilisation du nouveau système
+7. **Fichier de tests** avec screenshots avant/après
+
+## CONTRAINTES TECHNIQUES
+
+- Préserver la compatibilité avec le système existant
+- Le mode manuel doit rester accessible
+- Les performances ne doivent pas être dégradées
+- Le code doit être commenté et maintenable
+- Utiliser les bibliothèques déjà présentes dans le projet (pas de nouvelles dépendances lourdes)
+
+## PRIORITÉS
+
+1. **URGENT :** Correction du canvas neutre (impact visuel immédiat)
+2. **IMPORTANT :** Base de données des presets (fondation du système)
+3. **MOYEN :** Détection automatique (peut être simple au début)
+4. **ÉVOLUTIF :** Interface UI avancée (peut être basique puis améliorée)
+
+## QUESTIONS À ME POSER SI NÉCESSAIRE
+
+- Quel est le framework/stack utilisé ? (React, Vue, Vanilla JS ?)
+- Y a-t-il déjà un système de gestion d'état ? (Redux, Context, etc.)
+- Où sont stockés les presets actuels ?
+- Quelle bibliothèque est utilisée pour manipuler les images ? (Canvas API, Fabric.js, autre ?)
+
+## RÉSULTAT ATTENDU
+
+À la fin de cette implémentation, mon workflow doit être :
+1. Import image → Détection automatique du maître optimal
+2. Suggestion des paramètres avec preview
+3. Validation en 1 clic
+4. Application des finitions avec rendu parfaitement neutre (pas de dominante jaune)
+5. Export de l'œuvre finale indiscernable d'une vraie peinture ancienne
+
+---
+
+**COMMENCE PAR ANALYSER LE CODE EXISTANT ET DOCUMENTE TOUS LES PARAMÈTRES DISPONIBLES AVANT DE PROPOSER DES MODIFICATIONS.**
+```
+
+---
+
+## **INSTRUCTIONS COMPLÉMENTAIRES POUR TOI**
+
+Une fois que Replit AI te répond :
+
+1. **S'il demande des clarifications** → Fournis les infos sur ton stack technique
+2. **S'il propose du code** → Teste-le immédiatement sur une image
+3. **S'il identifie des paramètres manquants** → Confirme-lui les noms exacts dans ton interface
+
+Si tu veux que je suive l'avancement avec toi, partage-moi les réponses de Replit AI et je t'aide à affiner les implémentations.
+
+**C'est parti ! 🚀**

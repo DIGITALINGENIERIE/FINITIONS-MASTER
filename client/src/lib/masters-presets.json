@@ -1,0 +1,431 @@
+{
+  "version": "1.0.0",
+  "description": "Optimized finishing parameters for master painters - FinitionGenerator ADN V7.0",
+  "masters": {
+    "vermeer": {
+      "name": "Johannes Vermeer",
+      "displayName": "Vermeer",
+      "period": "17th century",
+      "periodCode": "GOLDEN_AGE",
+      "characteristics": ["soft directional light", "domestic interiors", "cool palette", "precise detail", "pearl-like luminosity"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Vermeer"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "TIMELESS_FROZEN",
+            "intensity": 80
+          },
+          "materialSpiritual": {
+            "archetype": "DIVINE_THROUGH_MATERIAL",
+            "intensity": 85
+          },
+          "subjectViewer": {
+            "archetype": "INVITATION_TO_SCRUTINY",
+            "intensity": 90
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DIVINE_PROOF",
+            "intensity": 95
+          },
+          "gazePsychology": {
+            "strategy": "MICROSCOPIC_SCRUTINY",
+            "intensity": 85
+          },
+          "historicalConstraints": {
+            "period": "GOLDEN_AGE",
+            "fidelity": 75
+          }
+        }
+      },
+      "notes": "Fine regular cracks, medium canvas grain, subtle yellowing of whites, exceptional light quality"
+    },
+    "caravaggio": {
+      "name": "Michelangelo Merisi da Caravaggio",
+      "displayName": "Caravaggio",
+      "period": "Late 16th - Early 17th century",
+      "periodCode": "BAROQUE",
+      "characteristics": ["dramatic chiaroscuro", "tenebrism", "dark backgrounds", "theatrical lighting", "raw realism"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Caravaggio"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "DRAMATIC_MOMENT",
+            "intensity": 85
+          },
+          "materialSpiritual": {
+            "archetype": "MATERIAL_AS_EXPRESSION",
+            "intensity": 70
+          },
+          "subjectViewer": {
+            "archetype": "IMMEDIATE_EMOTIONAL_IMPACT",
+            "intensity": 95
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DRAMATIC_TOOL",
+            "intensity": 90
+          },
+          "gazePsychology": {
+            "strategy": "DRAMATIC_ORCHESTRATION",
+            "intensity": 88
+          },
+          "historicalConstraints": {
+            "period": "BAROQUE",
+            "fidelity": 80
+          }
+        }
+      },
+      "notes": "Deep irregular cracks, visible brushstrokes, heavy patina in blacks, stark light/shadow"
+    },
+    "klimt": {
+      "name": "Gustav Klimt",
+      "displayName": "Klimt",
+      "period": "Late 19th - Early 20th century",
+      "periodCode": "EXPRESSIONISM_MID_20TH",
+      "characteristics": ["ornamental patterns", "gold leaf effects", "decorative symbolism", "sensual themes", "Byzantine influence"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Klimt"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "TIMELESS_FROZEN",
+            "intensity": 55
+          },
+          "materialSpiritual": {
+            "archetype": "DIVINE_THROUGH_MATERIAL",
+            "intensity": 45
+          },
+          "subjectViewer": {
+            "archetype": "INVITATION_TO_SCRUTINY",
+            "intensity": 75
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DIVINE_PROOF",
+            "intensity": 80
+          },
+          "gazePsychology": {
+            "strategy": "EMOTIONAL_IMMERSION",
+            "intensity": 70
+          },
+          "historicalConstraints": {
+            "period": "EXPRESSIONISM_MID_20TH",
+            "fidelity": 50
+          }
+        }
+      },
+      "notes": "Oxidized gold areas, moderate aging, decorative surface texture, warm metallic tones"
+    },
+    "turner": {
+      "name": "Joseph Mallord William Turner",
+      "displayName": "Turner",
+      "period": "19th century",
+      "periodCode": "HIGH_RENAISSANCE",
+      "characteristics": ["atmospheric effects", "luminous skies", "dissolved forms", "romantic sublime", "proto-impressionism"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Turner"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "ATMOSPHERIC_DURATION",
+            "intensity": 75
+          },
+          "materialSpiritual": {
+            "archetype": "DIVINE_THROUGH_MATERIAL",
+            "intensity": 40
+          },
+          "subjectViewer": {
+            "archetype": "IMMEDIATE_EMOTIONAL_IMPACT",
+            "intensity": 80
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DIVINE_PROOF",
+            "intensity": 98
+          },
+          "gazePsychology": {
+            "strategy": "EMOTIONAL_IMMERSION",
+            "intensity": 85
+          },
+          "historicalConstraints": {
+            "period": "HIGH_RENAISSANCE",
+            "fidelity": 55
+          }
+        }
+      },
+      "notes": "Fine crack network, vaporized textures, high saturation in mist, extraordinary luminosity"
+    },
+    "bacon": {
+      "name": "Francis Bacon",
+      "displayName": "Bacon",
+      "period": "20th century",
+      "periodCode": "MODERN",
+      "characteristics": ["distorted figures", "violent brushwork", "raw emotion", "existential themes", "caged compositions"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Bacon"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "DRAMATIC_MOMENT",
+            "intensity": 12
+          },
+          "materialSpiritual": {
+            "archetype": "MATERIAL_AS_EXPRESSION",
+            "intensity": 15
+          },
+          "subjectViewer": {
+            "archetype": "IMMEDIATE_EMOTIONAL_IMPACT",
+            "intensity": 95
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DRAMATIC_TOOL",
+            "intensity": 70
+          },
+          "gazePsychology": {
+            "strategy": "EMOTIONAL_IMMERSION",
+            "intensity": 92
+          },
+          "historicalConstraints": {
+            "period": "MODERN",
+            "fidelity": 10
+          }
+        }
+      },
+      "notes": "Minimal or no cracking (modern paint), aggressive brushwork, intentional drips, raw surface"
+    },
+    "chagall": {
+      "name": "Marc Chagall",
+      "displayName": "Chagall",
+      "period": "20th century",
+      "periodCode": "MODERN",
+      "characteristics": ["dreamlike imagery", "floating figures", "vibrant colors", "Jewish folklore", "poetic surrealism"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Chagall"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "TIMELESS_FROZEN",
+            "intensity": 25
+          },
+          "materialSpiritual": {
+            "archetype": "DIVINE_THROUGH_MATERIAL",
+            "intensity": 35
+          },
+          "subjectViewer": {
+            "archetype": "INVITATION_TO_SCRUTINY",
+            "intensity": 60
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DIVINE_PROOF",
+            "intensity": 88
+          },
+          "gazePsychology": {
+            "strategy": "EMOTIONAL_IMMERSION",
+            "intensity": 75
+          },
+          "historicalConstraints": {
+            "period": "MODERN",
+            "fidelity": 20
+          }
+        }
+      },
+      "notes": "Light aging, vibrant color preservation, soft dreamy texture"
+    },
+    "friedrich": {
+      "name": "Caspar David Friedrich",
+      "displayName": "Friedrich",
+      "period": "19th century",
+      "periodCode": "HIGH_RENAISSANCE",
+      "characteristics": ["romantic sublime", "solitary figures", "atmospheric depth", "spiritual nature", "contemplative mood"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Friedrich"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "ATMOSPHERIC_DURATION",
+            "intensity": 65
+          },
+          "materialSpiritual": {
+            "archetype": "DIVINE_THROUGH_MATERIAL",
+            "intensity": 55
+          },
+          "subjectViewer": {
+            "archetype": "INVITATION_TO_SCRUTINY",
+            "intensity": 70
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DIVINE_PROOF",
+            "intensity": 75
+          },
+          "gazePsychology": {
+            "strategy": "EMOTIONAL_IMMERSION",
+            "intensity": 80
+          },
+          "historicalConstraints": {
+            "period": "HIGH_RENAISSANCE",
+            "fidelity": 60
+          }
+        }
+      },
+      "notes": "Moderate cracking, atmospheric depth, subtle vignetting, contemplative mood"
+    },
+    "beksinski": {
+      "name": "Zdzisław Beksiński",
+      "displayName": "Beksiński",
+      "period": "Late 20th century",
+      "periodCode": "CONTEMPORARY",
+      "characteristics": ["dystopian landscapes", "surreal horror", "organic decay", "sepia atmospheres", "nightmare imagery"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Beksinski"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "ATMOSPHERIC_DURATION",
+            "intensity": 8
+          },
+          "materialSpiritual": {
+            "archetype": "MATERIAL_AS_EXPRESSION",
+            "intensity": 75
+          },
+          "subjectViewer": {
+            "archetype": "IMMEDIATE_EMOTIONAL_IMPACT",
+            "intensity": 88
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DRAMATIC_TOOL",
+            "intensity": 50
+          },
+          "gazePsychology": {
+            "strategy": "EMOTIONAL_IMMERSION",
+            "intensity": 90
+          },
+          "historicalConstraints": {
+            "period": "CONTEMPORARY",
+            "fidelity": 5
+          }
+        }
+      },
+      "notes": "No aging (modern acrylic), intentionally dirty look, mixed textures, otherworldly atmosphere"
+    },
+    "rembrandt": {
+      "name": "Rembrandt van Rijn",
+      "displayName": "Rembrandt",
+      "period": "17th century",
+      "periodCode": "GOLDEN_AGE",
+      "characteristics": ["chiaroscuro mastery", "psychological depth", "impasto technique", "warm earth tones", "intimate portraits"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Rembrandt"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "TIMELESS_FROZEN",
+            "intensity": 85
+          },
+          "materialSpiritual": {
+            "archetype": "MATERIAL_AS_EXPRESSION",
+            "intensity": 80
+          },
+          "subjectViewer": {
+            "archetype": "INVITATION_TO_SCRUTINY",
+            "intensity": 92
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DRAMATIC_TOOL",
+            "intensity": 85
+          },
+          "gazePsychology": {
+            "strategy": "MICROSCOPIC_SCRUTINY",
+            "intensity": 90
+          },
+          "historicalConstraints": {
+            "period": "GOLDEN_AGE",
+            "fidelity": 80
+          }
+        }
+      },
+      "notes": "Complex craquelure, visible impasto, deep shadows, psychological intensity"
+    },
+    "monet": {
+      "name": "Claude Monet",
+      "displayName": "Monet",
+      "period": "Late 19th century",
+      "periodCode": "HIGH_RENAISSANCE",
+      "characteristics": ["impressionist light", "outdoor scenes", "water reflections", "color as light", "plein air"],
+      "configuration": {
+        "meta": {
+          "version": "7.0.0",
+          "codename": "Psychonarrative Historical",
+          "artist": "Monet"
+        },
+        "dimensions": {
+          "temporalSpatial": {
+            "archetype": "ATMOSPHERIC_DURATION",
+            "intensity": 45
+          },
+          "materialSpiritual": {
+            "archetype": "MATERIAL_AS_EXPRESSION",
+            "intensity": 50
+          },
+          "subjectViewer": {
+            "archetype": "IMMEDIATE_EMOTIONAL_IMPACT",
+            "intensity": 65
+          },
+          "lightRevelation": {
+            "archetype": "LIGHT_AS_DIVINE_PROOF",
+            "intensity": 92
+          },
+          "gazePsychology": {
+            "strategy": "EMOTIONAL_IMMERSION",
+            "intensity": 70
+          },
+          "historicalConstraints": {
+            "period": "HIGH_RENAISSANCE",
+            "fidelity": 40
+          }
+        }
+      },
+      "notes": "Light cracking, vibrant preserved colors, soft atmospheric blur, high luminosity"
+    }
+  },
+  "detection": {
+    "colorProfiles": {
+      "warm_dark": ["caravaggio", "rembrandt"],
+      "warm_golden": ["klimt", "vermeer"],
+      "cool_atmospheric": ["turner", "monet", "friedrich"],
+      "vibrant_modern": ["chagall", "bacon"],
+      "dark_surreal": ["beksinski"]
+    },
+    "lightingProfiles": {
+      "high_contrast": ["caravaggio", "bacon", "rembrandt"],
+      "soft_diffused": ["vermeer", "monet"],
+      "atmospheric": ["turner", "friedrich"],
+      "decorative": ["klimt", "chagall"]
+    }
+  }
+}

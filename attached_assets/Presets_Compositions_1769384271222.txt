@@ -1,0 +1,2724 @@
+# PARAMÈTRES ALGORITHMIQUES POUR L'ADN "PSYCHONARRATIVE HISTORICAL" V7.0
+
+## 🧠 ARCHITECTURE META-INTELLIGENCE
+
+```javascript
+const PSYCHONARRATIVE_ADN_V7 = {
+  
+  // ═══════════════════════════════════════════════════════
+  // SECTION 1 : CONFIGURATION DU SYSTÈME AUTO-RÉFLEXIF
+  // ═══════════════════════════════════════════════════════
+  
+  meta_intelligence: {
+    version: "7.0.0",
+    architecture: "4-Layer_Cognitive_Pipeline",
+    
+    // Priorités absolues (à appliquer dans cet ordre)
+    priority_hierarchy: [
+      "HISTORICAL_CONSTRAINTS",    // 1. Anachronismes critiques
+      "NARRATIVE_INTENT",           // 2. Intention fondamentale
+      "GAZE_PSYCHOLOGY",           // 3. Orchestration du regard
+      "STYLISTIC_ESSENCE"          // 4. Signature stylistique
+    ],
+    
+    // Seuils de confiance adaptatifs
+    confidence_thresholds: {
+      historical: { pass: 0.92, correctable: 0.75, fail: 0.60 },
+      narrative: { strong: 0.88, moderate: 0.70, weak: 0.50 },
+      gaze: { optimal: 0.85, acceptable: 0.65, poor: 0.40 },
+      essence: { precise: 0.90, approximate: 0.70, vague: 0.50 }
+    },
+    
+    // Système d'auto-évaluation
+    self_validation: {
+      conflict_detection: "multi_layer_cross_reference",
+      correction_confidence: "minimum(0.95, average_layer_confidence)",
+      fallback_strategy: "most_historically_accurate_archetype"
+    }
+  },
+  
+  // ═══════════════════════════════════════════════════════
+  // SECTION 2 : ALGORITHMES DE DÉTECTION COUCHE 1 - ESSENCE
+  // ═══════════════════════════════════════════════════════
+  
+  essence_detection_algorithms: {
+    
+    // ═══ ALGORITHME 1 : CLASSIFICATION ARCHÉTYPALE MULTI-DIMENSIONNELLE ═══
+    archetype_classifier: {
+      input_dimensions: 9,
+      hidden_layers: [64, 32, 16],
+      output_classes: 12, // 4 dimensions × 3 archétypes
+      
+      feature_extractors: {
+        temporal_feeling: `
+          function extractTemporalFeatures(imageData) {
+            // 1. Analyse flux optique (mouvement suggéré)
+            const flowVectors = opticalFlowAnalysis(imageData);
+            const motionMagnitude = magnitude(flowVectors);
+            const motionDirectionality = directionality(flowVectors);
+            
+            // 2. Analyse flou/tremblement
+            const blurAnalysis = multiScaleBlurDetection(imageData);
+            const intentionalBlur = blurAnalysis.directional_intensity;
+            
+            // 3. Indices temporels explicites
+            const temporalMarkers = detectTemporalMarkers(imageData, [
+              "clocks", "shadows_length", "candle_burn", "hourglass",
+              "seasonal_indicators", "age_signs"
+            ]);
+            
+            return {
+              motion_score: motionMagnitude,
+              directionality: motionDirectionality,
+              blur_intentionality: intentionalBlur,
+              temporal_markers: temporalMarkers.count,
+              temporal_ambiguity: 1 - (temporalMarkers.confidence || 0.5)
+            };
+          }
+        `,
+        
+        material_treatment: `
+          function extractMaterialFeatures(imageData) {
+            // 1. Précision surface (0=lisse parfait, 1=texturé expressif)
+            const surfacePrecision = analyzeSurfaceUniformity(imageData);
+            const textureExpressivity = calculateTextureEnergy(imageData);
+            
+            // 2. Rendu matériaux (métal, tissu, peau, bois)
+            const materialDiscrimination = classifyMaterialTypes(imageData);
+            const materialFidelity = materialDiscrimination.confidence;
+            
+            // 3. État matière (neuf vs vieilli)
+            const agingIndicators = detectAgingFeatures(imageData, [
+              "crackle_patterns", "varnish_yellowing", "pigment_fading",
+              "surface_abrasions", "craquelure_density"
+            ]);
+            
+            return {
+              surface_smoothness: 1 - surfacePrecision.variation,
+              texture_energy: textureExpressivity,
+              material_count: materialDiscrimination.types.length,
+              material_fidelity: materialFidelity,
+              aging_intensity: agingIndicators.score
+            };
+          }
+        `,
+        
+        viewer_relationship: `
+          function extractViewerRelationshipFeatures(imageData) {
+            // 1. Distance implicite
+            const implicitDistance = calculateViewerDistance(imageData, [
+              "focal_length_equivalent",
+              "perspective_distortion", 
+              "detail_accessibility",
+              "eye_contact_intensity"
+            ]);
+            
+            // 2. Engagement temporel estimé
+            const engagementTime = estimateViewingDuration(imageData, {
+              detail_density: 0.3,
+              symbolic_complexity: 0.25,
+              emotional_intensity: 0.25,
+              narrative_depth: 0.2
+            });
+            
+            // 3. Rôle spectateur (investigateur vs participant)
+            const spectatorRole = classifySpectatorRole(imageData);
+            
+            return {
+              implicit_distance_cm: implicitDistance.distance,
+              distance_confidence: implicitDistance.confidence,
+              estimated_viewing_seconds: engagementTime,
+              spectator_role: spectatorRole.role,
+              role_confidence: spectatorRole.confidence
+            };
+          }
+        `,
+        
+        light_philosophy: `
+          function extractLightPhilosophyFeatures(imageData) {
+            // 1. Source lumière (visible vs invisible)
+            const lightSource = detectLightSource(imageData);
+            const sourceVisibility = lightSource.visibility;
+            
+            // 2. Qualité lumière (divine vs dramatique vs naturelle)
+            const lightQuality = classifyLightQuality(imageData);
+            
+            // 3. Contrôle ombres
+            const shadowAnalysis = analyzeShadowCharacteristics(imageData);
+            
+            return {
+              source_visibility: sourceVisibility,
+              light_quality: lightQuality.type,
+              quality_confidence: lightQuality.confidence,
+              shadow_softness: shadowAnalysis.softness,
+              contrast_dramatic: shadowAnalysis.contrast_ratio
+            };
+          }
+        `
+      },
+      
+      classification_algorithm: `
+        function classifyEssenceArchetype(featureVectors) {
+          // Convertir features en scores d'archétypes
+          const archetypeScores = {};
+          
+          // Dimension 1: Temporal-Spatial Relationship
+          archetypeScores.TIMELESS_FROZEN = calculateMatch(featureVectors.temporal, {
+            motion_score: [0, 0.1],
+            temporal_markers: [0, 1],
+            temporal_ambiguity: [0, 0.2]
+          });
+          
+          archetypeScores.DRAMATIC_MOMENT = calculateMatch(featureVectors.temporal, {
+            motion_score: [0.15, 0.4],
+            directionality: [0.6, 1],
+            temporal_ambiguity: [0, 0.3]
+          });
+          
+          archetypeScores.ATMOSPHERIC_DURATION = calculateMatch(featureVectors.temporal, {
+            motion_score: [0.4, 0.9],
+            blur_intentionality: [0.6, 1],
+            temporal_ambiguity: [0.4, 0.8]
+          });
+          
+          // Dimension 2: Material-Spiritual Relationship  
+          archetypeScores.DIVINE_THROUGH_MATERIAL = calculateMatch(featureVectors.material, {
+            surface_smoothness: [0.9, 1],
+            material_fidelity: [0.8, 1],
+            aging_intensity: [0, 0.2]
+          });
+          
+          archetypeScores.MATERIAL_AS_EXPRESSION = calculateMatch(featureVectors.material, {
+            surface_smoothness: [0.2, 0.6],
+            texture_energy: [0.7, 1],
+            aging_intensity: [0.3, 0.8]
+          });
+          
+          // Dimension 3: Subject-Viewer Relationship
+          archetypeScores.INVITATION_TO_SCRUTINY = calculateMatch(featureVectors.viewer, {
+            implicit_distance_cm: [25, 50],
+            estimated_viewing_seconds: [900, 3600],
+            spectator_role: "investigator"
+          });
+          
+          archetypeScores.IMMEDIATE_EMOTIONAL_IMPACT = calculateMatch(featureVectors.viewer, {
+            implicit_distance_cm: [100, 300],
+            estimated_viewing_seconds: [1, 30],
+            spectator_role: "participant"
+          });
+          
+          // Dimension 4: Light-Revelation Relationship
+          archetypeScores.LIGHT_AS_DIVINE_PROOF = calculateMatch(featureVectors.light, {
+            source_visibility: [0, 0.3],
+            light_quality: "divine",
+            shadow_softness: [0.7, 1]
+          });
+          
+          archetypeScores.LIGHT_AS_DRAMATIC_TOOL = calculateMatch(featureVectors.light, {
+            source_visibility: [0.7, 1],
+            light_quality: "dramatic",
+            contrast_dramatic: [0.8, 1]
+          });
+          
+          // Combinaison multi-dimensionnelle
+          const dimensionWeights = {
+            temporal: 0.25,
+            material: 0.25,
+            viewer: 0.25,
+            light: 0.25
+          };
+          
+          return {
+            dominant_archetypes: archetypeScores,
+            recommended_master: identifyMasterFromArchetypeCombo(archetypeScores),
+            confidence: calculateMultiDimensionalConfidence(archetypeScores, dimensionWeights),
+            feature_analysis: featureVectors
+          };
+        }
+      `
+    },
+    
+    // ═══ ALGORITHME 2 : IDENTIFICATION MAÎTRE PAR SIGNATURE COMPOSITE ═══
+    master_identifier: {
+      signature_database: {
+        "Van_Eyck": {
+          archetype_combo: ["TIMELESS_FROZEN", "DIVINE_THROUGH_MATERIAL", "INVITATION_TO_SCRUTINY", "LIGHT_AS_DIVINE_PROOF"],
+          probability: 0.92,
+          distinguishing_features: {
+            surface_smoothness: [0.95, 1],
+            detail_density: [0.9, 1],
+            reflection_accuracy: [0.85, 1],
+            gold_leaf_presence: 0.78
+          }
+        },
+        
+        "Caravage": {
+          archetype_combo: ["DRAMATIC_MOMENT", "MATERIAL_AS_EXPRESSION", "IMMEDIATE_EMOTIONAL_IMPACT", "LIGHT_AS_DRAMATIC_TOOL"],
+          probability: 0.88,
+          distinguishing_features: {
+            chiaroscuro_strength: [0.85, 1],
+            theatrical_contrast: [0.8, 1],
+            emotion_intensity: [0.75, 1],
+            shadow_hardness: [0.8, 1]
+          }
+        },
+        
+        "Rembrandt": {
+          archetype_combo: ["DRAMATIC_MOMENT", "MATERIAL_AS_EXPRESSION", "INVITATION_TO_SCRUTINY", "LIGHT_AS_DRAMATIC_TOOL"],
+          probability: 0.85,
+          distinguishing_features: {
+            impasto_visible: [0.6, 0.9],
+            emotional_depth: [0.8, 1],
+            aging_acceptance: [0.7, 1],
+            psychological_complexity: [0.75, 1]
+          }
+        },
+        
+        "Vermeer": {
+          archetype_combo: ["TIMELESS_FROZEN", "DIVINE_THROUGH_MATERIAL", "INVITATION_TO_SCRUTINY", "LIGHT_AS_DIVINE_PROOF"],
+          probability: 0.90,
+          distinguishing_features: {
+            domestic_scenes: 0.85,
+            window_light: 0.95,
+            color_harmony: [0.8, 1],
+            geometric_composition: [0.75, 1]
+          }
+        }
+      },
+      
+      identification_algorithm: `
+        function identifyMasterWithConfidence(archetypeScores, featureVectors) {
+          const masterScores = {};
+          
+          for (const master in signature_database) {
+            const signature = signature_database[master];
+            
+            // 1. Score archétypes
+            let archetypeScore = 0;
+            signature.archetype_combo.forEach(archetype => {
+              archetypeScore += archetypeScores[archetype] || 0;
+            });
+            archetypeScore /= signature.archetype_combo.length;
+            
+            // 2. Score features distinctifs
+            let featureScore = 0;
+            let featureCount = 0;
+            
+            for (const feature in signature.distinguishing_features) {
+              const expectedRange = signature.distinguishing_features[feature];
+              const actualValue = featureVectors[feature];
+              
+              if (actualValue !== undefined) {
+                if (Array.isArray(expectedRange)) {
+                  // Vérifier si dans plage
+                  if (actualValue >= expectedRange[0] && actualValue <= expectedRange[1]) {
+                    featureScore += 1;
+                  } else {
+                    // Pénalité proportionnelle à l'écart
+                    const distance = Math.min(
+                      Math.abs(actualValue - expectedRange[0]),
+                      Math.abs(actualValue - expectedRange[1])
+                    );
+                    featureScore += Math.max(0, 1 - distance);
+                  }
+                } else {
+                  // Valeur booléenne ou probabilité
+                  featureScore += Math.abs(actualValue - expectedRange) < 0.2 ? 1 : 0;
+                }
+                featureCount++;
+              }
+            }
+            
+            featureScore = featureCount > 0 ? featureScore / featureCount : 0.5;
+            
+            // 3. Score composite pondéré
+            masterScores[master] = {
+              total: (archetypeScore * 0.6 + featureScore * 0.4) * signature.probability,
+              archetype_component: archetypeScore,
+              feature_component: featureScore,
+              probability: signature.probability
+            };
+          }
+          
+          // Trouver le meilleur match
+          const sortedMasters = Object.entries(masterScores)
+            .sort((a, b) => b[1].total - a[1].total);
+          
+          const bestMatch = sortedMasters[0];
+          const secondBest = sortedMasters[1];
+          
+          // Calculer confiance relative
+          const confidence = bestMatch[1].total > 0.7 ? 
+            bestMatch[1].total * (1 - (secondBest[1].total / bestMatch[1].total)) :
+            bestMatch[1].total;
+          
+          return {
+            identified_master: bestMatch[0],
+            confidence: confidence,
+            all_scores: masterScores,
+            distinguishing_features_matched: bestMatch[1].feature_component,
+            alternative_masters: sortedMasters.slice(1, 3).map(m => ({
+              master: m[0],
+              score: m[1].total,
+              gap: bestMatch[1].total - m[1].total
+            }))
+          };
+        }
+      `
+    }
+  },
+  
+  // ═══════════════════════════════════════════════════════
+  // SECTION 3 : ALGORITHMES COUCHE 2 - PSYCHOLOGIE DU REGARD
+  // ═══════════════════════════════════════════════════════
+  
+  gaze_psychology_algorithms: {
+    
+    // ═══ ALGORITHME 1 : ANALYSE MULTI-MÉTRIQUE DE LA STRATÉGIE OCULAIRE ═══
+    gaze_strategy_detector: {
+      metrics_suite: {
+        // Métrique 1 : Uniformité vs Hiérarchie focale
+        attention_uniformity: {
+          calculation: `
+            function calculateAttentionUniformity(imageData) {
+              // Générer carte de saillance
+              const saliencyMap = generateSaliencyMap(imageData);
+              
+              // Calculer distribution d'attention
+              const histogram = saliencyMap.histogram(256);
+              
+              // Entropie de la distribution (haute = uniforme, basse = hiérarchique)
+              const entropy = calculateHistogramEntropy(histogram);
+              
+              // Nombre de pics distincts (hotspots focaux)
+              const peaks = findPeaks(histogram, { minProminence: 0.1 });
+              
+              return {
+                uniformity_score: entropy, // 0-1
+                focal_hierarchy_strength: 1 - entropy,
+                hotspots_count: peaks.length,
+                hotspots_intensity: peaks.map(p => p.intensity)
+              };
+            }
+          `,
+          
+          interpretation: {
+            "MICROSCOPIC_SCRUTINY": { 
+              expected_range: [0.7, 0.95], 
+              weight: 0.35 
+            },
+            "EMOTIONAL_IMMERSION": { 
+              expected_range: [0.2, 0.4], 
+              weight: 0.25 
+            },
+            "ATMOSPHERIC_CONTEMPLATION": { 
+              expected_range: [0.5, 0.7], 
+              weight: 0.20 
+            }
+          }
+        },
+        
+        // Métrique 2 : Densité et accessibilité des détails
+        detail_accessibility: {
+          calculation: `
+            function calculateDetailAccessibility(imageData) {
+              // Analyse multi-échelle
+              const detailMaps = [];
+              for (let scale = 1; scale <= 4; scale *= 2) {
+                const scaled = resizeImage(imageData, 1/scale);
+                const edges = detectEdges(scaled, { threshold: 0.1 });
+                detailMaps.push({
+                  scale: scale,
+                  edge_density: calculateEdgeDensity(edges),
+                  micro_contrast: calculateMicroContrast(scaled)
+                });
+              }
+              
+              // Accessibilité = détails visibles à toutes les échelles
+              const accessibilityScores = detailMaps.map(d => 
+                d.edge_density * d.micro_contrast
+              );
+              
+              const consistency = 1 - standardDeviation(accessibilityScores);
+              
+              return {
+                detail_density: mean(accessibilityScores),
+                consistency_across_scales: consistency,
+                optimal_viewing_distance_cm: calculateOptimalDistance(detailMaps),
+                detail_hierarchy: detailMaps[0].edge_density / detailMaps[3].edge_density
+              };
+            }
+          `,
+          
+          interpretation: {
+            "MICROSCOPIC_SCRUTINY": { 
+              expected_range: [0.85, 1], 
+              consistency: [0.8, 1],
+              weight: 0.30
+            },
+            "EMOTIONAL_IMMERSION": { 
+              expected_range: [0.4, 0.7], 
+              consistency: [0.3, 0.6],
+              weight: 0.20
+            }
+          }
+        },
+        
+        // Métrique 3 : Flux et navigation visuelle
+        visual_flow: {
+          calculation: `
+            function analyzeVisualFlow(imageData) {
+              // 1. Points d'entrée naturels
+              const entryPoints = detectNaturalEntryPoints(imageData);
+              
+              // 2. Vecteurs d'attention implicites
+              const attentionVectors = extractAttentionVectors(imageData);
+              
+              // 3. Complexité du parcours
+              const pathComplexity = calculateViewingPathComplexity(
+                entryPoints, 
+                attentionVectors
+              );
+              
+              // 4. Résistance à la sortie
+              const exitResistance = calculateExitResistance(
+                imageData, 
+                attentionVectors
+              );
+              
+              return {
+                entry_points_count: entryPoints.length,
+                flow_directionality: vectorFieldDirectionality(attentionVectors),
+                path_complexity: pathComplexity, // 0=linéaire, 1=chaotique
+                exit_resistance: exitResistance, // 0=facile à quitter, 1=piégé
+                suggested_viewing_pattern: classifyViewingPattern(pathComplexity)
+              };
+            }
+          `,
+          
+          interpretation: {
+            "MICROSCOPIC_SCRUTINY": {
+              entry_points: "multiple",
+              path_complexity: [0.7, 0.9],
+              exit_resistance: [0.8, 1],
+              weight: 0.25
+            },
+            "EMOTIONAL_IMMERSION": {
+              entry_points: "single_dominant",
+              path_complexity: [0.3, 0.5],
+              exit_resistance: [0.6, 0.8],
+              weight: 0.30
+            }
+          }
+        },
+        
+        // Métrique 4 : Temps de perception estimé
+        temporal_perception: {
+          calculation: `
+            function estimatePerceptionTime(imageData) {
+              // Facteurs influençant le temps de vision
+              const factors = {
+                detail_density: 0.25,
+                symbolic_complexity: 0.20,
+                emotional_depth: 0.20,
+                narrative_layers: 0.15,
+                color_complexity: 0.10,
+                composition_balance: 0.10
+              };
+              
+              let totalTime = 0;
+              let totalWeight = 0;
+              
+              for (const factor in factors) {
+                const value = calculateFactor(imageData, factor);
+                const weight = factors[factor];
+                
+                // Temps de base pour chaque facteur (secondes)
+                const baseTimes = {
+                  detail_density: value * 120, // Jusqu'à 2 minutes
+                  symbolic_complexity: value * 180, // Jusqu'à 3 minutes
+                  emotional_depth: value * 60, // Jusqu'à 1 minute
+                  narrative_layers: value * 240, // Jusqu'à 4 minutes
+                  color_complexity: value * 30, // Jusqu'à 30 secondes
+                  composition_balance: value * 45 // Jusqu'à 45 secondes
+                };
+                
+                totalTime += baseTimes[factor] * weight;
+                totalWeight += weight;
+              }
+              
+              return {
+                estimated_viewing_seconds: totalTime / totalWeight,
+                minimum_engagement: totalTime * 0.3,
+                optimal_engagement: totalTime,
+                saturation_point: totalTime * 2.5,
+                time_distribution: factors
+              };
+            }
+          `,
+          
+          interpretation: {
+            "MICROSCOPIC_SCRUTINY": {
+              estimated_seconds: [300, 1800], // 5-30 minutes
+              weight: 0.10
+            },
+            "EMOTIONAL_IMMERSION": {
+              estimated_seconds: [5, 60], // 5-60 secondes
+              weight: 0.15
+            },
+            "ATMOSPHERIC_CONTEMPLATION": {
+              estimated_seconds: [600, 3600], // 10-60 minutes
+              weight: 0.10
+            }
+          }
+        }
+      },
+      
+      // ═══ ALGORITHME DE CLASSIFICATION STRATÉGIE DOMINANTE ═══
+      strategy_classifier: `
+        function classifyGazeStrategy(imageData) {
+          const metrics = {};
+          const strategyScores = {
+            MICROSCOPIC_SCRUTINY: 0,
+            EMOTIONAL_IMMERSION: 0,
+            ATMOSPHERIC_CONTEMPLATION: 0
+          };
+          
+          // Calculer toutes les métriques
+          for (const metricName in metrics_suite) {
+            const metric = metrics_suite[metricName];
+            metrics[metricName] = eval(metric.calculation)(imageData);
+            
+            // Accumuler scores pour chaque stratégie
+            for (const strategy in metric.interpretation) {
+              const interpretation = metric.interpretation[strategy];
+              const value = metrics[metricName][interpretation.key || 'score'];
+              
+              let matchScore = 0;
+              
+              if (Array.isArray(interpretation.expected_range)) {
+                // Vérifier si dans plage
+                if (value >= interpretation.expected_range[0] && 
+                    value <= interpretation.expected_range[1]) {
+                  matchScore = 1;
+                } else {
+                  // Pénalité proportionnelle à l'écart
+                  const rangeCenter = (interpretation.expected_range[0] + 
+                                       interpretation.expected_range[1]) / 2;
+                  const normalizedDistance = Math.min(
+                    Math.abs(value - interpretation.expected_range[0]),
+                    Math.abs(value - interpretation.expected_range[1])
+                  ) / (interpretation.expected_range[1] - interpretation.expected_range[0]);
+                  
+                  matchScore = Math.max(0, 1 - normalizedDistance * 2);
+                }
+              } else if (typeof interpretation.expected_range === 'string') {
+                // Match qualitatif
+                matchScore = value === interpretation.expected_range ? 1 : 0.3;
+              }
+              
+              strategyScores[strategy] += matchScore * interpretation.weight;
+            }
+          }
+          
+          // Normaliser les scores
+          const totalWeight = Object.values(metrics_suite)
+            .reduce((sum, metric) => {
+              return sum + Object.values(metric.interpretation)
+                .reduce((s, i) => s + i.weight, 0);
+            }, 0);
+          
+          for (const strategy in strategyScores) {
+            strategyScores[strategy] /= totalWeight;
+          }
+          
+          // Détecter stratégie dominante
+          const sortedStrategies = Object.entries(strategyScores)
+            .sort((a, b) => b[1] - a[1]);
+          
+          const dominantStrategy = sortedStrategies[0];
+          const runnerUp = sortedStrategies[1];
+          
+          // Calculer confiance
+          const confidence = dominantStrategy[1] > 0.6 ? 
+            dominantStrategy[1] * (1 - (runnerUp[1] / dominantStrategy[1])) :
+            dominantStrategy[1];
+          
+          return {
+            dominant_strategy: dominantStrategy[0],
+            confidence: confidence,
+            all_strategy_scores: strategyScores,
+            metrics_analysis: metrics,
+            
+            // Recommandations dérivées
+            optimal_viewing_distance: calculateOptimalDistance(metrics),
+            suggested_viewing_time: metrics.temporal_perception?.optimal_engagement || 30,
+            attention_guidance_pattern: generateAttentionGuidance(dominantStrategy[0], metrics)
+          };
+        }
+      `
+    },
+    
+    // ═══ ALGORITHME 2 : GÉNÉRATION DE PARAMÈTRES OPÉRATIONNELS ═══
+    parameter_generator: {
+      strategy_parameters: {
+        MICROSCOPIC_SCRUTINY: {
+          // Paramètres Krita/Photoshop
+          surface_smoothness: {
+            value: 98,
+            algorithm: "bilateral_filter + surface_blur",
+            parameters: {
+              filter_radius: 15,
+              threshold: 15,
+              preserve_edges: true
+            }
+          },
+          
+          detail_enhancement: {
+            value: 95,
+            algorithm: "local_contrast_enhancement",
+            parameters: {
+              amount: 0.8,
+              radius: 40,
+              threshold: 0
+            }
+          },
+          
+          edge_definition: {
+            value: 90,
+            algorithm: "smart_sharpen + edge_aware_processing",
+            parameters: {
+              amount: 150,
+              radius: 0.8,
+              reduce_noise: 5,
+              remove_blur: "lens_blur"
+            }
+          },
+          
+          color_clarity: {
+            value: 85,
+            algorithm: "color_unmixing + gamut_expansion",
+            parameters: {
+              saturation: 1.2,
+              vibrance: 40,
+              clarity: 25,
+              dehaze: 10
+            }
+          },
+          
+          // Formules dérivées
+          viewing_distance_formula: "max(30, min(image_width / 50, 60))",
+          viewing_time_formula: "image_area * 0.015",
+          
+          // Réglages avancés
+          micro_contrast_curve: {
+            shadows: [0, 20],
+            midtones: [128, 135],
+            highlights: [255, 245]
+          },
+          
+          texture_preservation: {
+            method: "frequency_separation",
+            low_frequency: 10,
+            high_frequency: 90,
+            blend: "linear_light"
+          }
+        },
+        
+        EMOTIONAL_IMMERSION: {
+          focal_hierarchy: {
+            value: 85,
+            algorithm: "depth_of_field_simulation",
+            parameters: {
+              focal_point: "auto_detect_face",
+              aperture: 1.8,
+              blur_strength: 0.7,
+              falloff: "linear"
+            }
+          },
+          
+          emotional_contrast: {
+            value: 95,
+            algorithm: "dramatic_toning",
+            parameters: {
+              black_point: 15,
+              white_point: 240,
+              contrast: 60,
+              clarity: 35
+            }
+          },
+          
+          color_emotionality: {
+            value: 80,
+            algorithm: "color_grading_emotional",
+            parameters: {
+              temperature: 6500, // Kelvin
+              tint: 0,
+              vibrance: 50,
+              saturation: 30,
+              hue_targets: {
+                skin: [15, 30], // Teinte chair
+                eyes: [200, 220], // Bleus émotifs
+                background: [180, 200] // Froids pour contraste
+              }
+            }
+          },
+          
+          texture_expressivity: {
+            value: 75,
+            algorithm: "brushstroke_enhancement",
+            parameters: {
+              detect_brushstrokes: true,
+              enhance_strokes: 0.6,
+              directionality_preservation: 0.8,
+              texture_overlay: 0.3
+            }
+          },
+          
+          viewing_distance_formula: "image_diagonal * 1.5",
+          viewing_time_formula: "10 + (emotional_intensity * 30)"
+        }
+      },
+      
+      generation_algorithm: `
+        function generateOperationalParameters(strategy, metrics, imageData) {
+          const baseParams = strategy_parameters[strategy];
+          const adaptedParams = JSON.parse(JSON.stringify(baseParams));
+          
+          // Adapter paramètres basés sur métriques spécifiques
+          if (metrics.detail_accessibility) {
+            const detailScore = metrics.detail_accessibility.detail_density;
+            
+            // Ajuster netteté basée sur densité détails
+            adaptedParams.edge_definition.value = 
+              baseParams.edge_definition.value * detailScore;
+              
+            adaptedParams.detail_enhancement.parameters.amount = 
+              0.5 + (detailScore * 0.5);
+          }
+          
+          if (metrics.attention_uniformity) {
+            const uniformity = metrics.attention_uniformity.uniformity_score;
+            
+            // Ajuster hiérarchie focale
+            if (strategy === "EMOTIONAL_IMMERSION") {
+              adaptedParams.focal_hierarchy.value = 
+                baseParams.focal_hierarchy.value * (1 - uniformity * 0.5);
+            }
+          }
+          
+          if (metrics.temporal_perception) {
+            const viewingTime = metrics.temporal_perception.estimated_viewing_seconds;
+            
+            // Ajuster complexité couleur basée sur temps engagement
+            adaptedParams.color_clarity.value = 
+              Math.min(95, baseParams.color_clarity.value * (viewingTime / 300));
+          }
+          
+          // Adapter à la taille de l'image
+          const imageSize = {
+            width: imageData.width,
+            height: imageData.height,
+            diagonal: Math.sqrt(imageData.width**2 + imageData.height**2)
+          };
+          
+          // Convertir formules en valeurs
+          for (const param in adaptedParams) {
+            if (typeof adaptedParams[param] === 'string' && 
+                adaptedParams[param].includes('formula')) {
+              const formula = adaptedParams[param].replace('formula', '');
+              try {
+                adaptedParams[param] = eval(
+                  formula
+                    .replace('image_width', imageSize.width)
+                    .replace('image_height', imageSize.height)
+                    .replace('image_diagonal', imageSize.diagonal)
+                    .replace('image_area', imageSize.width * imageSize.height)
+                );
+              } catch (e) {
+                console.warn(`Could not evaluate formula for ${param}:`, e);
+              }
+            }
+          }
+          
+          return {
+            strategy: strategy,
+            parameters: adaptedParams,
+            adaptation_factors: {
+              detail_based: metrics.detail_accessibility ? true : false,
+              uniformity_based: metrics.attention_uniformity ? true : false,
+              temporal_based: metrics.temporal_perception ? true : false,
+              size_adapted: true
+            },
+            
+            // Script d'exécution pour Krita/Photoshop
+            execution_script: generateExecutionScript(strategy, adaptedParams),
+            
+            // Métadonnées pour suivi
+            generation_timestamp: new Date().toISOString(),
+            strategy_confidence: metrics.confidence || 0.8,
+            parameter_variability: calculateParameterVariability(adaptedParams)
+          };
+        }
+      `
+    }
+  },
+  
+  // ═══════════════════════════════════════════════════════
+  // SECTION 4 : ALGORITHMES COUCHE 3 - INTENTION NARRATIVE
+  // ═══════════════════════════════════════════════════════
+  
+  narrative_intent_algorithms: {
+    
+    // ═══ ALGORITHME 1 : DÉTECTION SYMBOLIQUE AVANCÉE ═══
+    symbolic_detector: {
+      symbol_database: {
+        // Catégorie: Symboles Légaux/Contractuels
+        legal_testimony: {
+          symbols: [
+            {
+              id: "mirror_reflection",
+              detection: "circular_reflective_surface",
+              confidence_threshold: 0.75,
+              historical_periods: ["1400-1500_flanders"],
+              required_for: ["LEGAL_TESTIMONY", "VANITAS_MORTALITY"],
+              weight: 0.15
+            },
+            {
+              id: "signature_inscription",
+              detection: "text_detection + calligraphic_style",
+              confidence_threshold: 0.8,
+              position_constraints: ["bottom_margin", "integrated_architecture"],
+              weight: 0.12
+            },
+            {
+              id: "wedding_ring",
+              detection: "circular_metal_object + finger_position",
+              confidence_threshold: 0.7,
+              gender_specific: ["female_left_hand"],
+              weight: 0.10
+            }
+          ],
+          spatial_patterns: [
+            "symmetrical_composition",
+            "frontal_perspective", 
+            "uniform_lighting"
+          ]
+        },
+        
+        // Catégorie: Dévotion Spirituelle
+        spiritual_devotion: {
+          symbols: [
+            {
+              id: "gold_leaf",
+              detection: "metallic_reflection + yellow_color",
+              confidence_threshold: 0.85,
+              texture: "smooth_high_reflectance",
+              weight: 0.20
+            },
+            {
+              id: "halo",
+              detection: "circular_glow + head_proximity",
+              confidence_threshold: 0.8,
+              types: ["disk", "radiant", "nimbus"],
+              weight: 0.18
+            },
+            {
+              id: "angel_figure",
+              detection: "humanoid_with_wings",
+              confidence_threshold: 0.7,
+              position: ["upper_register", "flanking"],
+              weight: 0.15
+            }
+          ],
+          compositional_patterns: [
+            "hierarchical_scale",
+            "celestial_architecture",
+            "divine_light_source"
+          ]
+        },
+        
+        // Catégorie: Vanitas/Memento Mori
+        vanitas_mortality: {
+          symbols: [
+            {
+              id: "skull",
+              detection: "cranial_structure + empty_eye_sockets",
+              confidence_threshold: 0.9,
+              orientation: ["frontal", "three_quarter"],
+              weight: 0.25
+            },
+            {
+              id: "hourglass",
+              detection: "double_bulb_shape + sand_inside",
+              confidence_threshold: 0.8,
+              state: ["flowing", "empty", "full"],
+              weight: 0.15
+            },
+            {
+              id: "extinguished_candle",
+              detection: "candle_shape + smoke_trail",
+              confidence_threshold: 0.75,
+              smoke_direction: "upward",
+              weight: 0.12
+            }
+          ],
+          temporal_indicators: [
+            "decaying_fruit",
+            "wilting_flowers", 
+            "bubble_symbolism"
+          ]
+        }
+      },
+      
+      detection_algorithm: `
+        function detectNarrativeSymbols(imageData, historicalPeriod) {
+          const detectedSymbols = [];
+          const symbolCategories = {};
+          
+          // Scanner pour chaque catégorie
+          for (const category in symbol_database) {
+            symbolCategories[category] = {
+              symbols: [],
+              total_weight: 0,
+              matched_weight: 0
+            };
+            
+            const categoryData = symbol_database[category];
+            
+            // Détecter chaque symbole
+            for (const symbol of categoryData.symbols) {
+              // Vérifier compatibilité période historique
+              if (symbol.historical_periods && 
+                  !symbol.historical_periods.includes(historicalPeriod)) {
+                continue; // Symbole anachronique pour cette période
+              }
+              
+              const detectionResult = detectSymbol(
+                imageData, 
+                symbol.detection, 
+                symbol.confidence_threshold
+              );
+              
+              if (detectionResult.confidence >= symbol.confidence_threshold) {
+                detectedSymbols.push({
+                  category: category,
+                  symbol_id: symbol.id,
+                  confidence: detectionResult.confidence,
+                  position: detectionResult.position,
+                  bounding_box: detectionResult.bbox,
+                  weight: symbol.weight,
+                  metadata: {
+                    detection_method: symbol.detection,
+                    historical_period: historicalPeriod,
+                    timestamp: new Date().toISOString()
+                  }
+                });
+                
+                symbolCategories[category].symbols.push(symbol.id);
+                symbolCategories[category].matched_weight += symbol.weight;
+              }
+              
+              symbolCategories[category].total_weight += symbol.weight;
+            }
+            
+            // Vérifier patterns spatiaux/compositionnels
+            for (const pattern of categoryData.spatial_patterns || []) {
+              const patternResult = detectCompositionalPattern(imageData, pattern);
+              if (patternResult.detected) {
+                symbolCategories[category].patterns = 
+                  (symbolCategories[category].patterns || []).concat(pattern);
+                symbolCategories[category].matched_weight += 0.05; // Bonus pattern
+              }
+            }
+          }
+          
+          // Calculer scores par catégorie
+          const categoryScores = {};
+          for (const category in symbolCategories) {
+            if (symbolCategories[category].total_weight > 0) {
+              categoryScores[category] = {
+                score: symbolCategories[category].matched_weight / 
+                       symbolCategories[category].total_weight,
+                symbols_found: symbolCategories[category].symbols,
+                patterns_detected: symbolCategories[category].patterns || [],
+                completeness: symbolCategories[category].symbols.length / 
+                              symbol_database[category].symbols.length
+              };
+            }
+          }
+          
+          return {
+            detected_symbols: detectedSymbols,
+            category_scores: categoryScores,
+            dominant_category: findDominantCategory(categoryScores),
+            narrative_coherence: calculateNarrativeCoherence(detectedSymbols),
+            
+            // Recommandations d'amélioration narrative
+            missing_symbols: identifyMissingSymbols(categoryScores, historicalPeriod),
+            suggested_composition_adjustments: suggestNarrativeEnhancements(
+              dominant_category, 
+              detectedSymbols
+            )
+          };
+        }
+      `
+    },
+    
+    // ═══ ALGORITHME 2 : INFÉRENCE D'INTENTION NARRATIVE ═══
+    intent_inferencer: {
+      intent_archetypes: {
+        LEGAL_TESTIMONY: {
+          required_symbols: ["mirror_reflection", "signature_inscription"],
+          optional_symbols: ["wedding_ring", "witness_figure", "document_seal"],
+          compositional_constraints: {
+            symmetry: [0.7, 0.9],
+            frontal_pose: true,
+            uniform_lighting: true,
+            detailed_background: true
+          },
+          technical_implications: {
+            maximize: ["clarity", "precision", "objectivity"],
+            minimize: ["emotional_coloring", "texture_distraction", "atmospheric_haze"],
+            avoid: ["dramatic_chiaroscuro", "expressive_brushwork", "color_subjectivity"]
+          },
+          viewer_contract: {
+            role: "impartial_witness",
+            expected_action: "scrutinize_evidence",
+            emotional_distance: "high",
+            temporal_engagement: "prolonged_analytical"
+          }
+        },
+        
+        SPIRITUAL_DEVOTION: {
+          required_symbols: ["gold_leaf", "halo", "celestial_figure"],
+          optional_symbols: ["angel_figure", "divine_light", "sacred_architecture"],
+          compositional_constraints: {
+            hierarchical_scale: true,
+            central_composition: [0.4, 0.6],
+            upward_movement: true,
+            symmetrical_balance: [0.6, 0.8]
+          },
+          technical_implications: {
+            maximize: ["gold_brilliance", "geometric_precision", "sacred_blue"],
+            minimize: ["earthly_texture", "temporal_indicators", "secular_elements"],
+            enhance: ["divine_light_effects", "halo_glow", "architectural_perfection"]
+          }
+        },
+        
+        VANITAS_MORTALITY: {
+          required_symbols: ["skull", "temporal_indicator"],
+          optional_symbols: ["hourglass", "extinguished_candle", "decaying_object"],
+          compositional_constraints: {
+            contrast_life_death: [0.7, 0.9],
+            diagonal_composition: true,
+            close_cropping: true,
+            asymmetric_balance: [0.3, 0.5]
+          },
+          technical_implications: {
+            maximize: ["skull_realism", "decay_texture", "temporal_indicators"],
+            minimize: ["idealization", "eternal_feeling", "youth_emphasis"],
+            special_rules: {
+              aging_patina: "INCREASE (enhances mortality message)",
+              crackle_intensity: "INCREASE (shows time passage)",
+              yellowing_varnish: "ACCEPTABLE (natural decay)"
+            }
+          }
+        },
+        
+        POWER_DISPLAY: {
+          required_symbols: ["dominant_figure", "power_symbols"],
+          optional_symbols: ["rich_attire", "architectural_backdrop", "subservient_figures"],
+          compositional_constraints: {
+            low_angle_perspective: true,
+            centered_dominant: [0.45, 0.55],
+            vast_space: true,
+            imposing_architecture: true
+          },
+          technical_implications: {
+            maximize: ["material_richness", "spatial_depth", "authority_symbols"],
+            minimize: ["intimate_scale", "emotional_vulnerability", "domestic_details"],
+            enhance: ["regal_colors", "texture_luxury", "compositional_authority"]
+          }
+        }
+      },
+      
+      inference_algorithm: `
+        function inferNarrativeIntent(symbolDetection, compositionAnalysis, historicalContext) {
+          const intentScores = {};
+          
+          for (const intent in intent_archetypes) {
+            const archetype = intent_archetypes[intent];
+            
+            // 1. Score symboles requis
+            let symbolScore = 0;
+            let symbolWeight = 0;
+            
+            for (const reqSymbol of archetype.required_symbols) {
+              const found = symbolDetection.detected_symbols.find(
+                s => s.symbol_id === reqSymbol || 
+                     s.symbol_id.includes(reqSymbol)
+              );
+              
+              if (found) {
+                symbolScore += found.confidence * 0.7; // Poids fort pour requis
+                symbolWeight += 0.7;
+              }
+            }
+            
+            // 2. Score symboles optionnels
+            for (const optSymbol of archetype.optional_symbols || []) {
+              const found = symbolDetection.detected_symbols.find(
+                s => s.symbol_id === optSymbol
+              );
+              
+              if (found) {
+                symbolScore += found.confidence * 0.3; // Poids faible pour optionnel
+                symbolWeight += 0.3;
+              }
+            }
+            
+            symbolScore = symbolWeight > 0 ? symbolScore / symbolWeight : 0;
+            
+            // 3. Score contraintes compositionnelles
+            let compositionScore = 0;
+            let compositionWeight = 0;
+            
+            for (const constraint in archetype.compositional_constraints) {
+              const expected = archetype.compositional_constraints[constraint];
+              const actual = compositionAnalysis[constraint];
+              
+              if (actual !== undefined) {
+                let match = 0;
+                
+                if (Array.isArray(expected)) {
+                  // Plage de valeurs attendues
+                  if (actual >= expected[0] && actual <= expected[1]) {
+                    match = 1;
+                  } else {
+                    const distance = Math.min(
+                      Math.abs(actual - expected[0]),
+                      Math.abs(actual - expected[1])
+                    ) / (expected[1] - expected[0]);
+                    match = Math.max(0, 1 - distance * 2);
+                  }
+                } else if (typeof expected === 'boolean') {
+                  // Constraint booléenne
+                  match = actual === expected ? 1 : 0;
+                } else if (typeof expected === 'number') {
+                  // Valeur exacte attendue
+                  match = Math.abs(actual - expected) < 0.1 ? 1 : 0;
+                }
+                
+                compositionScore += match * 0.25; // Poids égal pour 4 contraintes
+                compositionWeight += 0.25;
+              }
+            }
+            
+            compositionScore = compositionWeight > 0 ? compositionScore / compositionWeight : 0.5;
+            
+            // 4. Score contexte historique
+            let historicalScore = 1.0; // Par défaut compatible
+            if (historicalContext.period_constraints && 
+                historicalContext.period_constraints[intent]) {
+              const periods = historicalContext.period_constraints[intent];
+              historicalScore = periods.includes(historicalContext.target_period) ? 1 : 0.3;
+            }
+            
+            // 5. Score composite pondéré
+            intentScores[intent] = {
+              total: (symbolScore * 0.5 + compositionScore * 0.3 + historicalScore * 0.2),
+              symbol_component: symbolScore,
+              composition_component: compositionScore,
+              historical_component: historicalScore,
+              confidence: Math.min(symbolScore, compositionScore, historicalScore)
+            };
+          }
+          
+          // Trouver intention dominante
+          const sortedIntents = Object.entries(intentScores)
+            .sort((a, b) => b[1].total - a[1].total);
+          
+          const dominantIntent = sortedIntents[0];
+          const alternativeIntent = sortedIntents[1];
+          
+          // Calculer confiance
+          const confidence = dominantIntent[1].total > 0.6 ? 
+            dominantIntent[1].total * (1 - (alternativeIntent[1].total / dominantIntent[1].total)) :
+            dominantIntent[1].total;
+          
+          return {
+            dominant_intent: dominantIntent[0],
+            confidence: confidence,
+            all_intent_scores: intentScores,
+            intent_archetype: intent_archetypes[dominantIntent[0]],
+            
+            // Implications techniques
+            technical_implications: extractTechnicalImplications(
+              intent_archetypes[dominantIntent[0]],
+              symbolDetection,
+              compositionAnalysis
+            ),
+            
+            // Recommandations narratives
+            narrative_enhancements: generateNarrativeEnhancements(
+              dominantIntent[0],
+              symbolDetection,
+              compositionAnalysis
+            ),
+            
+            // Contrat avec spectateur
+            viewer_contract: intent_archetypes[dominantIntent[0]].viewer_contract
+          };
+        }
+      `
+    }
+  },
+  
+  // ═══════════════════════════════════════════════════════
+  // SECTION 5 : ALGORITHMES COUCHE 4 - CONTRAINTES HISTORIQUES
+  // ═══════════════════════════════════════════════════════
+  
+  historical_constraints_algorithms: {
+    
+    // ═══ ALGORITHME 1 : DÉTECTION D'ANACHRONISMES MULTI-CRITÈRES ═══
+    anachronism_detector: {
+      validation_dimensions: {
+        // Dimension 1 : Palette de couleurs historiques
+        color_palette: {
+          period_databases: {
+            "1400-1450_flanders": {
+              available_pigments: [
+                { name: "Lapis-lazuli", hex_range: ["#1F3A93", "#4169E1"], cost: "extreme" },
+                { name: "Vermillon", hex_range: ["#E34234", "#FF5349"], toxicity: "high" },
+                { name: "Blanc de plomb", hex: "#F8F8F8", opacity: "exceptional" },
+                { name: "Ocre jaune", hex_range: ["#CC7722", "#E6B325"], abundance: "local" }
+              ],
+              unavailable_pigments: [
+                { name: "Bleu de Prusse", hex: "#003153", invented: 1706 },
+                { name: "Jaune de cadmium", hex: "#FFF600", invented: 1817 },
+                { name: "Vert émeraude", hex: "#50C878", invented: 1814 }
+              ],
+              mixing_rules: [
+                "Lapis-lazuli + blanc = bleu ciel",
+                "Vermillon + blanc = rose chair",
+                "Ocre + blanc = chair pâle"
+              ]
+            },
+            
+            "1600-1650_holland": {
+              available_pigments: [
+                { name: "Smalt", hex: "#003399", notes: "blue glass powder" },
+                { name: "Madder lake", hex: "#A50021", notes: "vegetal red" },
+                { name: "Lead-tin yellow", hex: "#F4C430", notes: "brilliant yellow" }
+              ],
+              unavailable_pigments: [
+                { name: "Cobalt blue", invented: 1802 },
+                { name: "Chrome yellow", invented: 1809 },
+                { name: "Zinc white", invented: 1780 }
+              ]
+            }
+          },
+          
+          detection_algorithm: `
+            function detectColorAnachronisms(imageData, targetPeriod) {
+              const periodColors = period_databases[targetPeriod];
+              const colorAnalysis = extractDominantColors(imageData, 10);
+              
+              const anachronisms = [];
+              const warnings = [];
+              
+              for (const color of colorAnalysis.dominant) {
+                const hex = rgbToHex(color.rgb);
+                
+                // Vérifier contre pigments disponibles
+                let isHistorical = false;
+                for (const pigment of periodColors.available_pigments) {
+                  if (isColorInRange(hex, pigment.hex_range || pigment.hex)) {
+                    isHistorical = true;
+                    break;
+                  }
+                }
+                
+                // Vérifier contre pigments non disponibles
+                if (!isHistorical) {
+                  for (const pigment of periodColors.unavailable_pigments) {
+                    if (isColorInRange(hex, pigment.hex_range || pigment.hex)) {
+                      anachronisms.push({
+                        type: "PIGMENT_ANACHRONISM",
+                        severity: "CRITICAL",
+                        detected_color: { hex: hex, rgb: color.rgb },
+                        anachronistic_pigment: pigment.name,
+                        invented_year: pigment.invented,
+                        period: targetPeriod,
+                        
+                        correction: {
+                          action: "REPLACE_WITH_HISTORICAL",
+                          historical_equivalent: findHistoricalEquivalent(hex, targetPeriod),
+                          algorithm: "gamut_constrained_hsl_shift",
+                          confidence: 0.92
+                        }
+                      });
+                      break;
+                    }
+                  }
+                }
+                
+                // Vérifier mélanges impossibles
+                if (periodColors.mixing_rules) {
+                  const mixingViolations = checkMixingRules(color.rgb, periodColors.mixing_rules);
+                  if (mixingViolations.length > 0) {
+                    warnings.push({
+                      type: "MIXING_ANACHRONISM",
+                      severity: "MEDIUM",
+                      detected_color: hex,
+                      mixing_violations: mixingViolations,
+                      suggestion: "Adjust color to achievable mixture"
+                    });
+                  }
+                }
+              }
+              
+              return {
+                anachronisms: anachronisms,
+                warnings: warnings,
+                color_analysis: colorAnalysis,
+                period_compliance: anachronisms.length === 0 ? "PASS" : "FAIL",
+                
+                // Métriques de conformité
+                compliance_score: 1 - (anachronisms.length / colorAnalysis.dominant.length),
+                dominant_historical_colors: extractHistoricalColors(imageData, periodColors.available_pigments),
+                modern_intrusions: anachronisms.map(a => a.detected_color.hex)
+              };
+            }
+          `
+        },
+        
+        // Dimension 2 : Techniques et supports
+        technique_support: {
+          period_databases: {
+            "1400-1450_flanders": {
+              primary_support: {
+                type: "oak_panel",
+                thickness: "2-3 cm",
+                preparation: "gesso (lead white + skin glue)",
+                grain: "fine, carefully selected"
+              },
+              techniques: [
+                "oil_glazing_3_5_layers",
+                "tempera_underdrawing",
+                "gold_leaf_gilding"
+              ],
+              unavailable: [
+                "thick_impasto",
+                "alla_prima",
+                "canvas_stretching"
+              ]
+            },
+            
+            "1600-1650_holland": {
+              primary_support: {
+                type: "linen_canvas",
+                weave: "medium_tightness",
+                preparation: "double_gesso_layer"
+              },
+              techniques: [
+                "indirect_painting",
+                "glazing_transparent",
+                "visible_brushwork"
+              ]
+            }
+          },
+          
+          detection_algorithm: `
+            function detectTechniqueAnachronisms(imageData, targetPeriod) {
+              const periodTechniques = period_databases[targetPeriod];
+              const techniqueAnalysis = analyzePaintingTechnique(imageData);
+              
+              const violations = [];
+              const warnings = [];
+              
+              // Vérifier support
+              const supportAnalysis = analyzeSupportTexture(imageData);
+              if (periodTechniques.primary_support) {
+                const expectedSupport = periodTechniques.primary_support.type;
+                if (!isSupportType(supportAnalysis, expectedSupport)) {
+                  violations.push({
+                    type: "SUPPORT_ANACHRONISM",
+                    severity: "HIGH",
+                    detected: supportAnalysis.type,
+                    expected: expectedSupport,
+                    
+                    correction: {
+                      action: "TRANSFORM_SUPPORT",
+                      algorithm: "support_simulation",
+                      parameters: {
+                        target_support: expectedSupport,
+                        grain_type: periodTechniques.primary_support.grain || "default",
+                        thickness: periodTechniques.primary_support.thickness || "medium"
+                      }
+                    }
+                  });
+                }
+              }
+              
+              // Vérifier techniques
+              if (periodTechniques.unavailable) {
+                for (const forbiddenTechnique of periodTechniques.unavailable) {
+                  if (techniqueAnalysis[forbiddenTechnique] && 
+                      techniqueAnalysis[forbiddenTechnique] > 0.5) {
+                    violations.push({
+                      type: "TECHNIQUE_ANACHRONISM",
+                      severity: "MEDIUM",
+                      detected: forbiddenTechnique,
+                      intensity: techniqueAnalysis[forbiddenTechnique],
+                      period: targetPeriod,
+                      
+                      correction: {
+                        action: "CONVERT_TECHNIQUE",
+                        algorithm: "historical_technique_enforcement",
+                        parameters: {
+                          forbidden: forbiddenTechnique,
+                          replace_with: findHistoricalAlternative(forbiddenTechnique, targetPeriod)
+                        }
+                      }
+                    });
+                  }
+                }
+              }
+              
+              // Vérifier techniques disponibles mais mal appliquées
+              if (periodTechniques.techniques) {
+                for (const expectedTechnique of periodTechniques.techniques) {
+                  if (!techniqueAnalysis[expectedTechnique] || 
+                      techniqueAnalysis[expectedTechnique] < 0.3) {
+                    warnings.push({
+                      type: "TECHNIQUE_UNDERUTILIZED",
+                      severity: "LOW",
+                      technique: expectedTechnique,
+                      detected_level: techniqueAnalysis[expectedTechnique] || 0,
+                      suggestion: "Enhance " + expectedTechnique + " technique"
+                    });
+                  }
+                }
+              }
+              
+              return {
+                violations: violations,
+                warnings: warnings,
+                technique_analysis: techniqueAnalysis,
+                support_analysis: supportAnalysis,
+                
+                // Score de conformité
+                technique_compliance: calculateComplianceScore(violations, warnings),
+                missing_techniques: warnings.filter(w => w.type === "TECHNIQUE_UNDERUTILIZED"),
+                period_appropriate_techniques: techniqueAnalysis.techniques.filter(t => 
+                  periodTechniques.techniques && periodTechniques.techniques.includes(t.name)
+                )
+              };
+            }
+          `
+        },
+        
+        // Dimension 3 : Éclairage et perspective
+        lighting_perspective: {
+          period_databases: {
+            "pre_1850": {
+              lighting_sources: ["north_window", "candle", "fireplace", "sunlight"],
+              unavailable_lighting: ["electric_spotlight", "studio_flash", "neon"],
+              perspective_constraints: {
+                focal_length: [50, 70], // équivalent mm
+                projection_type: "linear_perspective",
+                distortion_limit: 0.15
+              }
+            }
+          },
+          
+          detection_algorithm: `
+            function detectLightingAnachronisms(imageData, targetPeriod) {
+              const lightingAnalysis = analyzeLightingCharacteristics(imageData);
+              const perspectiveAnalysis = analyzePerspective(imageData);
+              
+              const periodConstraints = period_databases.pre_1850;
+              const violations = [];
+              const warnings = [];
+              
+              // Vérifier sources lumière
+              if (lightingAnalysis.suggested_source) {
+                const source = lightingAnalysis.suggested_source.type;
+                if (periodConstraints.unavailable_lighting.includes(source)) {
+                  violations.push({
+                    type: "LIGHTING_ANACHRONISM",
+                    severity: "HIGH",
+                    detected_source: source,
+                    historical_period: targetPeriod,
+                    available_sources: periodConstraints.lighting_sources,
+                    
+                    correction: {
+                      action: "CONVERT_LIGHTING",
+                      algorithm: "historical_lighting_simulation",
+                      parameters: {
+                        target_source: "north_window",
+                        quality: "diffuse_natural",
+                        direction: periodConstraints.lighting_sources[0]
+                      }
+                    }
+                  });
+                }
+              }
+              
+              // Vérifier perspective
+              if (perspectiveAnalysis.effective_focal_length) {
+                const focalLength = perspectiveAnalysis.effective_focal_length;
+                const expectedRange = periodConstraints.perspective_constraints.focal_length;
+                
+                if (focalLength < expectedRange[0] || focalLength > expectedRange[1]) {
+                  warnings.push({
+                    type: "PERSPECTIVE_ANACHRONISM",
+                    severity: "MEDIUM",
+                    detected_focal_length: focalLength,
+                    expected_range: expectedRange,
+                    distortion_level: perspectiveAnalysis.distortion_level,
+                    
+                    correction: {
+                      action: "CORRECT_PERSPECTIVE",
+                      algorithm: "perspective_normalization",
+                      target_focal_length: (expectedRange[0] + expectedRange[1]) / 2
+                    }
+                  });
+                }
+              }
+              
+              return {
+                violations: violations,
+                warnings: warnings,
+                lighting_analysis: lightingAnalysis,
+                perspective_analysis: perspectiveAnalysis,
+                
+                // Score de conformité
+                lighting_compliance: violations.length === 0 ? "PASS" : "FAIL",
+                perspective_compliance: warnings.length === 0 ? "PASS" : "WARNING",
+                
+                // Recommandations
+                suggested_lighting: periodConstraints.lighting_sources[0],
+                perspective_correction_needed: warnings.length > 0
+              };
+            }
+          `
+        }
+      },
+      
+      // ═══ ALGORITHME DE VALIDATION HISTORIQUE COMPLÈTE ═══
+      comprehensive_validator: `
+        function validateHistoricalConstraints(imageData, targetPeriod, metadata) {
+          const validationResults = {};
+          const allViolations = [];
+          const allWarnings = [];
+          
+          // Valider chaque dimension
+          for (const dimension in validation_dimensions) {
+            const validator = validation_dimensions[dimension];
+            const result = eval(validator.detection_algorithm)(imageData, targetPeriod);
+            
+            validationResults[dimension] = result;
+            allViolations.push(...result.violations || []);
+            allWarnings.push(...result.warnings || []);
+          }
+          
+          // Calculer score global
+          const totalChecks = Object.keys(validationResults).length * 3; // 3 niveaux par dimension
+          const passedChecks = totalChecks - (allViolations.length * 2 + allWarnings.length);
+          const globalScore = Math.max(0, passedChecks / totalChecks);
+          
+          // Déterminer statut
+          let validationStatus = "PASS";
+          if (allViolations.some(v => v.severity === "CRITICAL")) {
+            validationStatus = "CRITICAL_FAILURE";
+          } else if (allViolations.length > 0) {
+            validationStatus = "FAILURE";
+          } else if (allWarnings.length > 0) {
+            validationStatus = "WARNING";
+          }
+          
+          // Générer plan de correction
+          const correctionPlan = generateCorrectionPlan(allViolations, allWarnings);
+          
+          return {
+            validation_summary: {
+              status: validationStatus,
+              global_score: globalScore,
+              critical_violations: allViolations.filter(v => v.severity === "CRITICAL").length,
+              total_violations: allViolations.length,
+              total_warnings: allWarnings.length,
+              period: targetPeriod,
+              validation_timestamp: new Date().toISOString()
+            },
+            
+            detailed_results: validationResults,
+            
+            correction_plan: {
+              required: correctionPlan.required,
+              recommended: correctionPlan.recommended,
+              auto_correctable: correctionPlan.auto_correctable,
+              estimated_time: calculateCorrectionTime(correctionPlan),
+              quality_impact: estimateQualityImpact(correctionPlan)
+            },
+            
+            authenticity_assessment: {
+              historical_accuracy: globalScore * 100,
+              period_fidelity: calculatePeriodFidelity(validationResults, targetPeriod),
+              anachronism_density: allViolations.length / totalChecks,
+              overall_authenticity: globalScore * 0.7 + 
+                                   (1 - (allViolations.length / totalChecks)) * 0.3
+            },
+            
+            // Recommandations finales
+            recommendations: generateHistoricalRecommendations(
+              validationStatus,
+              globalScore,
+              allViolations,
+              targetPeriod
+            ),
+            
+            // Scripts de correction
+            correction_scripts: generateCorrectionScripts(correctionPlan, targetPeriod)
+          };
+        }
+      `
+    },
+    
+    // ═══ ALGORITHME 2 : CORRECTION AUTOMATIQUE D'ANACHRONISMES ═══
+    auto_correction_engine: {
+      correction_algorithms: {
+        // Correction 1 : Couleurs anachroniques
+        color_correction: {
+          algorithm: "historical_pigment_simulation",
+          steps: [
+            "analyze_color_gamut",
+            "identify_anachronistic_pigments",
+            "map_to_historical_equivalents",
+            "apply_pigment_characteristics",
+            "constrain_to_period_gamut"
+          ],
+          
+          implementation: `
+            function correctAnachronisticColors(imageData, violations, targetPeriod) {
+              const correctionLayers = [];
+              
+              for (const violation of violations) {
+                if (violation.type === "PIGMENT_ANACHRONISM") {
+                  const correction = violation.correction;
+                  
+                  // Créer layer de correction
+                  const correctionLayer = {
+                    name: `Correction_${violation.anachronistic_pigment}`,
+                    type: "adjustment_layer",
+                    algorithm: correction.algorithm,
+                    parameters: {
+                      source_color: violation.detected_color.hex,
+                      target_color: correction.historical_equivalent.hex,
+                      method: "hsl_preserving_luminance",
+                      gamut_constraint: "period_appropriate",
+                      blending_mode: "color"
+                    },
+                    
+                    // Masque pour application locale
+                    mask: {
+                      type: "color_range",
+                      target: violation.detected_color.rgb,
+                      tolerance: 0.15,
+                      feather: 5
+                    },
+                    
+                    metadata: {
+                      original_pigment: violation.anachronistic_pigment,
+                      historical_pigment: correction.historical_equivalent.name,
+                      confidence: correction.confidence
+                    }
+                  };
+                  
+                  correctionLayers.push(correctionLayer);
+                }
+              }
+              
+              return {
+                correction_layers: correctionLayers,
+                total_corrections: correctionLayers.length,
+                estimated_quality_loss: calculateColorCorrectionQualityLoss(correctionLayers),
+                
+                // Script d'exécution
+                execution_script: generateColorCorrectionScript(correctionLayers),
+                
+                // Vérification après correction
+                verification_method: "revalidate_color_palette",
+                expected_improvement: 0.85
+              };
+            }
+          `
+        },
+        
+        // Correction 2 : Support et texture
+        support_correction: {
+          algorithm: "historical_support_transformation",
+          steps: [
+            "analyze_current_texture",
+            "generate_historical_grain_pattern",
+            "apply_support_characteristics",
+            "simulate_aging_effects",
+            "blend_with_original"
+          ],
+          
+          implementation: `
+            function correctSupportAnachronism(imageData, violation, targetPeriod) {
+              const expectedSupport = violation.expected;
+              
+              return {
+                correction: {
+                  name: `Support_Conversion_${expectedSupport}`,
+                  type: "texture_overlay",
+                  algorithm: "support_simulation_v2",
+                  
+                  parameters: {
+                    target_support: expectedSupport,
+                    
+                    // Paramètres selon support
+                    wood_panel: {
+                      grain_type: "flemish_oak",
+                      panel_count: 3,
+                      joinery_visibility: 0.15,
+                      gesso_preparation: true,
+                      gesso_thickness: 0.3
+                    },
+                    
+                    linen_canvas: {
+                      weave_pattern: "plain_weave",
+                      thread_density: 12, // threads per cm
+                      sizing_type: "rabbit_skin_glue",
+                      priming_layers: 2
+                    },
+                    
+                    // Effets d'âge
+                    aging: {
+                      years: 400,
+                      crackle_pattern: "dendritic",
+                      crackle_intensity: 0.4,
+                      varnish_yellowing: 0.3,
+                      surface_abrasions: 0.15
+                    }
+                  },
+                  
+                  blending: {
+                    mode: "overlay",
+                    opacity: 0.6,
+                    preserve_details: true,
+                    detail_transfer: 0.8
+                  }
+                },
+                
+                quality_assurance: {
+                  detail_preservation: 0.85,
+                  texture_authenticity: 0.9,
+                  historical_accuracy: 0.95,
+                  overall_impact: "moderate_improvement"
+                }
+              };
+            }
+          `
+        },
+        
+        // Correction 3 : Techniques de peinture
+        technique_correction: {
+          algorithm: "historical_technique_enforcement",
+          methods: {
+            reduce_impasto: {
+              detection: "thickness_analysis > 1.0mm",
+              correction: "convert_to_glazing_layers",
+              parameters: {
+                target_thickness: 0.5,
+                layer_count: 4,
+                drying_simulation: true
+              }
+            },
+            
+            conceal_brushmarks: {
+              detection: "brushmark_visibility > 50%",
+              correction: "surface_smoothing",
+              parameters: {
+                strength: 70,
+                preserve_details: true,
+                method: "frequency_separation"
+              }
+            },
+            
+            convert_alla_prima: {
+              detection: "single_layer_painting",
+              correction: "multilayer_reconstruction",
+              parameters: {
+                layer_count: 3,
+                technique: "indirect_painting",
+                drying_intervals: true
+              }
+            }
+          },
+          
+          implementation: `
+            function correctTechniqueAnachronisms(imageData, violations) {
+              const corrections = [];
+              
+              for (const violation of violations) {
+                if (violation.type === "TECHNIQUE_ANACHRONISM") {
+                  const method = methods[violation.detected];
+                  
+                  if (method) {
+                    corrections.push({
+                      technique: violation.detected,
+                      correction_method: method.correction,
+                      parameters: method.parameters,
+                      
+                      // Application progressive
+                      application: {
+                        strength: violation.intensity,
+                        progressive: true,
+                        preserve_original_intent: true
+                      },
+                      
+                      // Contrôles qualité
+                      quality_controls: {
+                        before_after_comparison: true,
+                        detail_preservation_threshold: 0.8,
+                        style_integrity_check: true
+                      }
+                    });
+                  }
+                }
+              }
+              
+              return {
+                technique_corrections: corrections,
+                total_techniques_corrected: corrections.length,
+                
+                // Script d'exécution batch
+                batch_script: generateTechniqueCorrectionBatchScript(corrections),
+                
+                // Métriques d'amélioration
+                expected_improvements: {
+                  historical_accuracy: "+25%",
+                  technique_authenticity: "+35%",
+                  period_compliance: "+40%"
+                }
+              };
+            }
+          `
+        }
+      },
+      
+      // ═══ ALGORITHME DE CORRECTION AUTOMATIQUE COMPLÈTE ═══
+      comprehensive_correction: `
+        function applyAutomaticCorrections(imageData, validationResults, targetPeriod) {
+          const allCorrections = [];
+          const executionQueue = [];
+          
+          // 1. Identifier corrections nécessaires
+          const neededCorrections = {
+            colors: validationResults.detailed_results.color_palette?.anachronisms || [],
+            support: validationResults.detailed_results.technique_support?.violations?.filter(
+              v => v.type === "SUPPORT_ANACHRONISM"
+            ) || [],
+            techniques: validationResults.detailed_results.technique_support?.violations?.filter(
+              v => v.type === "TECHNIQUE_ANACHRONISM"
+            ) || [],
+            lighting: validationResults.detailed_results.lighting_perspective?.violations || []
+          };
+          
+          // 2. Appliquer corrections par priorité
+          // Priorité 1: Couleurs (affecte tout)
+          if (neededCorrections.colors.length > 0) {
+            const colorCorrection = eval(
+              correction_algorithms.color_correction.implementation
+            )(imageData, neededCorrections.colors, targetPeriod);
+            
+            allCorrections.push({
+              type: "COLOR_CORRECTION",
+              data: colorCorrection,
+              priority: 1
+            });
+            executionQueue.push(colorCorrection.execution_script);
+          }
+          
+          // Priorité 2: Support (base texturelle)
+          if (neededCorrections.support.length > 0) {
+            const supportCorrection = eval(
+              correction_algorithms.support_correction.implementation
+            )(imageData, neededCorrections.support[0], targetPeriod);
+            
+            allCorrections.push({
+              type: "SUPPORT_CORRECTION",
+              data: supportCorrection,
+              priority: 2
+            });
+            executionQueue.push(generateSupportCorrectionScript(supportCorrection));
+          }
+          
+          // Priorité 3: Techniques (superficiel)
+          if (neededCorrections.techniques.length > 0) {
+            const techniqueCorrection = eval(
+              correction_algorithms.technique_correction.implementation
+            )(imageData, neededCorrections.techniques);
+            
+            allCorrections.push({
+              type: "TECHNIQUE_CORRECTION",
+              data: techniqueCorrection,
+              priority: 3
+            });
+            executionQueue.push(techniqueCorrection.batch_script);
+          }
+          
+          // 3. Générer script maître
+          const masterScript = generateMasterCorrectionScript(executionQueue);
+          
+          // 4. Estimer résultats
+          const estimatedResults = estimateCorrectionResults(
+            allCorrections,
+            validationResults.authenticity_assessment.overall_authenticity
+          );
+          
+          return {
+            corrections_applied: allCorrections,
+            execution_plan: {
+              steps: executionQueue.length,
+              estimated_time: estimateTotalCorrectionTime(allCorrections),
+              memory_requirements: "moderate",
+              can_be_previewed: true
+            },
+            
+            master_correction_script: masterScript,
+            
+            expected_outcome: {
+              historical_accuracy: estimatedResults.historical_accuracy,
+              authenticity_score: estimatedResults.authenticity_score,
+              quality_preservation: estimatedResults.quality_preservation,
+              improvement_percentage: estimatedResults.improvement_percentage
+            },
+            
+            // Options utilisateur
+            user_controls: generateUserControls(allCorrections),
+            
+            // Vérification post-correction
+            verification_plan: {
+              revalidate_all_dimensions: true,
+              compare_before_after: true,
+              generate_compliance_report: true
+            },
+            
+            // Backup et rollback
+            safety_features: {
+              create_backup: true,
+              save_intermediate_steps: true,
+              enable_rollback: true,
+              preserve_original: true
+            }
+          };
+        }
+      `
+    }
+  },
+  
+  // ═══════════════════════════════════════════════════════
+  // SECTION 6 : SYSTÈME D'INTÉGRATION ET RÉSOLUTION FINALE
+  // ═══════════════════════════════════════════════════════
+  
+  integration_resolution_algorithms: {
+    
+    // ═══ ALGORITHME 1 : MATRICE DE DÉCISION MULTI-COUCHE ═══
+    decision_matrix: {
+      parameter_database: {
+        // Catégorie: Surface et Texture
+        surface_smoothness: {
+          default_range: [0, 100],
+          layer_sources: {
+            essence: { weight: 0.15, mapping: "material_treatment.surface_smoothness" },
+            gaze: { weight: 0.25, mapping: "strategy_parameters.surface_smoothness.value" },
+            narrative: { weight: 0.30, mapping: "technical_implications.maximize.surface_precision" },
+            historical: { weight: 0.30, mapping: "technique_constraints.surface_finish" }
+          },
+          conflict_resolution: "historical_constraints_priority"
+        },
+        
+        // Catégorie: Contraste et Éclairage
+        contrast_intensity: {
+          default_range: [0, 100],
+          layer_sources: {
+            essence: { weight: 0.20, mapping: "light_philosophy.contrast_dramatic" },
+            gaze: { weight: 0.35, mapping: "strategy_parameters.emotional_contrast.value" },
+            narrative: { weight: 0.25, mapping: "technical_implications.maximize.dramatic_contrast" },
+            historical: { weight: 0.20, mapping: "lighting_constraints.contrast_limits" }
+          },
+          conflict_resolution: "narrative_intent_priority"
+        },
+        
+        // Catégorie: Couleur et Palette
+        color_authenticity: {
+          default_range: [0, 100],
+          layer_sources: {
+            essence: { weight: 0.10, mapping: "material_treatment.color_fidelity" },
+            gaze: { weight: 0.20, mapping: "strategy_parameters.color_clarity.value" },
+            narrative: { weight: 0.20, mapping: "technical_implications.maximize.color_objectivity" },
+            historical: { weight: 0.50, mapping: "color_palette.historical_accuracy" }
+          },
+          conflict_resolution: "absolute_historical_priority"
+        },
+        
+        // Catégorie: Détails et Précision
+        detail_precision: {
+          default_range: [0, 100],
+          layer_sources: {
+            essence: { weight: 0.25, mapping: "material_treatment.detail_resolution" },
+            gaze: { weight: 0.35, mapping: "strategy_parameters.detail_enhancement.value" },
+            narrative: { weight: 0.30, mapping: "technical_implications.maximize.detail_clarity" },
+            historical: { weight: 0.10, mapping: "technique_constraints.detail_limits" }
+          },
+          conflict_resolution: "gaze_psychology_priority"
+        },
+        
+        // Catégorie: Vieillissement et Patine
+        aging_intensity: {
+          default_range: [0, 100],
+          layer_sources: {
+            essence: { weight: 0.15, mapping: "material_treatment.aging_intensity" },
+            gaze: { weight: 0.20, mapping: "viewing_experience.aging_effect" },
+            narrative: { weight: 0.40, mapping: "narrative_special_rules.aging_patina" },
+            historical: { weight: 0.25, mapping: "historical_context.expected_aging" }
+          },
+          conflict_resolution: "narrative_special_rules_priority"
+        }
+      },
+      
+      resolution_algorithm: `
+        function resolveMultiLayerParameters(layerAnalyses) {
+          const {
+            essenceAnalysis,
+            gazeAnalysis,
+            narrativeAnalysis,
+            historicalValidation
+          } = layerAnalyses;
+          
+          const resolvedParameters = {};
+          const resolutionLog = [];
+          const conflictsDetected = [];
+          
+          // Pour chaque paramètre dans la base de données
+          for (const paramName in parameter_database) {
+            const paramConfig = parameter_database[paramName];
+            const layerValues = {};
+            const layerConfidences = {};
+            
+            // Collecter valeurs de chaque couche
+            for (const layer in paramConfig.layer_sources) {
+              const source = paramConfig.layer_sources[layer];
+              const value = extractValueFromAnalysis(layerAnalyses[layer], source.mapping);
+              
+              if (value !== undefined) {
+                layerValues[layer] = value;
+                layerConfidences[layer] = layerAnalyses[layer].confidence || 0.7;
+              }
+            }
+            
+            // Appliquer règles de priorité
+            let resolvedValue;
+            let resolutionSource;
+            let resolutionReason;
+            
+            // Règle 1: Contrainte historique absolue
+            if (historicalValidation.violations_affect_param && 
+                historicalValidation.violations_affect_param(paramName)) {
+              resolvedValue = historicalValidation.correction_value(paramName);
+              resolutionSource = "historical_constraint";
+              resolutionReason = "Anachronisme critique détecté - correction obligatoire";
+              
+              resolutionLog.push({
+                param: paramName,
+                resolution: "HISTORICAL_ABSOLUTE",
+                value: resolvedValue,
+                reason: resolutionReason
+              });
+            }
+            // Règle 2: Règles spéciales narratives (comme Vanitas aging)
+            else if (narrativeAnalysis.special_rules && 
+                     narrativeAnalysis.special_rules[paramName]) {
+              const specialRule = narrativeAnalysis.special_rules[paramName];
+              if (specialRule.action === "INCREASE" || specialRule.action === "DECREASE") {
+                resolvedValue = applySpecialRule(
+                  calculateWeightedAverage(layerValues, paramConfig.layer_sources),
+                  specialRule
+                );
+                resolutionSource = "narrative_special_rule";
+                resolutionReason = `Règle narrative spéciale: ${specialRule.reason}`;
+                
+                resolutionLog.push({
+                  param: paramName,
+                  resolution: "NARRATIVE_SPECIAL_RULE",
+                  value: resolvedValue,
+                  reason: resolutionReason,
+                  rule: specialRule
+                });
+              }
+            }
+            // Règle 3: Priorité selon configuration
+            else {
+              // Déterminer la couche avec priorité pour ce paramètre
+              const priorityLayer = determinePriorityLayer(
+                paramConfig.conflict_resolution,
+                layerConfidences
+              );
+              
+              if (priorityLayer && layerValues[priorityLayer] !== undefined) {
+                resolvedValue = layerValues[priorityLayer];
+                resolutionSource = priorityLayer;
+                resolutionReason = `Priorité ${paramConfig.conflict_resolution} - couche ${priorityLayer}`;
+                
+                resolutionLog.push({
+                  param: paramName,
+                  resolution: "PRIORITY_LAYER",
+                  priority_layer: priorityLayer,
+                  value: resolvedValue,
+                  reason: resolutionReason
+                });
+              } else {
+                // Moyenne pondérée par défaut
+                resolvedValue = calculateWeightedAverage(
+                  layerValues,
+                  paramConfig.layer_sources,
+                  layerConfidences
+                );
+                resolutionSource = "weighted_average";
+                resolutionReason = "Aucune priorité déterminante - moyenne pondérée";
+                
+                resolutionLog.push({
+                  param: paramName,
+                  resolution: "WEIGHTED_AVERAGE",
+                  value: resolvedValue,
+                  reason: resolutionReason,
+                  layer_values: layerValues,
+                  layer_weights: paramConfig.layer_sources
+                });
+              }
+            }
+            
+            // Détecter conflits majeurs
+            const conflictLevel = detectParameterConflict(
+              layerValues,
+              resolvedValue,
+              paramConfig.default_range
+            );
+            
+            if (conflictLevel > 0.3) {
+              conflictsDetected.push({
+                param: paramName,
+                level: conflictLevel,
+                layer_values: layerValues,
+                resolved_value: resolvedValue,
+                resolution_method: resolutionSource
+              });
+            }
+            
+            // Stocker paramètre résolu
+            resolvedParameters[paramName] = {
+              value: resolvedValue,
+              source: resolutionSource,
+              confidence: calculateParameterConfidence(
+                layerConfidences,
+                resolutionSource,
+                conflictLevel
+              ),
+              reasoning: resolutionReason,
+              layer_contributions: layerValues,
+              range: paramConfig.default_range,
+              unit: getParameterUnit(paramName)
+            };
+          }
+          
+          // Calculer métriques globales
+          const globalMetrics = {
+            total_parameters: Object.keys(resolvedParameters).length,
+            conflicts_detected: conflictsDetected.length,
+            conflict_severity: conflictsDetected.reduce((sum, c) => sum + c.level, 0) / 
+                              Math.max(1, conflictsDetected.length),
+            historical_compliance: calculateHistoricalCompliance(resolvedParameters, historicalValidation),
+            narrative_coherence: calculateNarrativeCoherence(resolvedParameters, narrativeAnalysis),
+            gaze_effectiveness: calculateGazeEffectiveness(resolvedParameters, gazeAnalysis),
+            essence_fidelity: calculateEssenceFidelity(resolvedParameters, essenceAnalysis)
+          };
+          
+          // Score global de qualité
+          const qualityScore = calculateOverallQualityScore(globalMetrics);
+          
+          return {
+            resolved_parameters: resolvedParameters,
+            metadata: {
+              quality_score: qualityScore,
+              global_metrics: globalMetrics,
+              conflicts: conflictsDetected,
+              resolution_log: resolutionLog,
+              
+              // Hiérarchie appliquée
+              applied_hierarchy: [
+                "1. Historical constraints (absolute - anachronisms)",
+                "2. Narrative special rules (exceptions like Vanitas aging)",
+                "3. Parameter-specific priority (config in database)",
+                "4. Weighted average (default fallback)"
+              ],
+              
+              // Temps de traitement
+              processing_timestamp: new Date().toISOString(),
+              processing_duration: calculateProcessingDuration(layerAnalyses),
+              
+              // Compatibilité avec ADN Converter
+              adn_converter_compatible: true,
+              version: "7.0.0"
+            },
+            
+            // Bundle final
+            final_bundle: generateFinalBundle(resolvedParameters, layerAnalyses, globalMetrics)
+          };
+        }
+      `
+    },
+    
+    // ═══ ALGORITHME 2 : GÉNÉRATION DE BUNDLE FINAL ═══
+    bundle_generator: {
+      bundle_structure: {
+        // Fichier 1: Paramètres résolus
+        resolved_parameters: {
+          format: "JSON",
+          structure: {
+            version: "7.0.0",
+            artist: "detected_master",
+            period: "target_historical_period",
+            parameters: "resolved_parameters_object",
+            metadata: "quality_metrics",
+            generation_info: "timestamp_and_settings"
+          }
+        },
+        
+        // Fichier 2: Analyses par couche
+        layer_analyses: {
+          format: "JSON",
+          contents: [
+            "essence_analysis",
+            "gaze_psychology_analysis", 
+            "narrative_intent_analysis",
+            "historical_validation_report"
+          ]
+        },
+        
+        // Fichier 3: Scripts d'exécution
+        execution_scripts: {
+          formats: ["Krita_JS", "Photoshop_JSX", "Python_CLI"],
+          contents: [
+            "master_conversion_script",
+            "layer_specific_scripts",
+            "correction_scripts",
+            "validation_scripts"
+          ]
+        },
+        
+        // Fichier 4: Assets
+        assets: {
+          types: ["LUTs", "Brushes", "Textures", "Patterns"],
+          formats: [".cube", ".abr", ".png", ".pat"]
+        },
+        
+        // Fichier 5: Documentation
+        documentation: {
+          sections: [
+            "artist_analysis",
+            "historical_context",
+            "technical_specifications",
+            "usage_instructions",
+            "validation_report"
+          ],
+          formats: ["HTML", "PDF", "Markdown"]
+        }
+      },
+      
+      generation_algorithm: `
+        function generateFinalBundle(resolvedParameters, layerAnalyses, globalMetrics) {
+          const bundle = {
+            metadata: {
+              bundle_id: generateBundleId(),
+              version: "ADN_CONVERTER_V7.0",
+              generation_date: new Date().toISOString(),
+              target_artist: layerAnalyses.essenceAnalysis.identified_master,
+              target_period: layerAnalyses.historicalValidation.target_period,
+              overall_quality_score: globalMetrics.quality_score,
+              bundle_size: "estimate_in_mb"
+            },
+            
+            // 1. Paramètres résolus
+            parameters: {
+              file: "resolved_parameters.json",
+              content: resolvedParameters,
+              validation: {
+                historical_compliance: globalMetrics.historical_compliance,
+                narrative_coherence: globalMetrics.narrative_coherence,
+                gaze_effectiveness: globalMetrics.gaze_effectiveness,
+                essence_fidelity: globalMetrics.essence_fidelity
+              }
+            },
+            
+            // 2. Analyses détaillées
+            analyses: {
+              file: "layer_analyses.json",
+              content: {
+                essence: layerAnalyses.essenceAnalysis,
+                gaze: layerAnalyses.gazeAnalysis,
+                narrative: layerAnalyses.narrativeAnalysis,
+                historical: layerAnalyses.historicalValidation
+              }
+            },
+            
+            // 3. Scripts d'exécution
+            scripts: {
+              krita: generateKritaScript(resolvedParameters),
+              photoshop: generatePhotoshopScript(resolvedParameters),
+              standalone: generateStandaloneConversionScript(resolvedParameters)
+            },
+            
+            // 4. Assets
+            assets: generateAssetsBundle(
+              resolvedParameters,
+              layerAnalyses.essenceAnalysis.identified_master,
+              layerAnalyses.historicalValidation.target_period
+            ),
+            
+            // 5. Documentation
+            documentation: generateDocumentationBundle(
+              resolvedParameters,
+              layerAnalyses,
+              globalMetrics
+            ),
+            
+            // 6. Exemples et prévisualisations
+            examples: {
+              before_after: generateBeforeAfterComparison(layerAnalyses.original_image),
+              parameter_variations: generateParameterVariations(resolvedParameters),
+              style_transfer_examples: generateStyleTransferExamples()
+            },
+            
+            // 7. Métadonnées techniques
+            technical: {
+              compatibility: {
+                krita: "5.0+",
+                photoshop: "CC 2020+",
+                system_requirements: "4GB RAM, GPU recommended"
+              },
+              algorithms_used: [
+                "multi_layer_analysis",
+                "historical_anachronism_detection",
+                "narrative_intent_classification",
+                "gaze_psychology_optimization",
+                "conflict_resolution_engine"
+              ],
+              processing_time_estimate: "30-60 seconds typical"
+            }
+          };
+          
+          return {
+            bundle_structure: bundle,
+            files: generateBundleFiles(bundle),
+            installation_instructions: generateInstallationInstructions(),
+            validation_certificate: generateValidationCertificate(globalMetrics)
+          };
+        }
+      `,
+      
+      // ═══ GÉNÉRATION SCRIPT MAÎTRE Krita ═══
+      krita_master_script: `
+        # ============================================
+        # ADN CONVERTER V7.0 - MASTER EXECUTION SCRIPT
+        # Généré: ${new Date().toISOString()}
+        # Artist: {{artist}}
+        # Period: {{period}}
+        # ============================================
+        
+        from krita import *
+        import json, time, math
+        
+        class ADNConverterV7:
+            def __init__(self, document):
+                self.doc = document
+                self.params = self.load_parameters()
+                self.start_time = time.time()
+                self.results = {}
+                
+            def load_parameters(self):
+                # Charger bundle V7.0
+                with open('resolved_parameters.json', 'r') as f:
+                    bundle = json.load(f)
+                return bundle['parameters']
+            
+            def execute_full_pipeline(self):
+                print("🚀 Début conversion ADN V7.0 - Psychonarrative Historical")
+                
+                # PHASE 0: Backup original
+                self.create_backup()
+                
+                # PHASE 1: Validation historique (obligatoire)
+                historical_status = self.validate_historical_constraints()
+                if not historical_status['passed']:
+                    print("⚠️  Corrections historiques nécessaires")
+                    self.apply_historical_corrections(historical_status['corrections'])
+                
+                # PHASE 2: Application selon priorité V7
+                self.apply_essence_parameters()      # Couche 1: Signature stylistique
+                self.apply_gaze_psychology()         # Couche 2: Orchestration regard
+                self.apply_narrative_intent()        # Couche 3: Intention narrative
+                self.apply_historical_adaptations()  # Couche 4: Ajustements historiques
+                
+                # PHASE 3: Résolution conflits
+                self.resolve_layer_conflicts()
+                
+                # PHASE 4: Finalisation
+                self.optimize_performance()
+                self.generate_comprehensive_report()
+                
+                elapsed = time.time() - self.start_time
+                print(f"✅ Conversion V7.0 terminée en {elapsed:.1f}s")
+                
+                return self.results
+            
+            def apply_narrative_intent(self):
+                intent = self.params['metadata']['narrative_intent']
+                print(f"📖 Application intention narrative: {intent}")
+                
+                if intent == "LEGAL_TESTIMONY":
+                    self.maximize_clarity_and_precision()
+                    self.minimize_emotional_coloring()
+                    self.ensure_legal_symbols()
+                    
+                elif intent == "SPIRITUAL_DEVOTION":
+                    self.enhance_divine_elements()
+                    self.apply_sacred_geometry()
+                    self.maximize_spiritual_impact()
+                    
+                elif intent == "VANITAS_MORTALITY":
+                    # EXCEPTION: Vieillissement augmenté
+                    self.increase_aging_appropriately()
+                    self.enhance_mortality_symbols()
+                    self.emphasize_temporal_passage()
+                    
+                elif intent == "POWER_DISPLAY":
+                    self.enhance_authority_symbols()
+                    self.apply_regal_composition()
+                    self.maximize_material_richness()
+            
+            def apply_gaze_psychology(self):
+                strategy = self.params['metadata']['gaze_strategy']
+                print(f"👁️  Application psychologie du regard: {strategy}")
+                
+                if strategy == "MICROSCOPIC_SCRUTINY":
+                    self.set_surface_to_mirror_finish()
+                    self.maximize_detail_uniformity()
+                    self.eliminate_focal_hierarchy()
+                    self.guide_eye_with_subtle_navigation()
+                    
+                elif strategy == "EMOTIONAL_IMMERSION":
+                    self.create_strong_focal_hierarchy()
+                    self.apply_dramatic_lighting()
+                    self.enhance_emotional_contrast()
+                    self.funnel_attention_to_emotional_epicenter()
+                    
+                elif strategy == "ATMOSPHERIC_CONTEMPLATION":
+                    self.dissolve_edges_and_forms()
+                    self.create_color_field_immersion()
+                    self.induce_meditative_state()
+                    self.slow_down_viewing_pace()
+            
+            def apply_historical_corrections(self, corrections):
+                print("🛠️  Application corrections historiques")
+                
+                for correction in corrections:
+                    if correction['type'] == "COLOR_CORRECTION":
+                        self.correct_anachronistic_colors(correction)
+                    elif correction['type'] == "SUPPORT_CORRECTION":
+                        self.convert_support_texture(correction)
+                    elif correction['type'] == "TECHNIQUE_CORRECTION":
+                        self.correct_painting_techniques(correction)
+                    elif correction['type'] == "LIGHTING_CORRECTION":
+                        self.correct_lighting_anachronisms(correction)
+            
+            def resolve_layer_conflicts(self):
+                print("⚖️  Résolution conflits multi-couches")
+                
+                # Appliquer hiérarchie V7.0
+                conflict_log = []
+                
+                # 1. Historique prime sur tout
+                historical_overrides = self.params['historical_overrides']
+                for param, value in historical_overrides.items():
+                    self.force_parameter_value(param, value)
+                    conflict_log.append(f"Historique prime: {param} = {value}")
+                
+                # 2. Narratif prime sur technique
+                narrative_overrides = self.params['narrative_overrides']
+                for param, value in narrative_overrides.items():
+                    if param not in historical_overrides:
+                        self.force_parameter_value(param, value)
+                        conflict_log.append(f"Narratif prime: {param} = {value}")
+                
+                # 3. Psychologie regard prime sur essence
+                gaze_overrides = self.params['gaze_overrides']
+                for param, value in gaze_overrides.items():
+                    if param not in historical_overrides and param not in narrative_overrides:
+                        self.force_parameter_value(param, value)
+                        conflict_log.append(f"Regard prime: {param} = {value}")
+                
+                self.results['conflict_resolution'] = conflict_log
+            
+            def generate_comprehensive_report(self):
+                # Générer rapport V7.0 complet
+                report = {
+                    'version': '7.0.0',
+                    'artist': self.params['metadata']['artist'],
+                    'period': self.params['metadata']['period'],
+                    'narrative_intent': self.params['metadata']['narrative_intent'],
+                    'gaze_strategy': self.params['metadata']['gaze_strategy'],
+                    'historical_accuracy': self.calculate_historical_accuracy(),
+                    'quality_metrics': self.params['metadata']['quality_metrics'],
+                    'applied_parameters': self.extract_applied_parameters(),
+                    'processing_time': time.time() - self.start_time,
+                    'generated_files': [
+                        'converted_image.kra',
+                        'validation_report.pdf',
+                        'parameter_analysis.json',
+                        'before_after_comparison.jpg'
+                    ]
+                }
+                
+                self.save_report(report)
+                print("📊 Rapport V7.0 généré")
+        
+        # ============================================
+        # EXÉCUTION PRINCIPALE
+        # ============================================
+        
+        def main():
+            app = Krita.instance()
+            doc = app.activeDocument()
+            
+            if doc:
+                print("🎨 ADN Converter V7.0 - Psychonarrative Historical")
+                print("=================================================")
+                
+                converter = ADNConverterV7(doc)
+                results = converter.execute_full_pipeline()
+                
+                if results:
+                    print("\n✅ CONVERSION RÉUSSIE")
+                    print(f"Artiste: {results.get('artist', 'Inconnu')}")
+                    print(f"Intention narrative: {results.get('narrative_intent', 'Non détectée')}")
+                    print(f"Stratégie regard: {results.get('gaze_strategy', 'Non détectée')}")
+                    print(f"Précision historique: {results.get('historical_accuracy', 0):.1f}%")
+                    
+                    doc.refreshProjection()
+                    
+                    # Sauvegarder bundle
+                    converter.save_bundle()
+                else:
+                    print("❌ Conversion échouée")
+            else:
+                print("❌ Aucun document ouvert dans Krita")
+        
+        if __name__ == "__main__":
+            main()
+      `
+    }
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+// EXPORT POUR UTILISATION
+// ═══════════════════════════════════════════════════════
+
+module.exports = {
+  PSYCHONARRATIVE_ADN_V7,
+  version: "7.0.0",
+  capabilities: [
+    "4_layer_cognitive_analysis",
+    "historical_anachronism_detection_and_correction",
+    "narrative_intent_classification_and_enhancement", 
+    "gaze_psychology_optimization",
+    "multi_layer_conflict_resolution",
+    "automatic_correction_engine",
+    "bundle_generation_for_krita_photoshop"
+  ],
+  
+  system_requirements: {
+    processing_power: "moderate",
+    memory_requirements: "4GB minimum",
+    supported_formats: ["PNG", "JPEG", "TIFF", "PSD", "KRA"],
+    processing_time: "30-90 seconds typical"
+  },
+  
+  usage_pipeline: `
+  1. CHARGEMENT IMAGE
+     - Analyse automatique des caractéristiques visuelles
+     - Extraction métadonnées et contexte
+     
+  2. ANALYSE 4 COUCHES (parallèle)
+     Couche 1: ESSENCE STYLISTIQUE
+       - Classification archétypale multi-dimensionnelle
+       - Identification maître avec confiance
+       
+     Couche 2: PSYCHOLOGIE DU REGARD  
+       - Détection stratégie oculaire dominante
+       - Optimisation parcours visuel
+       
+     Couche 3: INTENTION NARRATIVE
+       - Détection symbolique avancée
+       - Inférence d'intention fondamentale
+       
+     Couche 4: CONTRAINTES HISTORIQUES
+       - Validation multi-critères d'anachronismes
+       - Génération plan de correction
+     
+  3. RÉSOLUTION CONFLITS
+     - Application hiérarchie: Historique > Narratif > Regard > Essence
+     - Résolution paramètres contradictoires
+     - Gestion exceptions (ex: Vanitas aging)
+     
+  4. CORRECTION AUTOMATIQUE
+     - Correction couleurs anachroniques
+     - Transformation support/texture
+     - Adaptation techniques peinture
+     
+  5. GÉNÉRATION BUNDLE
+     - Paramètres résolus optimaux
+     - Scripts d'exécution Krita/Photoshop
+     - Documentation complète
+     - Assets historiquement précis
+     
+  6. VALIDATION FINALE
+     - Vérification conformité historique
+     - Test efficacité regard
+     - Évaluation cohérence narrative
+     - Rapport qualité complet
+  `,
+  
+  // Exemple d'exécution
+  example_scenario: {
+    input: "Portrait photographique moderne",
+    target: "Van Eyck style Arnolfini (1434)",
+    
+    v7_processing: {
+      step1_essence: "Détecte TIMELESS_FROZEN + DIVINE_THROUGH_MATERIAL (conf 92%)",
+      step2_gaze: "Identifie MICROSCOPIC_SCRUTINY comme stratégie nécessaire",
+      step3_narrative: "Infère LEGAL_TESTIMONY comme intention fondamentale", 
+      step4_historical: "Détecte bleu de Prusse anachronique, propose correction",
+      
+      resolution: "Priorise corrections historiques, puis intention légale",
+      output: "Portrait converti avec palette historique, surface miroir, symboles légaux"
+    }
+  }
+};
+```

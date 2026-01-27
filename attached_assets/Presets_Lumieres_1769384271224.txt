@@ -1,0 +1,660 @@
+D'après l'ADN lumineux de Francis Bacon analysé, voici les **paramètres algorithmiques optimaux** structurés selon l'architecture V7.0 du Système ADN Converter :
+
+```javascript
+// 🧬 PARAMÈTRES ALGORITHMIQUES BACON - OPTIMISÉS POUR V7.0
+
+const BACON_OPTIMAL_PARAMS = {
+  
+  // ========================
+  // SECTION 1 : META-CONFIGURATION V7.0
+  // ========================
+  meta_configuration: {
+    artist: "Francis Bacon",
+    period: "1945-1992",
+    style_era: "Expressionnisme / Figuration déformée",
+    adn_version: "V7.0-Psychonarrative",
+    
+    intelligence_layers: {
+      essence: {
+        weight: 0.20,
+        focus: "Relation matière-déformation",
+        question: "Comment la lumière révèle-t-elle la chair comme vérité existentielle ?"
+      },
+      gaze_psychology: {
+        weight: 0.30,
+        focus: "Impact émotionnel immédiat",
+        question: "Comment la lumière force-t-elle la confrontation avec l'angoisse ?"
+      },
+      narrative_intent: {
+        weight: 0.35,
+        focus: "Expression existentialiste",
+        question: "Que cherche à révéler Bacon sur la condition humaine ?"
+      },
+      historical_constraints: {
+        weight: 0.15,
+        focus: "Limites techniques mid-XXe",
+        question: "Quelles contraintes matérielles définissent son éclairage ?"
+      }
+    }
+  },
+  
+  // ========================
+  // SECTION 2 : COUCHE ESSENCE - RELATION LUMIÈRE-MATIÈRE
+  // ========================
+  layer_1_essence: {
+    temporal_spatial_relationship: {
+      archetype: "DRAMATIC_MOMENT",
+      philosophy: "L'instant de crise existentielle - capturer le paroxysme",
+      temporal_feeling: "Suspension anxieuse",
+      spatial_feeling: "Cage existentielle",
+      parameter_implication: {
+        motion_blur: 35,
+        time_indication: 65,
+        action_freeze: 88,
+        emotional_impact: 98
+      }
+    },
+    
+    material_spiritual_relationship: {
+      archetype: "MATERIAL_AS_EXPRESSION",
+      philosophy: "La chair comme vérité brute, la lumière comme scalpel",
+      treatment: "Texture = trauma, réflexion = vérité nue",
+      parameter_implication: {
+        expressive_texture: 92,
+        emotional_roughness: 85,
+        gesture_visible: 95,
+        surface_imperfection: 90
+      }
+    },
+    
+    subject_viewer_relationship: {
+      archetype: "IMMEDIATE_EMOTIONAL_IMPACT",
+      philosophy: "Spectateur = témoin forcé d'une vérité insupportable",
+      distance: "Confrontation (50-80cm)",
+      engagement: "Viscéral, réflexif, inévitable",
+      parameter_implication: {
+        viewing_distance: 65,
+        engagement_time: 8, // secondes - impact immédiat
+        emotional_contrast: 96,
+        immediacy: 94
+      }
+    },
+    
+    light_revelation_relationship: {
+      archetype: "LIGHT_AS_DRAMATIC_TOOL",
+      philosophy: "Lumière = révélateur de vérité psychique",
+      treatment: "Projecteur chirurgical, contraste violent, direction évidente",
+      parameter_implication: {
+        light_direction_obviousness: 92,
+        theatrical_contrast: 97,
+        shadow_softness: 28,
+        mystery_lighting: 75
+      }
+    }
+  },
+  
+  // ========================
+  // SECTION 3 : PSYCHOLOGIE DU REGARD BACONIEN
+  // ========================
+  layer_2_gaze_psychology: {
+    dominant_strategy: "EMOTIONAL_IMMERSION",
+    
+    psychological_intent: {
+      primary: "Forcer confrontation avec l'angoisse existentielle",
+      secondary: "Créer sensation de claustrophobie inévitable",
+      tertiary: "Susciter malaise viscéral et réflexion forcée",
+      desired_effect: "Impact émotionnel immédiat et persistant"
+    },
+    
+    visual_techniques: {
+      focal_weaponization: {
+        sharpness_gradient: 0.88,
+        attention_funneling: 0.94,
+        distraction_controlled: 0.45,
+        emotional_epicenter: "Visage/yeux/torse"
+      },
+      
+      contrast_emotional: {
+        value_contrast: 0.96,
+        color_saturation_gradient: 0.75,
+        temperature_contrast: 0.72,
+        texture_contrast: 0.88
+      },
+      
+      time_manipulation: {
+        moment_frozen: "Instant de crise psychique",
+        before_after_suggestion: 0.55,
+        duration_feeling: "Éternité angoissante",
+        urgency: 0.82
+      }
+    },
+    
+    operational_parameters: {
+      // Paramètres Krita/Photoshop optimisés
+      contrast_intensity: { value: 96, range: [90, 100] },
+      focal_blur_gradient: { value: 75, range: [65, 85] },
+      dramatic_lighting: { value: 94, range: [88, 98] },
+      texture_expressive: { value: 88, range: [80, 95] },
+      color_emotional: { value: 85, range: [75, 92] },
+      
+      viewing_distance_formula: "image_width * 1.2", // cm - plus proche que Rembrandt
+      viewing_time_formula: "8 + (emotional_complexity * 3)", // plus rapide
+      attention_distribution: "Funneled (80% on focal point)"
+    },
+    
+    // Algorithme de détection spécifique Bacon
+    detection_algorithm: `
+    function detect_bacon_gaze(imageData) {
+      // Métrique 1 : Violence du contraste
+      const contrastViolence = calculate_extreme_contrast(imageData);
+      
+      // Métrique 2 : Claustrophobie spatiale
+      const claustrophobiaScore = analyze_spatial_compression(imageData);
+      
+      // Métrique 3 : Déformation expressionniste
+      const expressionistDistortion = detect_organic_deformation(imageData);
+      
+      // Métrique 4 : Réflexions organiques
+      const organicReflections = analyze_skin_reflections(imageData);
+      
+      return {
+        bacon_score: (
+          contrastViolence * 0.30 +
+          claustrophobiaScore * 0.25 +
+          expressionistDistortion * 0.25 +
+          organicReflections * 0.20
+        ),
+        threshold: 0.82,
+        metrics: {
+          contrastViolence,
+          claustrophobiaScore,
+          expressionistDistortion,
+          organicReflections
+        }
+      };
+    }
+    `
+  },
+  
+  // ========================
+  // SECTION 4 : INTENTION NARRATIVE EXISTENTIALISTE
+  // ========================
+  layer_3_narrative_intent: {
+    dominant_archetype: "EXISTENTIAL_CRISIS",
+    
+    core_intent: "Révéler l'angoisse existentielle de la condition humaine",
+    
+    viewer_contract: {
+      role: "Témoin confronté à la vérité",
+      responsibility: "Reconnaître sa propre mortalité",
+      expected_action: "Confrontation réflexive et malaise",
+      relationship: "Existentielle, confrontante, personnelle"
+    },
+    
+    required_elements: {
+      existential_symbols: [
+        "cage_claustrophobique",
+        "chair_déformée",
+        "regard_angoissé",
+        "isolation_spatiale",
+        "traces_mouvement"
+      ],
+      
+      violence_lumineuse: [
+        "contraste_extrême",
+        "ombres_denses",
+        "reflets_brutaux",
+        "transitions_abruptes",
+        "fragmentation"
+      ],
+      
+      temporal_indicators: [
+        "instant_suspendu",
+        "avant_après_suggéré",
+        "mortalité_impliquée",
+        "urgence_existentielle"
+      ]
+    },
+    
+    technical_implications: {
+      maximize: {
+        dramatic_contrast: 96,
+        shadow_density: 92,
+        organic_distortion: 85,
+        claustrophobic_effect: 88,
+        emotional_impact: 95
+      },
+      
+      minimize: {
+        naturalisme: 15,
+        idéalisation: 5,
+        harmonie_colorimétrique: 25,
+        sérénité: 10
+      },
+      
+      // RÈGLES SPÉCIALES BACON
+      special_rules: {
+        // Les distorsions sont obligatoires
+        organic_distortion: "REQUIRED minimum 40%",
+        
+        // La chair doit montrer sa matérialité
+        flesh_materiality: "ENHANCE to 75%+ (grease, moisture, texture)",
+        
+        // Les cages sont narratives, pas décoratives
+        cage_intensity: "CALCULATE based on existential angst level",
+        
+        // Exception : les craquelures sont modernes (acrylique)
+        crackle_pattern: "MODERN (acrylic drying), not historical"
+      }
+    },
+    
+    detection_algorithm: `
+    function detect_existential_narrative(imageData) {
+      const symbols = {
+        cage: detect_cage_elements(imageData),
+        distorted_flesh: analyze_flesh_deformation(imageData),
+        anguished_gaze: detect_eye_expression(imageData),
+        isolation: calculate_figure_isolation(imageData),
+        movement_trails: detect_motion_suggestion(imageData)
+      };
+      
+      // Score narratif existentialiste
+      const existentialScore = (
+        symbols.cage.confidence * 0.25 +
+        symbols.distorted_flesh * 0.25 +
+        symbols.anguished_gaze * 0.20 +
+        symbols.isolation * 0.20 +
+        symbols.movement_trails * 0.10
+      );
+      
+      return {
+        narrative_type: "EXISTENTIAL_CRISIS",
+        score: existentialScore,
+        symbols_present: symbols,
+        threshold: 0.75,
+        confidence: calculate_symbol_coherence(symbols)
+      };
+    }
+    `
+  },
+  
+  // ========================
+  // SECTION 5 : CONTRAINTES HISTORIQUES (mid-XXe siècle)
+  // ========================
+  layer_4_historical_constraints: {
+    period_reference: "1945-1992_expressionism",
+    
+    pigments_available: {
+      // Bacon utilise largement l'acrylique et l'huile moderne
+      primary_mediums: [
+        {
+          name: "Acrylique (moderne)",
+          availability: "Abondante post-1950",
+          characteristics: "Séchage rapide, empâtement possible",
+          colors_available: "Spectre complet synthétique"
+        },
+        {
+          name: "Huile de lin raffinée",
+          availability: "Traditionnelle améliorée",
+          drying_time: "2-7 jours (plus rapide que Renaissance)"
+        }
+      ],
+      
+      // Pigments synthétiques disponibles
+      synthetic_pigments: [
+        "Bleu de Prusse (disponible)",
+        "Jaune de cadmium (disponible)",
+        "Rouge cadmium (disponible)",
+        "Titane blanc (supérieur au blanc de plomb)",
+        "Verts phtalo (synthétiques modernes)"
+      ],
+      
+      // Supports typiques
+      supports: [
+        "Toile de lin (tendu sur châssis)",
+        "Panneau de contreplaqué",
+        "Papier épais (pour études)"
+      ]
+    },
+    
+    techniques_available: {
+      // Bacon innove techniquement
+      innovations: [
+        "Empâtement épais (impasto)",
+        "Projection de peinture",
+        "Incorporation de poussière/sable",
+        "Grattage de surface",
+        "Utilisation du hasard contrôlé"
+      ],
+      
+      // Équipement moderne
+      tools: [
+        "Brosses synthétiques (dureté variable)",
+        "Couteaux à palette larges",
+        "Projecteurs électriques (pour références photo)",
+        "Appareil photo (références)",
+        "Miroirs déformants (pour études)"
+      ]
+    },
+    
+    // Vérification anachronismes (ce qui serait INCORRECT pour Bacon)
+    anachronism_checklist: {
+      must_avoid: [
+        "Texture lisse Renaissance",
+        "Glacis transparents multiples",
+        "Dorure à la feuille",
+        "Perspective mathématique précise",
+        "Éclairage divin uniforme"
+      ],
+      
+      must_include: [
+        "Traces de geste visibles",
+        "Imperfections de surface",
+        "Déséquilibre compositionnel",
+        "Couleurs criardes/contre-nature",
+        "Déformation expressionniste"
+      ]
+    },
+    
+    // Algorithme de validation historique spécifique
+    validation_algorithm: `
+    function validate_bacon_historical(imageData) {
+      const issues = [];
+      
+      // 1. Vérifier l'utilisation de pigments modernes
+      const colorAnalysis = analyze_color_modernity(imageData);
+      if (colorAnalysis.contains_pre_1900_only) {
+        issues.push({
+          type: "PIGMENT_ANACHRONISM",
+          severity: "HIGH",
+          message: "Palette trop historique pour Bacon",
+          correction: "Introduire couleurs synthétiques (cadmium, phtalo)"
+        });
+      }
+      
+      // 2. Vérifier texture moderne
+      const textureAnalysis = analyze_surface_texture(imageData);
+      if (textureAnalysis.too_smooth && textureAnalysis.smoothness > 85) {
+        issues.push({
+          type: "TEXTURE_ANACHRONISM",
+          severity: "MEDIUM",
+          message: "Surface trop lisse pour technique baconienne",
+          correction: "Ajouter empâtement et traces de geste"
+        });
+      }
+      
+      // 3. Vérifier composition expressionniste
+      const compositionAnalysis = analyze_composition_expressionist(imageData);
+      if (compositionAnalysis.too_balanced && compositionAnalysis.symmetry > 70) {
+        issues.push({
+          type: "COMPOSITION_ANACHRONISM",
+          severity: "MEDIUM",
+          message: "Composition trop équilibrée/classique",
+          correction: "Introduire déséquilibre et tension"
+        });
+      }
+      
+      return {
+        is_historically_accurate: issues.length === 0,
+        issues: issues,
+        period_compliance: 100 - (issues.length * 15),
+        recommendations: generate_bacon_corrections(issues)
+      };
+    }
+    `
+  },
+  
+  // ========================
+  // SECTION 6 : PARAMÈTRES ALGORITHMIQUES OPTIMAUX
+  // ========================
+  algorithmic_parameters: {
+    
+    // Groupe 1 : CONTRASTE & INTENSITÉ
+    contrast_group: {
+      global_intensity: 0.86,           // Augmenté pour plus de drame
+      intensity_variability: 0.15,      // Légèrement plus variable
+      light_dark_ratio: 0.42,           // 42% clair / 58% obscur
+      contrast_extreme: 0.82,           // Contraste plus violent
+      highlight_compression: 0.52,      // Compression modérée
+      shadow_crush: 0.85,               Écrasement prononcé
+      midtone_separation: 1.30          // Séparation accentuée
+    },
+    
+    // Groupe 2 : OMBRES & DENSITÉ
+    shadows_group: {
+      shadow_presence: 0.95,            // Ombre omniprésente
+      shadow_density: 0.82,             // Plus dense
+      shadow_sharpness: 0.72,           // Légèrement plus net
+      shadow_width_px: 7.5,             // Transition plus étroite
+      distortion_strength: 0.48,        // Distorsion augmentée
+      body_deformation: 0.65,           // Déformation corporelle accentuée
+      shadow_stretch: 1.42              // Allongement plus prononcé
+    },
+    
+    // Groupe 3 : RÉFLEXIONS ORGANIQUES
+    reflections_group: {
+      global_reflection_intensity: 0.52,
+      skin_specular: 0.65,              // Réflexions peau augmentées
+      skin_roughness: 0.18,             // Plus lisse pour contraste
+      skin_moisture: 0.75,              // Plus d'humidité
+      skin_grease: 0.58,                // Plus de gras
+      blood_specular: 0.88,
+      eyes_wetness: 0.92,               // Yeux très humides
+      catchlight_intensity: 0.90,
+      reflection_irregularity: 0.72,
+      brutal_highlights: 0.72           // Éclats plus brutaux
+    },
+    
+    // Groupe 4 : ESPACE & ATMOSPHÈRE
+    atmosphere_group: {
+      claustrophobia_score: 0.88,       // Claustrophobie accentuée
+      space_depth_limitation: 0.90,
+      cage_intensity: 0.78,             // Cages plus présentes
+      cage_bar_spacing: 0.22,           // Barres plus serrées
+      vortex_intensity: 0.65,           // Effets vortex augmentés
+      motion_trails_intensity: 0.52,
+      haze_density: 0.35,               // Légère brume
+      haze_anisotropy: 0.95             // Diffusion directionnelle
+    },
+    
+    // Groupe 5 : TRANSITIONS & FRAGMENTATION
+    transitions_group: {
+      transition_width_px: 5,           // Transitions plus abruptes
+      transition_smoothness: 0.18,
+      gradient_type: "Step_Abrupt",
+      sharp_transitions_count: 12,      // Plus de ruptures
+      zone_isolation_strength: 0.85,    // Isolement accru
+      fragmentation_level: 0.82,         // Fragmentation augmentée
+      gradient_abruptness: 0.88
+    },
+    
+    // Groupe 6 : DISTORSION EXPRESSIONNISTE
+    distortion_group: {
+      overall_distortion: 0.72,
+      organic_stretch_strength: 0.52,
+      organic_stretch_direction: "vertical_dominant",
+      organic_irregularity: 0.65,
+      motion_blur_strength: 0.42,
+      motion_direction_variation: 0.78,
+      shadow_independence: 0.55         // Ombres autonomes
+    },
+    
+    // Groupe 7 : VECTEUR STYLISTIQUE OPTIMISÉ
+    style_vector: {
+      dramaticite: 0.96,                // Dramaticité maximale
+      naturalisme: 0.12,                // Naturel très réduit
+      mystere: 0.72,                    // Mystère accentué
+      intimite: 0.35,                   // Légère intimité forcée
+      chaleur: 0.38,                    // Froid dominant
+      angoisse: 0.94,                   // Angoisse maximisée
+      violence_lumineuse: 0.92,         // Violence lumineuse accentuée
+      existential_intensity: 0.90       // Nouveau paramètre
+    }
+  },
+  
+  // ========================
+  // SECTION 7 : MATRICE DE CONVERSION V7.0
+  // ========================
+  translation_matrix_v7: [
+    // Mapping prioritaire : Intention narrative
+    {
+      narrative_requirement: "EXISTENTIAL_CRISIS",
+      parameter: "claustrophobia_score",
+      optimal_value: 0.88,
+      priority: 0.95,
+      reasoning: "L'angoisse existentielle nécessite espace oppressant"
+    },
+    {
+      narrative_requirement: "EXISTENTIAL_CRISIS", 
+      parameter: "organic_distortion",
+      optimal_value: 0.72,
+      priority: 0.92,
+      reasoning: "La déformation révèle la vérité de la chair"
+    },
+    
+    // Mapping psychologie du regard
+    {
+      gaze_strategy: "EMOTIONAL_IMMERSION",
+      parameter: "contrast_extreme",
+      optimal_value: 0.82,
+      priority: 0.90,
+      reasoning: "Impact émotionnel immédiat par contraste violent"
+    },
+    {
+      gaze_strategy: "EMOTIONAL_IMMERSION",
+      parameter: "focal_blur_gradient",
+      optimal_value: 75,
+      priority: 0.88,
+      reasoning: "Focalisation forcée sur zones d'angoisse"
+    },
+    
+    // Mapping essence stylistique
+    {
+      essence_archetype: "MATERIAL_AS_EXPRESSION",
+      parameter: "skin_moisture",
+      optimal_value: 0.75,
+      priority: 0.85,
+      reasoning: "La chair doit paraître vivante et vulnérable"
+    },
+    
+    // Mapping contraintes historiques
+    {
+      historical_constraint: "mid-XXe_expressionism",
+      parameter: "crackle_pattern",
+      optimal_value: "MODERN_ACRYLIC",
+      priority: 1.0, // Absolu
+      reasoning: "Bacon utilise acrylique moderne, pas techniques Renaissance"
+    }
+  ],
+  
+  // ========================
+  // SECTION 8 : CONFIGURATION EXÉCUTION
+  // ========================
+  execution_config: {
+    processing_pipeline: [
+      "1_historical_validation_bacon",
+      "2_existential_narrative_detection",
+      "3_gaze_impact_optimization", 
+      "4_essence_parameter_application",
+      "5_contrast_extremization",
+      "6_organic_reflection_generation",
+      "7_claustrophobic_space_creation",
+      "8_distortion_application",
+      "9_style_vector_enforcement",
+      "10_final_validation_v7"
+    ],
+    
+    quality_targets: {
+      narrative_coherence: 0.92,
+      emotional_impact: 0.95,
+      historical_accuracy: 0.88, // Plus flexible que Renaissance
+      stylistic_fidelity: 0.94,
+      overall_rating: 0.93
+    },
+    
+    performance_settings: {
+      gpu_acceleration: true,
+      lut_size: 128, // LUT plus grande pour gradients complexes
+      cache_enabled: true,
+      parallel_processing: true
+    },
+    
+    // Fichiers de sortie spécifiques Bacon
+    output_bundle: {
+      krita_template: "bacon_existential_v7.kra",
+      lut_3d: "bacon_anguish_lut_128.cube",
+      style_preset: "bacon_expressionist_v7.xml",
+      validation_report: "bacon_conformance_v7.pdf",
+      before_after: "bacon_transformation_comparison.jpg"
+    }
+  }
+};
+
+// ========================
+// EXPORT POUR SYSTÈME V7.0
+// ========================
+module.exports = {
+  BACON_OPTIMAL_PARAMS,
+  version: "7.0.0-bacon-optimized",
+  artist: "Francis Bacon",
+  style_period: "Expressionnisme existentialiste (1945-1992)",
+  
+  compatibility: {
+    adn_converter_version: ">=7.0.0",
+    krita_version: "5.0+",
+    processing_time_estimate: "35-50 seconds",
+    memory_requirements: "4GB RAM minimum"
+  },
+  
+  usage_instructions: `
+  1. Charger l'image dans Krita avec plugin ADN Converter V7.0
+  2. Sélectionner "Francis Bacon - Existential" dans les profils
+  3. Le système appliquera automatiquement:
+     - Validation historique mid-XXe siècle
+     - Détection intention narrative existentialiste
+     - Optimisation psychologie du regard angoissé
+     - Application paramètres essence expressionniste
+  4. Priorité d'application V7.0:
+     1. Règles historiques (acrylique moderne, pas Renaissance)
+     2. Intention narrative existentialiste
+     3. Psychologie du regard impactant
+     4. Essence stylistique expressionniste
+  5. Génération automatique des effets:
+     - Contraste extrême (82%+)
+     - Réflexions organiques peau
+     - Cage claustrophobique
+     - Distorsion expressionniste
+     - Palette chair maladive
+  6. Rapport de conformité généré (cible: 93%+)
+  `
+};
+```
+
+## 🎯 **RÉCAPITULATIF DES OPTIMISATIONS BACON V7.0**
+
+### **AMÉLIORATIONS PAR RAPPORT AUX PARAMÈTRES STANDARD :**
+
+1. **Contraste renforcé** : 82% vs 75% (plus violent, plus dramatique)
+2. **Claustrophobie accentuée** : 88% vs 72% (espace plus oppressant)
+3. **Réflexions organiques** : Peau plus humide (75%) et plus grasse (58%)
+4. **Distorsion augmentée** : 72% vs 65% (déformation plus expressionniste)
+5. **Angoisse maximisée** : 94% dans le vecteur stylistique
+
+### **ADAPTATIONS SPÉCIFIQUES V7.0 :**
+
+1. **Priorité narrative** : L'intention existentialiste prime sur les choix techniques
+2. **Validation historique adaptée** : Bacon utilise des techniques modernes (acrylique)
+3. **Psychologie du regard optimisée** : Impact émotionnel immédiat renforcé
+4. **Paramètres interdépendants** : Les effets se renforcent mutuellement
+
+### **PARAMÈTRES CLÉS POUR LA SIGNATURE BACONIENNE :**
+
+| Paramètre | Valeur Optimale | Importance | Effet Visuel |
+|-----------|-----------------|------------|--------------|
+| `contrast_extreme` | 0.82 | 0.95 | Violence lumineuse |
+| `claustrophobia_score` | 0.88 | 0.92 | Espace oppressant |
+| `organic_distortion` | 0.72 | 0.90 | Vérité de la chair |
+| `skin_moisture` | 0.75 | 0.88 | Chair vivante/vulnérable |
+| `anguish` | 0.94 | 0.96 | Impact émotionnel |
+
+Ces paramètres algorithmiques optimisés captureront fidèlement **l'essence baconienne** : une lumière qui révèle, déforme et confronte, au service d'une vision existentialiste de la condition humaine.

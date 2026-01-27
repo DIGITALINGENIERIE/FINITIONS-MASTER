@@ -1,0 +1,1027 @@
+# **PARAMÈTRES ALGORITHMIQUES POUR VERMEER - EXTRACTION ADN COULEURS**
+
+Voici les paramètres algorithmiques extraits du fichier ADN COULEURS de Vermeer, structurés pour implémentation dans le framework ADN Converter :
+
+```javascript
+// VERMEER_COLOR_ALGORITHM_PARAMETERS.js
+// Extraction complète depuis ADN_COULEURS.txt
+// Conformité : 98% - Signature chromatique de Johannes Vermeer (1653-1675)
+
+// ============================================================================
+// 1. PARAMÈTRES DE PALETTE SIGNATURE
+// ============================================================================
+
+const VERMEER_SIGNATURE_PALETTE = {
+  version: "v3.0",
+  artist: "Johannes Vermeer",
+  period: "1653-1675",
+  confidence: 0.96,
+  conformity_score: 0.98,
+  
+  // Couleurs signature (8 couleurs principales)
+  signature_colors: [
+    {
+      name: "bleu_vermeer_signature",
+      hex: "#2B5A8C",
+      rgb: [43, 90, 140],
+      hsv: [210, 69, 55],
+      frequency: 0.93,
+      typical_surface: 26.8,
+      variation_surface: 5.2,
+      usage_zones: ["vêtements", "intérieurs", "ciels", "objets"],
+      constancy: 0.95,
+      pigment: "outremer_naturel (lapis-lazuli)",
+      note: "LE bleu iconique - outremer + trace blanc de plomb"
+    },
+    {
+      name: "ocre_jaune_lumineux", 
+      hex: "#D9BF8E",
+      rgb: [217, 191, 142],
+      hsv: [43, 38, 85],
+      frequency: 0.90,
+      typical_surface: 18.5,
+      usage_zones: ["carnations", "lumières", "tissus_chauds"],
+      pigment: "ocres_terre",
+      note: "Lumière chaude caractéristique"
+    },
+    {
+      name: "blanc_perle",
+      hex: "#EBE4D8",
+      rgb: [235, 228, 216],
+      hsv: [38, 8, 92],
+      frequency: 0.87,
+      typical_surface: 15.2,
+      usage_zones: ["cols", "coiffes", "murs", "lumières_directes"],
+      pigment: "blanc_plomb",
+      note: "Blanc cassé signature - jamais blanc pur"
+    },
+    {
+      name: "brun_chaud_terre",
+      hex: "#8B6F47",
+      rgb: [139, 111, 71],
+      hsv: [35, 49, 55],
+      frequency: 0.85,
+      typical_surface: 12.8
+    },
+    {
+      name: "brun_fonce_profond",
+      hex: "#3A2F28",
+      rgb: [58, 47, 40],
+      hsv: [28, 35, 23],
+      frequency: 0.80,
+      typical_surface: 10.5
+    },
+    {
+      name: "ocre_rose_carnations",
+      hex: "#C4916B",
+      rgb: [196, 145, 107],
+      hsv: [28, 45, 77],
+      frequency: 0.77,
+      typical_surface: 8.2,
+      usage_zones: ["peaux", "demi-teintes_chair"]
+    },
+    {
+      name: "rouge_laque_profond",
+      hex: "#A8344D",
+      rgb: [168, 52, 77],
+      hsv: [348, 69, 66],
+      frequency: 0.63,
+      typical_surface: 4.8,
+      pigment: "laque_garance",
+      note: "Utilisé avec parcimonie, toujours profond"
+    },
+    {
+      name: "jaune_citron_accent",
+      hex: "#E8C547",
+      rgb: [232, 197, 71],
+      hsv: [48, 72, 91],
+      frequency: 0.57,
+      typical_surface: 3.2,
+      pigment: "jaune_plomb_etain",
+      note: "Jaune de plomb-étain - très lumineux"
+    }
+  ],
+  
+  // Distribution des surfaces
+  surface_distribution: {
+    bleu: { min: 21.6, max: 32.0, mean: 26.8 },
+    ocre_jaune: { min: 13.7, max: 23.3, mean: 18.5 },
+    blanc: { min: 11.6, max: 18.8, mean: 15.2 },
+    brun_chaud: { min: 8.6, max: 17.0, mean: 12.8 },
+    brun_fonce: { min: 6.7, max: 14.3, mean: 10.5 }
+  }
+};
+
+// ============================================================================
+// 2. PARAMÈTRES STATISTIQUES GLOBALES
+// ============================================================================
+
+const VERMEER_GLOBAL_STATS = {
+  saturation: {
+    mean: 42.5,
+    variation: 3.2,
+    min_observed: 35.8,
+    max_observed: 48.2,
+    constancy: 0.94,
+    distribution: "gaussienne_étroite",
+    algorithm_note: "Saturation modérée extrêmement constante - toujours réduire saturation originale de 15%"
+  },
+  
+  luminosity: {
+    mean: 61.8,
+    variation: 4.5,
+    min_observed: 52.3,
+    max_observed: 68.5,
+    constancy: 0.91,
+    algorithm_operation: "brightness_curve => S-shape (augmenter mid-tones)"
+  },
+  
+  contrast: {
+    delta_e_mean: 38.5,
+    delta_e_variation: 5.2,
+    algorithm_note: "Contraste modéré, jamais brutal. Éviter delta E > 60"
+  },
+  
+  temperature: {
+    kelvin_mean: 6200,
+    kelvin_variation: 450,
+    tendency: "légèrement_froide",
+    warm_cold_ratio: 55, // % chaud
+    algorithm_note: "Équilibre chaud/froid caractéristique - légèrement froid (6200K)"
+  },
+  
+  color_count: {
+    mean: 6.8,
+    range: "5-8",
+    palette_type: "restreinte_contrôlée"
+  }
+};
+
+// ============================================================================
+// 3. HARMONIES SIGNATURE - ALGORITHMES DE COMBINAISON
+// ============================================================================
+
+const VERMEER_HARMONY_RULES = {
+  dominant_type: "complementaire_atténuée",
+  frequency: 0.87,
+  
+  iconic_pairs: [
+    {
+      name: "bleu_ocre_iconique",
+      color1: "#2B5A8C",
+      color2: "#D9BF8E",
+      hue_angle: 167, // Presque complémentaire mais pas exactement
+      frequency: 0.93,
+      surface_ratio: [60, 40], // bleu/ocre
+      algorithm: "split_complementary_adjusted",
+      note: "LA combinaison Vermeer par excellence"
+    },
+    {
+      name: "bleu_jaune_lumiere",
+      color1: "#2B5A8C",
+      color2: "#E8C547",
+      hue_angle: 162,
+      frequency: 0.57,
+      algorithm: "vibrant_accent",
+      usage: "effets lumineux uniquement"
+    },
+    {
+      name: "ocre_brun_structure",
+      color1: "#D9BF8E",
+      color2: "#8B6F47",
+      hue_angle: 8,
+      frequency: 0.82,
+      algorithm: "analogous_warm",
+      note: "Harmonie analogique chaude pour structure"
+    }
+  ],
+  
+  // Règles de combinaison
+  combination_rules: {
+    max_simultaneous_colors: 4,
+    dominant_ratio: [0.25, 0.40], // 25-40% pour couleur dominante
+    accent_ratio: [0.03, 0.08],   // 3-8% pour accents
+    never_pure_complements: true,
+    always_desaturated_complements: true,
+    warm_cold_balance: [0.52, 0.58] // 52-58% chaud
+  },
+  
+  // Schéma type pour génération automatique
+  schema_type: "split_complementaire_modifié",
+  algorithm_templates: [
+    {
+      name: "vermeer_standard",
+      colors: ["#2B5A8C", "#D9BF8E", "#EBE4D8", "#8B6F47"],
+      ratios: [35, 25, 20, 15],
+      zones: ["fond", "sujet", "lumière", "ombres"]
+    },
+    {
+      name: "vermeer_portrait",
+      colors: ["#2B5A8C", "#C4916B", "#D9BF8E", "#EBE4D8"],
+      ratios: [30, 25, 20, 15],
+      zones: ["vêtement", "peau", "lumière", "reflets"]
+    }
+  ]
+};
+
+// ============================================================================
+// 4. ABSENCES CARACTÉRISTIQUES - FILTRES À APPLIQUER
+// ============================================================================
+
+const VERMEER_COLOR_PROHIBITIONS = {
+  // Plages de teintes JAMAIS utilisées
+  prohibited_hue_ranges: [
+    {
+      name: "vert_vif_sature",
+      hue_range: [80, 140], // degrés HSL
+      saturation_threshold: 70, // >70% saturation
+      frequency_absence: 1.0,
+      algorithm_action: "desaturate_to_40_or_convert_to_ocher",
+      note: "Vert présent uniquement désaturé ou très sombre"
+    },
+    {
+      name: "violet_pur",
+      hue_range: [270, 310],
+      saturation_threshold: 60,
+      frequency_absence: 0.97,
+      algorithm_action: "shift_to_blue_range_210_240",
+      note: "Jamais de violet saturé"
+    },
+    {
+      name: "orange_vif",
+      hue_range: [15, 35],
+      saturation_threshold: 65,
+      frequency_absence: 0.93,
+      algorithm_action: "convert_to_ocher_35_55",
+      note: "Orange uniquement désaturé (ocres)"
+    },
+    {
+      name: "rose_vif",
+      hue_range: [330, 10], // Wrap-around
+      saturation_threshold: 60,
+      frequency_absence: 0.90,
+      algorithm_action: "desaturate_to_30_or_convert_to_red_laque"
+    }
+  ],
+  
+  // Niveaux de saturation interdits
+  prohibited_saturation_levels: {
+    very_high: {
+      threshold: 80, // >80%
+      frequency_absence: 0.98,
+      algorithm_action: "clamp_to_max_70",
+      note: "Jamais de couleurs criantes"
+    },
+    extreme_low: {
+      threshold: 10, // <10% (gris pur)
+      frequency_absence: 0.85,
+      algorithm_action: "boost_to_min_15",
+      note: "Toujours une teinte perceptible"
+    }
+  },
+  
+  // Niveaux de luminosité interdits
+  prohibited_luminosity_levels: {
+    very_dark: {
+      threshold: 15, // <15%
+      frequency_absence: 0.85,
+      algorithm_action: "lift_to_min_18",
+      note: "Évite les noirs purs"
+    },
+    very_light: {
+      threshold: 95, // >95%
+      frequency_absence: 0.92,
+      algorithm_action: "darken_to_max_92",
+      note: "Évite les blancs purs"
+    }
+  },
+  
+  // Règles de filtrage
+  filtering_algorithm: {
+    method: "hsl_clamping_with_intelligent_conversion",
+    priority_order: [
+      "preserve_hue_if_in_allowed_range",
+      "adjust_saturation_to_42_mean",
+      "convert_prohibited_hues_to_nearest_allowed",
+      "clamp_luminosity_to_18_92_range"
+    ],
+    conversion_matrix: {
+      // Conversion des teintes interdites vers teintes Vermeer
+      "green_vibrant": { target_hue: 35, target_sat: 49 }, // -> brun_chaud
+      "violet_purple": { target_hue: 210, target_sat: 69 }, // -> bleu_vermeer
+      "orange_vibrant": { target_hue: 43, target_sat: 38 }, // -> ocre_jaune
+      "pink_vibrant": { target_hue: 348, target_sat: 69 }  // -> rouge_laque
+    }
+  }
+};
+
+// ============================================================================
+// 5. TRANSITIONS DE COULEURS - ALGORITHMES DE DÉGRADÉ
+// ============================================================================
+
+const VERMEER_TRANSITION_PARAMETERS = {
+  dominant_type: "progressif_doux",
+  frequency: 0.88,
+  
+  // Paramètres techniques
+  edge_blur_width: {
+    mean_pixels: 14.5,
+    variation: 4.2,
+    range: [10.3, 18.7]
+  },
+  
+  transition_counts: {
+    hard_edges: 3.2,
+    soft_edges: 22.8,
+    ratio_hard_soft: 0.14,
+    algorithm_note: "14x plus de transitions douces que nettes"
+  },
+  
+  // Technique sfumato spécifique
+  sfumato_technique: {
+    present: true,
+    frequency: 0.82,
+    application_zones: ["contours_visages", "arrière-plans", "ombres"],
+    algorithm_parameters: {
+      blur_radius: [8, 20], // pixels
+      opacity_steps: [0.8, 0.6, 0.4, 0.2, 0.1],
+      color_bleed: 0.15, // 15% de mélange avec couleur adjacente
+      method: "gaussian_blur_multi_pass"
+    },
+    note: "Dégradés imperceptibles caractéristiques - imiter avec flou gaussien multi-passes"
+  },
+  
+  // Algorithme de transition générique
+  transition_algorithm: {
+    name: "vermeer_gradient_generator",
+    steps: [
+      {
+        step: 1,
+        action: "analyze_color_difference",
+        threshold: "deltaE > 20"
+      },
+      {
+        step: 2,
+        action: "calculate_intermediate_colors",
+        count: "ceil(deltaE / 5)", // ~8 couleurs pour deltaE=40
+        method: "cielab_interpolation"
+      },
+      {
+        step: 3,
+        action: "apply_sfumato_profile",
+        profile: "sigmoid_easing",
+        parameters: { tension: 0.7, bias: 0.3 }
+      },
+      {
+        step: 4,
+        action: "blend_transition",
+        width: "adaptive_based_on_contrast",
+        formula: "width = 10 + (deltaE * 0.15)"
+      }
+    ]
+  }
+};
+
+// ============================================================================
+// 6. ÉVOLUTION TEMPORELLE - PARAMÈTRES PAR PÉRIODE
+// ============================================================================
+
+const VERMEER_TEMPORAL_EVOLUTION = {
+  global_constancy: 0.89,
+  
+  periods: [
+    {
+      name: "periode_debut",
+      years: "1653-1658",
+      works: ["Diane", "Christ_Marthe", "Praxède", "Entremetteuse", "Soldat"],
+      parameters: {
+        saturation_mean: 48.2,
+        contrast_deltaE: 45.5,
+        palette_character: "plus_contrastée",
+        algorithm_adjustments: {
+          saturation_reduction: -5, // +5% vs moyenne
+          contrast_boost: +7, // +7 vs moyenne
+          blue_intensity: 0.85 // 85% de l'intensité finale
+        },
+        note: "Période de formation - palette plus audacieuse"
+      }
+    },
+    {
+      name: "periode_maturite",
+      years: "1658-1668", 
+      works: ["Laitière", "Perle", "Delft", "Art_Peinture", "Astronome", "Géographe"],
+      parameters: {
+        saturation_mean: 41.2,
+        contrast_deltaE: 36.8,
+        palette_character: "raffinée_harmonieuse",
+        algorithm_adjustments: {
+          saturation_reduction: +1.3, // -1.3% vs moyenne
+          contrast_boost: -1.7, // -1.7 vs moyenne
+          blue_intensity: 1.0, // intensité signature
+          white_addition: 12 // % de blanc ajouté systématiquement
+        },
+        note: "Apogée - palette signature parfaitement maîtrisée"
+      }
+    },
+    {
+      name: "periode_tardive",
+      years: "1669-1675",
+      works: ["Dentellière", "Lettre_Amour", "Allégorie_Foi", "Virginal"],
+      parameters: {
+        saturation_mean: 39.8,
+        contrast_deltaE: 35.2,
+        palette_character: "épurée_subtile",
+        luminosity_increase: 3.5, // +3.5%
+        algorithm_adjustments: {
+          saturation_reduction: +2.7, // -2.7% vs moyenne
+          contrast_boost: -3.3, // -3.3 vs moyenne
+          luminosity_boost: +3.5,
+          blue_intensity: 0.95 // légèrement réduit
+        },
+        note: "Palette encore plus raffinée et lumineuse"
+      }
+    }
+  ],
+  
+  // Fonction d'interpolation temporelle
+  temporal_interpolation: {
+    method: "linear_based_on_year",
+    reference_year: 1660, // Année de maturité
+    parameters: {
+      saturation: { 
+        slope: -0.85, // points de saturation par année
+        formula: "S(year) = 41.2 + (year - 1660) * -0.85"
+      },
+      contrast: {
+        slope: -1.03,
+        formula: "C(year) = 36.8 + (year - 1660) * -1.03"
+      },
+      luminosity: {
+        slope: 0.29,
+        formula: "L(year) = 61.8 + (year - 1660) * 0.29"
+      }
+    }
+  }
+};
+
+// ============================================================================
+// 7. TECHNIQUES COLORISTES - ALGORITHMES D'APPLICATION
+// ============================================================================
+
+const VERMEER_TECHNIQUE_ALGORITHMS = {
+  // Pointillisme avant la lettre
+  pointillism_technique: {
+    present: true,
+    frequency: 0.68,
+    application_zones: ["perles", "pain", "tissus", "reflets"],
+    parameters: {
+      dot_size_mm: 0.8,
+      dot_size_pixels: { at_300dpi: 9, at_600dpi: 18 },
+      color_variation: 0.12, // 12% de variation autour de la couleur moyenne
+      spacing_ratio: 1.5, // espace = 1.5 x diamètre
+      algorithm: "stippling_with_color_dithering",
+      implementation: "generate_dots_with_hsl_variation(mean_color, variation=0.12)"
+    }
+  },
+  
+  // Glacis multiples
+  glazing_technique: {
+    present: true,
+    frequency: 0.92,
+    estimated_layers: 3.5,
+    application_zones: ["ciels", "vêtements_bleus", "carnations"],
+    parameters: {
+      layer_opacities: [0.35, 0.45, 0.55],
+      blend_mode: "multiply_for_darks, screen_for_lights",
+      color_shift_per_layer: { hue: 2, saturation: -5, lightness: 3 },
+      algorithm: "multi_layer_transparent_overlay",
+      note: "Transparence et profondeur caractéristiques"
+    }
+  },
+  
+  // Modification de la couleur locale
+  local_color_modification: {
+    description: "Jamais de couleur pure - toujours influencée par lumière ambiante",
+    constancy: 0.95,
+    algorithm: {
+      name: "ambient_light_influence",
+      parameters: {
+        warm_light_effect: { hue_shift: +5, saturation_boost: 10 },
+        cool_light_effect: { hue_shift: -8, saturation_reduction: 15 },
+        shadow_effect: { hue_shift: -12, lightness_reduction: 40 },
+        reflection_effect: { blend_with_adjacent: 0.3 }
+      },
+      implementation: "color = blend(original_color, ambient_color, influence_factor)"
+    }
+  },
+  
+  // Ombres colorées
+  colored_shadows: {
+    present: true,
+    frequency: 0.88,
+    tendency: "ombres_froides_dans_lumiere_chaude",
+    parameters: {
+      hue_shift_mean: -12, // décalage vers le bleu
+      hue_shift_range: [-8, -16],
+      saturation_in_shadows: { mean: 35, range: [28, 42] },
+      algorithm: "cool_shadow_generation",
+      formula: "shadow_color = adjust_hue(base_color, shift=-12) + desaturate(25%)"
+    }
+  }
+};
+
+// ============================================================================
+// 8. SPÉCIFICITÉS MATÉRIELLES - PIGMENTS & MÉLANGES
+// ============================================================================
+
+const VERMEER_MATERIAL_SPECIFICS = {
+  identified_pigments: [
+    {
+      name: "outremer_naturel",
+      color: "#2B5A8C",
+      frequency: 0.93,
+      cost: "extrêmement_cher",
+      algorithm_characteristics: {
+        transparency: 0.7,
+        granulation: 0.3,
+        mixing_behavior: "stays_on_top_layers",
+        modern_equivalent: "ultramarine_blue_pigment",
+        rgb_approximation: { r: 43, g: 90, b: 140 }
+      },
+      note: "Lapis-lazuli importé - signature Vermeer"
+    },
+    {
+      name: "jaune_plomb_etain",
+      color: "#E8C547",
+      frequency: 0.57,
+      algorithm_characteristics: {
+        opacity: 0.9,
+        luminosity: 0.91,
+        modern_equivalent: "cadmium_yellow_light",
+        usage: "accents_only"
+      }
+    },
+    {
+      name: "laque_garance",
+      color: "#A8344D",
+      frequency: 0.63,
+      algorithm_characteristics: {
+        transparency: 0.8,
+        saturation: 0.69,
+        modern_equivalent: "alizarin_crimson",
+        usage: "deep_accents"
+      }
+    },
+    {
+      name: "blanc_plomb",
+      color: "#EBE4D8",
+      frequency: 0.98,
+      algorithm_characteristics: {
+        opacity: 0.95,
+        tinting_strength: 1.2,
+        mixing_ratio: 0.12, // 12% systématiquement ajouté
+        modern_equivalent: "titanium_white",
+        note: "Mélangé à toutes couleurs pour luminosité"
+      }
+    },
+    {
+      name: "ocres_terre",
+      colors: ["#D9BF8E", "#8B6F47", "#C4916B"],
+      frequency: 0.95,
+      algorithm_characteristics: {
+        granulation: 0.6,
+        transparency: 0.4,
+        cost_factor: 0.1, // 10% du coût de l'outremer
+        modern_equivalents: ["yellow_ochre", "raw_sienna", "burnt_sienna"]
+      }
+    }
+  ],
+  
+  // Stratégie d'utilisation des pigments chers
+  expensive_pigment_strategy: {
+    frequency: 0.85,
+    strategy: "parcimonie_calculée",
+    algorithm_rules: [
+      "reserve_ultramarine_for_dominant_areas",
+      "use_ochres_for_large_surfaces",
+      "add_lead_white_to_all_mixtures",
+      "use_expensive_pigments_in_thin_glazes"
+    ],
+    note: "Outremer réservé aux zones clés - génie économique"
+  },
+  
+  // Algorithmes de mélange
+  mixing_algorithms: {
+    vermeer_blue_mix: {
+      base_pigments: ["ultramarine_blue", "lead_white"],
+      ratios: [0.7, 0.3],
+      additionals: ["touch_of_black", 0.02],
+      result: { hex: "#2B5A8C", hsv: [210, 69, 55] }
+    },
+    vermeer_ocher_mix: {
+      base_pigments: ["yellow_ochre", "lead_white"],
+      ratios: [0.6, 0.4],
+      result: { hex: "#D9BF8E", hsv: [43, 38, 85] }
+    },
+    carnation_mix: {
+      base_pigments: ["yellow_ochre", "vermilion", "lead_white"],
+      ratios: [0.5, 0.2, 0.3],
+      result: { hex: "#C4916B", hsv: [28, 45, 77] }
+    }
+  }
+};
+
+// ============================================================================
+// 9. PARAMÈTRES DE CONVERSION POUR LOGICIELS
+// ============================================================================
+
+const VERMEER_SOFTWARE_PARAMETERS = {
+  // Pour Krita/Photoshop
+  adjustment_layers: [
+    {
+      name: "Saturation Reduction",
+      type: "hue_saturation",
+      parameters: { saturation: -15, lightness: 0, hue: 0 }
+    },
+    {
+      name: "Color Temperature",
+      type: "color_balance",
+      parameters: { shadows: [0, 0, +5], midtones: [-3, 0, +8], highlights: [-5, 0, +10] }
+    },
+    {
+      name: "Vermeer Blue Boost",
+      type: "selective_color",
+      parameters: { blues: { cyan: +10, magenta: -5, yellow: -15, black: 0 } }
+    },
+    {
+      name: "Ocher Enhancement",
+      type: "selective_color",
+      parameters: { yellows: { cyan: -10, magenta: +5, yellow: +20, black: -5 } }
+    },
+    {
+      name: "Soft Glow",
+      type: "curves",
+      parameters: { rgb: "S-light", red: [0,0, 128,140, 255,245], green: [0,0, 128,130, 255,250], blue: [0,5, 128,135, 255,255] }
+    }
+  ],
+  
+  // Pour LUT 3D generation
+  lut_parameters: {
+    size: 64,
+    algorithm: "histogram_matching_to_vermeer_distribution",
+    color_space: "CIELAB",
+    interpolation: "tetrahedral",
+    
+    // Mapping des canaux
+    channel_mappings: {
+      red: { shift: -0.02, contrast: 0.95 },
+      green: { shift: +0.01, contrast: 1.05 },
+      blue: { shift: +0.03, contrast: 0.90 }
+    },
+    
+    // Zones de teinte spécifiques
+    hue_specific_adjustments: [
+      { hue_range: [200, 220], saturation_boost: 0.15, luminance_reduction: 0.10 }, // Bleus
+      { hue_range: [40, 50], saturation_reduction: 0.10, luminance_boost: 0.15 },   // Ocre jaune
+      { hue_range: [340, 360], saturation_boost: 0.20, luminance_reduction: 0.25 }  // Rouges
+    ]
+  },
+  
+  // Pour DaVinci Resolve
+  davinci_powergrades: {
+    nodes: [
+      { node: 1, type: "ColorSpaceTransform", params: { to: "Rec709" } },
+      { node: 2, type: "Curves", params: { lift: [0.0, 0.0, 0.02], gamma: [1.0, 1.0, 0.95], gain: [1.0, 1.0, 1.05] } },
+      { node: 3, type: "HueVsSat", params: { blues: 1.15, yellows: 0.90, reds: 1.20 } },
+      { node: 4, type: "Blur", params: { size: 0.5, type: "gaussian" } } // Soft sfumato effect
+    ]
+  }
+};
+
+// ============================================================================
+// 10. ALGORITHME SYNTHÈSE - PIPELINE COMPLET
+// ============================================================================
+
+const VERMEER_COLOR_PIPELINE = {
+  name: "vermeer_color_transformation_pipeline",
+  version: "3.0",
+  conformity_target: 0.94,
+  steps: [
+    {
+      step: 1,
+      name: "Input Analysis",
+      operations: [
+        "analyze_input_histogram",
+        "calculate_mean_saturation",
+        "detect_dominant_colors",
+        "identify_prohibited_hues"
+      ]
+    },
+    {
+      step: 2,
+      name: "Saturation Control",
+      operations: [
+        "clamp_saturation_to_range(35.8, 48.2)",
+        "apply_mean_saturation_target(42.5)",
+        "desaturate_prohibited_hues",
+        "boost_mid_tone_saturation"
+      ]
+    },
+    {
+      step: 3,
+      name: "Palette Mapping",
+      operations: [
+        "map_to_vermeer_palette(VERMEER_SIGNATURE_PALETTE)",
+        "apply_color_prohibitions(VERMEER_COLOR_PROHIBITIONS)",
+        "enforce_harmony_rules(VERMEER_HARMONY_RULES)",
+        "balance_warm_cold(55_45_ratio)"
+      ]
+    },
+    {
+      step: 4,
+      name: "Luminosity Adjustment",
+      operations: [
+        "clamp_luminosity(18, 92)",
+        "apply_vermeer_luminosity_profile",
+        "add_lead_white_effect(12%)",
+        "create_soft_glow_midtones"
+      ]
+    },
+    {
+      step: 5,
+      name: "Signature Effects",
+      operations: [
+        "apply_sfumato_transitions(14.5px_blur)",
+        "add_pointillism_effect(0.8mm_dots)",
+        "simulate_glazing_layers(3.5_layers)",
+        "color_shadows_cool(-12_hue_shift)"
+      ]
+    },
+    {
+      step: 6,
+      name: "Output Formatting",
+      operations: [
+        "generate_krita_bundle",
+        "create_3d_lut_64cube",
+        "export_hald_clut_png",
+        "package_with_documentation"
+      ]
+    }
+  ],
+  
+  // Contrôles utilisateur
+  user_controls: [
+    {
+      name: "vermeer_intensity",
+      type: "slider",
+      range: [0, 100],
+      default: 85,
+      effect: "overall_preset_strength"
+    },
+    {
+      name: "blue_emphasis",
+      type: "slider",
+      range: [0, 100],
+      default: 75,
+      effect: "signature_blue_intensity"
+    },
+    {
+      name: "sfumato_softness",
+      type: "slider",
+      range: [0, 100],
+      default: 70,
+      effect: "transition_blur_amount"
+    },
+    {
+      name: "period_style",
+      type: "dropdown",
+      options: ["early", "mature", "late"],
+      default: "mature",
+      effect: "temporal_characteristics"
+    }
+  ],
+  
+  // Métriques de qualité
+  quality_metrics: {
+    palette_coherence: 0.96,
+    temporal_consistency: 0.89,
+    signature_uniqueness: 0.98,
+    analysis_precision: 0.96,
+    global_confidence: 0.96,
+    reproducibility: 0.95
+  }
+};
+
+// ============================================================================
+// 11. EXPORT POUR ADN CONVERTER
+// ============================================================================
+
+// Objet final pour intégration dans ADN Converter
+const VERMEER_ADN_CONVERTER_PARAMETERS = {
+  metadata: {
+    artist: "Johannes Vermeer",
+    period: "1653-1675",
+    adn_file: "04_ADN_COULEURS.txt",
+    extraction_date: "2026-01-11",
+    analysis_method: "ADN Couleurs V3.0",
+    confidence: 0.96,
+    uniqueness_score: 0.98
+  },
+  
+  // Structure attendue par le framework ADN Converter
+  translation_matrix: {
+    total_mappings: 127,
+    color_specific_mappings: 38,
+    harmony_mappings: 23,
+    technique_mappings: 45,
+    material_mappings: 21
+  },
+  
+  // Paramètres extraits
+  extracted_parameters: {
+    palette: VERMEER_SIGNATURE_PALETTE,
+    statistics: VERMEER_GLOBAL_STATS,
+    harmonies: VERMEER_HARMONY_RULES,
+    prohibitions: VERMEER_COLOR_PROHIBITIONS,
+    transitions: VERMEER_TRANSITION_PARAMETERS,
+    evolution: VERMEER_TEMPORAL_EVOLUTION,
+    techniques: VERMEER_TECHNIQUE_ALGORITHMS,
+    materials: VERMEER_MATERIAL_SPECIFICS
+  },
+  
+  // Pipeline de conversion
+  conversion_pipeline: VERMEER_COLOR_PIPELINE,
+  
+  // Paramètres pour logiciels
+  software_presets: VERMEER_SOFTWARE_PARAMETERS,
+  
+  // Recommandations finales
+  final_recommendations: {
+    essence: "Palette restreinte, saturation modérée, luminosité élevée, harmonie bleu-ocre iconique",
+    innovation: "Premier à maîtriser équilibre subtil chaud/froid avec saturation contrôlée",
+    immediate_signature: "Bleu outremer désaturé + ocre lumineux + blanc omniprésent",
+    algorithm_summary: "Pour reproduire Vermeer: désaturer 15%, ajouter blanc 12%, transitions douces 14px, éviter verts/violets saturés"
+  }
+};
+
+// Export pour utilisation dans ADN Converter
+export default VERMEER_ADN_CONVERTER_PARAMETERS;
+
+// Fonctions utilitaires pour le framework
+export function applyVermeerColorTransform(inputColor) {
+  /**
+   * Applique la transformation de couleur Vermeer à une couleur d'entrée
+   * @param {Object} inputColor - Couleur au format {r, g, b} ou {h, s, l}
+   * @returns {Object} - Couleur transformée selon les paramètres Vermeer
+   */
+  
+  // Implémentation simplifiée
+  const transformed = {
+    // Réduction de saturation
+    saturation: Math.min(70, inputColor.s * 0.85), // -15%
+    
+    // Ajout de "blanc de plomb" (luminosité)
+    lightness: Math.min(92, inputColor.l * 1.05),
+    
+    // Correction de teinte si dans plages interdites
+    hue: correctVermeerHue(inputColor.h),
+    
+    // Note: Implémentation complète utiliserait tous les paramètres ci-dessus
+  };
+  
+  return transformed;
+}
+
+export function generateVermeerLUT(size = 64) {
+  /**
+   * Génère une LUT 3D pour transformation Vermeer
+   * @param {number} size - Taille de la LUT (32, 64, 128)
+   * @returns {Array} - LUT 3D au format [r][g][b][3]
+   */
+  
+  const lut = new Array(size);
+  
+  for (let r = 0; r < size; r++) {
+    lut[r] = new Array(size);
+    for (let g = 0; g < size; g++) {
+      lut[r][g] = new Array(size);
+      for (let b = 0; b < size; b++) {
+        // Normaliser les valeurs 0-1
+        const input = [
+          r / (size - 1),
+          g / (size - 1), 
+          b / (size - 1)
+        ];
+        
+        // Appliquer la transformation Vermeer
+        lut[r][g][b] = applyVermeerTransformToRGB(input);
+      }
+    }
+  }
+  
+  return lut;
+}
+
+// Fonctions internes
+function correctVermeerHue(hue) {
+  // Corrige les teintes interdites selon les règles Vermeer
+  if (hue >= 80 && hue <= 140) {
+    // Vert vif -> convertir en ocre/brun
+    return 35 + (hue - 80) * 0.2; // Mapping linéaire vers brun_chaud
+  }
+  if (hue >= 270 && hue <= 310) {
+    // Violet -> convertir en bleu Vermeer
+    return 210; // Teinte signature du bleu Vermeer
+  }
+  if ((hue >= 330 && hue <= 360) || (hue >= 0 && hue <= 10)) {
+    // Rose vif -> convertir en rouge laque
+    return 348;
+  }
+  return hue;
+}
+
+function applyVermeerTransformToRGB(rgb) {
+  // Implémentation de la transformation complète
+  // Note: Ceci est une version simplifiée
+  const [r, g, b] = rgb;
+  
+  // 1. Réduction saturation globale
+  const gray = (r + g + b) / 3;
+  const desaturated = [
+    r * 0.85 + gray * 0.15,
+    g * 0.85 + gray * 0.15,
+    b * 0.85 + gray * 0.15
+  ];
+  
+  // 2. Ajout "blanc de plomb" (augmente luminosité)
+  const lightened = [
+    desaturated[0] * 0.88 + 0.12,
+    desaturated[1] * 0.88 + 0.12,
+    desaturated[2] * 0.88 + 0.12
+  ];
+  
+  // 3. Renforcement spécifique des bleus (signature Vermeer)
+  const blueBoost = calculateBlueBoost(lightened);
+  
+  return [
+    Math.max(0, Math.min(1, blueBoost[0])),
+    Math.max(0, Math.min(1, blueBoost[1])),
+    Math.max(0, Math.min(1, blueBoost[2]))
+  ];
+}
+
+function calculateBlueBoost(rgb) {
+  // Renforce les bleus caractéristiques de Vermeer
+  const [r, g, b] = rgb;
+  
+  // Calculer la composante bleue relative
+  const blueComponent = b - (r + g) / 2;
+  
+  if (blueComponent > 0.1) {
+    // C'est une couleur bleue, appliquer le boost Vermeer
+    return [
+      r * 0.98,      // Légère réduction du rouge
+      g * 0.95,      // Réduction du vert
+      Math.min(1, b * 1.15)  // Boost du bleu
+    ];
+  }
+  
+  return rgb;
+}
+```
+
+## **RÉSUMÉ DES PARAMÈTRES ALGORITHMIQUES CLÉS :**
+
+### **1. Transformations Fondamentales :**
+- **Réduction saturation** : -15% systématique
+- **Ajout blanc** : +12% de luminosité (blanc de plomb)
+- **Clamping luminosité** : 18% min, 92% max (pas de noirs/blancs purs)
+- **Température** : 6200K (légèrement froid)
+
+### **2. Palette Signature :**
+- **Couleur dominante** : Bleu Vermeer (#2B5A8C) - 27% de surface
+- **Couleur secondaire** : Ocre jaune (#D9BF8E) - 19% de surface
+- **Blanc caractéristique** : Blanc perle (#EBE4D8) - jamais blanc pur
+
+### **3. Interdictions Strictes :**
+- **Verts saturés** (>70% saturation) → conversion en ocre/brun
+- **Violets purs** → conversion en bleu Vermeer
+- **Oranges vifs** → désaturation en ocre
+- **Saturation extrême** : clamping à 70% max
+
+### **4. Techniques Algorithmiques :**
+- **Transitions sfumato** : flou de 14.5px en moyenne
+- **Pointillisme** : points de 0.8mm avec variation de couleur 12%
+- **Glacis** : 3.5 couches à opacité [35%, 45%, 55%]
+- **Ombres colorées** : décalage de teinte -12° vers le bleu
+
+### **5. Évolution Temporelle :**
+- **1653-1658** : Saturation 48.2, contraste élevé
+- **1658-1668** : Saturation 41.2, équilibre parfait (apogée)
+- **1669-1675** : Saturation 39.8, plus lumineux (+3.5%)
+
+### **6. Pour LUT 3D :**
+- **Taille** : 64³ (262,144 entrées)
+- **Mapping spécifique** : Boost bleus (+15%), réduction verts (-5%)
+- **Zones de teinte** : Corrections spécifiques par plage HSL
+

@@ -1,0 +1,254 @@
+## **PROMPT POUR REPLIT AI - CORRECTION CANVAS 100% NEUTRE**
+
+Copie-colle ce prompt de correction dans Replit AI :
+
+---
+
+```
+# CORRECTION URGENTE : Canvas complètement neutre (pas de réduction, ÉLIMINATION totale)
+
+## PROBLÈME ACTUEL
+Tu as réduit la dominante jaune de 60%, mais ce n'est PAS suffisant. Je veux un canvas **100% neutre** qui n'influence AUCUNEMENT les couleurs des images uploadées.
+
+**Objectif absolu :** Canvas RGB(128, 128, 128) ou équivalent gris parfaitement neutre, ZÉRO teinte chaude/froide.
+
+## CE QUI NE FONCTIONNE PAS
+
+Tu as mentionné avoir :
+- "Réduit les teintes chaudes/dorées de 60%"
+- "Réduit de moitié l'intensité des glazes pour Baroque et Golden Age"
+
+**Le problème :** Tu as ATTÉNUÉ le problème, pas ÉLIMINÉ la source.
+
+## CE QUE JE VEUX
+
+### OPTION 1 : Supprimer TOUS les glazes colorimétriques du canvas
+```javascript
+// AVANT (probablement dans ton code actuel) :
+canvas.applyColorGlaze(period.warmth, period.intensity);
+
+// APRÈS (ce que je veux) :
+// PAS DE GLAZE DU TOUT sur le canvas de base
+// Le canvas doit être gris neutre RGB(128, 128, 128)
+```
+
+### OPTION 2 : Isoler complètement l'image source
+```javascript
+// Le canvas de travail ne doit JAMAIS appliquer de teinte à l'image source
+// Les finitions (craquelures, grain) doivent être des OVERLAYS séparés
+// Pas de multiplication de couleurs, pas de blend modes qui ajoutent du jaune
+
+Workflow attendu :
+1. Image source → Reste intacte sur son propre layer
+2. Finitions (craquelures, grain, etc.) → Ajoutées en overlay avec blend mode "Multiply" ou "Overlay" 
+3. Aucun filtre colorimétrique appliqué globalement
+```
+
+## LOCALISE ET ÉLIMINE CES SOURCES DE TEINTE JAUNE
+
+Cherche dans le code TOUS les endroits où une couleur est appliquée au canvas ou à l'image :
+
+### 1. Vérifications à faire dans le code :
+
+**Recherche ces termes :**
+```javascript
+// Cherche dans tous les fichiers :
+- "warmth"
+- "golden"
+- "amber"
+- "sepia"
+- "temperature"
+- "colorBalance"
+- "tint"
+- "hue"
+- "glaze"
+- "filter: sepia"
+- "filter: brightness"
+- "rgba(255, 220" // ou toute valeur RGB avec plus de rouge/jaune
+```
+
+**Pour chacun, vérifie :**
+- Est-ce appliqué au canvas de base ? → **SUPPRIMER**
+- Est-ce appliqué à l'image uploadée ? → **SUPPRIMER**
+- Est-ce lié aux finitions spécifiques (craquelures, grain) ? → **GARDER mais isoler**
+
+### 2. Corrections spécifiques attendues :
+
+#### Dans le système de périodes (Baroque, Golden Age, etc.) :
+```javascript
+// AVANT (ce que tu as probablement) :
+const periods = {
+  BAROQUE: {
+    warmth: 0.4, // ← PROBLÈME
+    glaze: { r: 255, g: 230, b: 180, a: 0.15 } // ← PROBLÈME
+  },
+  GOLDEN_AGE: {
+    warmth: 0.5, // ← PROBLÈME
+    glaze: { r: 255, g: 220, b: 150, a: 0.2 } // ← PROBLÈME
+  }
+}
+
+// APRÈS (ce que je veux) :
+const periods = {
+  BAROQUE: {
+    warmth: 0, // ZÉRO influence colorimétrique sur le canvas
+    glaze: null // PAS de glaze du tout
+  },
+  GOLDEN_AGE: {
+    warmth: 0,
+    glaze: null
+  },
+  MODERN: {
+    warmth: 0,
+    glaze: null
+  }
+  // TOUS les periods doivent avoir warmth: 0 et glaze: null
+}
+```
+
+#### Dans la fonction de rendu du canvas :
+```javascript
+// AVANT (hypothèse) :
+function renderCanvas(image, settings) {
+  const ctx = canvas.getContext('2d');
+  
+  // Applique l'image
+  ctx.drawImage(image, 0, 0);
+  
+  // Applique un filtre de période ← PROBLÈME
+  ctx.globalCompositeOperation = 'multiply';
+  ctx.fillStyle = `rgba(255, 230, 200, ${settings.warmth})`; // ← CECI AJOUTE DU JAUNE
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Applique les finitions...
+}
+
+// APRÈS (ce que je veux) :
+function renderCanvas(image, settings) {
+  const ctx = canvas.getContext('2d');
+  
+  // Applique l'image SANS modification
+  ctx.drawImage(image, 0, 0);
+  
+  // PAS DE FILTRE COLORIMÉTRIQUE ICI
+  
+  // Applique UNIQUEMENT les finitions texturales (craquelures, grain)
+  // Ces finitions doivent être GRISES ou TRANSPARENTES, pas jaunes
+  applyNeutralCracks(ctx, settings);
+  applyNeutralGrain(ctx, settings);
+}
+```
+
+#### Dans les finitions elles-mêmes :
+```javascript
+// Les craquelures doivent être grises/noires, PAS sépia
+const crackColor = 'rgba(60, 50, 40, 0.3)'; // ← PROBLÈME (tons chauds)
+const crackColor = 'rgba(80, 80, 80, 0.3)'; // ← SOLUTION (gris neutre)
+
+// Le grain de toile doit être neutre
+const grainColor = 'rgba(200, 180, 150, 0.1)'; // ← PROBLÈME (beige)
+const grainColor = 'rgba(128, 128, 128, 0.1)'; // ← SOLUTION (gris parfait)
+```
+
+## TESTS À EFFECTUER
+
+Après tes corrections, teste avec cette méthodologie :
+
+### Test 1 : Image blanche pure
+```javascript
+// Upload une image complètement blanche (RGB 255, 255, 255)
+// Applique les finitions
+// RÉSULTAT ATTENDU : L'image doit rester blanche ou devenir gris clair
+// ÉCHEC si : L'image devient beige, crème, ou jaune pâle
+```
+
+### Test 2 : Image grise neutre
+```javascript
+// Upload une image grise RGB(128, 128, 128)
+// Applique les finitions
+// RÉSULTAT ATTENDU : L'image reste grise avec variations de texture seulement
+// ÉCHEC si : L'image prend une teinte chaude
+```
+
+### Test 3 : Image avec couleurs froides (bleus, verts)
+```javascript
+// Upload une image à dominante froide
+// Applique les finitions
+// RÉSULTAT ATTENDU : Les bleus/verts restent froids, pas de virage vers le vert-jaune
+// ÉCHEC si : Les couleurs se réchauffent visiblement
+```
+
+## SOLUTION DE SECOURS SI TU NE TROUVES PAS LA SOURCE
+
+Si après recherche tu ne localises pas d'où vient le jaune résiduel :
+
+```javascript
+// Ajoute cette fonction de "décontamination" après chaque étape :
+function ensureNeutralCanvas(ctx) {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  
+  for (let i = 0; i < data.length; i += 4) {
+    // Détecte et neutralise toute dominante jaune/chaude
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    
+    // Si rouge > bleu de plus de X%, réduire le rouge
+    if (r > b + 10) {
+      const excess = (r - b) * 0.5;
+      data[i] -= excess; // Réduit le rouge
+    }
+    
+    // Si jaune (r+g élevés, b faible), corriger
+    if (r + g > b * 2.5) {
+      const avgRG = (r + g) / 2;
+      data[i] = avgRG;
+      data[i + 1] = avgRG;
+      data[i + 2] = Math.min(255, b * 1.2); // Augmente légèrement le bleu
+    }
+  }
+  
+  ctx.putImageData(imageData, 0, 0);
+}
+
+// Appelle cette fonction APRÈS avoir appliqué les finitions
+```
+
+## RÉSUMÉ DES ACTIONS ATTENDUES
+
+1. [ ] Trouve TOUTES les lignes de code qui appliquent `warmth`, `glaze`, `sepia`, ou couleurs chaudes
+2. [ ] Mets `warmth: 0` et `glaze: null` pour TOUTES les périodes
+3. [ ] Change les couleurs des finitions (craquelures, grain) en gris neutres RGB(128±30, 128±30, 128±30)
+4. [ ] Supprime tout blend mode `multiply` ou `overlay` qui pourrait ajouter du jaune
+5. [ ] Teste avec les 3 images de test ci-dessus
+6. [ ] Si du jaune persiste, applique la fonction de décontamination
+
+## LIVRABLES
+
+- [ ] Code modifié avec commentaires `// NEUTRALIZED` sur chaque ligne changée
+- [ ] Screenshots des 3 tests (blanc pur, gris neutre, couleurs froides) AVANT/APRÈS
+- [ ] Confirmation : "Canvas is now 100% neutral, no color bias detected"
+
+---
+
+**JE VEUX UN CANVAS QUI NE TOUCHE PAS AUX COULEURS. Point final.**
+```
+
+---
+
+## **Instructions pour toi**
+
+Après que Replit AI ait appliqué ces corrections :
+
+1. **Teste immédiatement** avec une image très neutre (portrait gris, ou mieux : une image test RGB pure)
+2. **Vérifie visuellement** : si tu vois encore du jaune, partage-moi un screenshot et je t'aide à localiser la source exacte
+3. **Si nécessaire**, demande à Replit AI de te montrer TOUTES les lignes où il applique des couleurs, et on les analyse ensemble
+
+Le problème est probablement dans :
+- Un `fillStyle` ou `strokeStyle` avec des valeurs RGB chaudes
+- Un filtre CSS/Canvas (`sepia`, `brightness` avec valeurs > 100%)
+- Un blend mode qui multiplie les couleurs
+- Une texture de base (grain, papier) qui n'est pas grise
+
+**On va l'éliminer complètement. Pas de compromis. 🎯**

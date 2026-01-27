@@ -1,0 +1,787 @@
+```json
+{
+  "parametres_algorithmiques": {
+    "extraction_parametres": {
+      "distance_regard": {
+        "moyenne_cm": 35,
+        "variation": 5,
+        "map_to": "viewing_distance_calibration"
+      },
+      "temps_observation": {
+        "secondes_moyennes": 1800,
+        "map_to": "detail_exposure_time"
+      },
+      "uniformite_detaille": {
+        "score": 0.98,
+        "map_to": "detail_distribution_uniformity"
+      },
+      "luminosite_divine": {
+        "score": 0.90,
+        "source_visibility": 0.15,
+        "map_to": "divine_light_simulation"
+      },
+      "surface_perfection": {
+        "score": 0.98,
+        "texture_visibility": 0.02,
+        "map_to": "surface_mirror_finish"
+      },
+      "symbole_clarte": {
+        "score": 0.95,
+        "map_to": "symbol_legibility_enhancement"
+      },
+      "objectivite_couleur": {
+        "score": 0.90,
+        "map_to": "color_objectivity_filter"
+      }
+    },
+
+    "mapping_translation_matrix": [
+      {
+        "id": "VANEYCK_001",
+        "adn_path": "essence.temporal_spatial_relationship.TIMELESS_FROZEN",
+        "pif_operation": {
+          "type": "temporal_freezing",
+          "parameters": {
+            "motion_blur": 0,
+            "time_indication": 0,
+            "atmospheric_perspective": 15,
+            "depth_precision": 98
+          }
+        },
+        "layer_configuration": {
+          "blend_mode": "normal",
+          "opacity": 1.0
+        }
+      },
+      {
+        "id": "VANEYCK_002",
+        "adn_path": "essence.material_spiritual_relationship.DIVINE_THROUGH_MATERIAL",
+        "pif_operation": {
+          "type": "divine_material_revelation",
+          "parameters": {
+            "material_precision": 98,
+            "spiritual_symbolism": 95,
+            "surface_perfection": 96,
+            "detail_as_revelation": 90
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_003",
+        "adn_path": "essence.subject_viewer_relationship.INVITATION_TO_SCRUTINY",
+        "pif_operation": {
+          "type": "microscopic_scrutiny_invitation",
+          "parameters": {
+            "viewing_distance_cm": 35,
+            "engagement_time_seconds": 1800,
+            "detail_accessibility": 98,
+            "mystery_level": 40
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_004",
+        "adn_path": "essence.light_revelation_relationship.LIGHT_AS_DIVINE_PROOF",
+        "pif_operation": {
+          "type": "divine_light_proof",
+          "parameters": {
+            "light_source_visibility": 15,
+            "divine_light_quality": 90,
+            "shadow_clarity": 95,
+            "reflection_accuracy": 98
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_005",
+        "adn_path": "gaze_psychology.gaze_strategies.MICROSCOPIC_SCRUTINY",
+        "pif_operation": {
+          "type": "gaze_microscopic_orchestration",
+          "parameters": {
+            "surface_smoothness": 98,
+            "detail_precision": 98,
+            "edge_blur": 0,
+            "texture_grain": 0.5,
+            "micro_contrast": 85
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_006",
+        "adn_path": "narrative_intent.narrative_archetypes.LEGAL_TESTIMONY",
+        "pif_operation": {
+          "type": "legal_testimony_enforcement",
+          "parameters": {
+            "detail_precision": 98,
+            "reflection_accuracy": 98,
+            "symbol_clarity": 95,
+            "text_legibility": 100,
+            "color_objectivity": 90
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_007",
+        "adn_path": "historical_constraints.historical_database.pigments_by_period.1400-1450_flanders",
+        "pif_operation": {
+          "type": "period_pigment_limitation",
+          "parameters": {
+            "available_colors": [
+              {"name": "Lapis-lazuli", "hex_range": ["#1F3A93", "#4169E1"]},
+              {"name": "Vermillon", "hex_range": ["#E34234", "#FF5349"]},
+              {"name": "Blanc de plomb", "hex": "#F8F8F8"},
+              {"name": "Ocre jaune", "hex_range": ["#CC7722", "#E6B325"]}
+            ],
+            "forbidden_colors": [
+              {"name": "Bleu de Prusse", "hex": "#003153"},
+              {"name": "Jaune de cadmium", "hex": "#FFF600"},
+              {"name": "Vert émeraude", "hex": "#50C878"}
+            ]
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_008",
+        "adn_path": "historical_constraints.historical_database.supports_by_period.1400-1500_flanders",
+        "pif_operation": {
+          "type": "wood_panel_simulation",
+          "parameters": {
+            "panel_type": "chêne_flamand",
+            "thickness_cm": 2.5,
+            "gesso_preparation": true,
+            "grain_fineness": 98
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_009",
+        "adn_path": "historical_constraints.historical_database.techniques_by_period.van_eyck_era",
+        "pif_operation": {
+          "type": "glazing_technique_simulation",
+          "parameters": {
+            "layer_count": 5,
+            "glazing_thickness": 0.3,
+            "drying_simulation": true,
+            "underpainting_visibility": 0.05
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_010",
+        "adn_path": "historical_constraints.anachronism_detector.correction_functions",
+        "pif_operation": {
+          "type": "anachronism_correction_system",
+          "parameters": {
+            "auto_correct_pigments": true,
+            "auto_correct_support": true,
+            "auto_correct_lighting": true,
+            "preserve_original_intent": true
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_011",
+        "adn_path": "integration_system.decision_matrix.resolve_parameters",
+        "pif_operation": {
+          "type": "parameter_conflict_resolution",
+          "parameters": {
+            "priority_hierarchy": [
+              "historical_constraints",
+              "narrative_intent",
+              "gaze_psychology",
+              "essence_analysis"
+            ],
+            "weight_adjustment": {
+              "historical": 1.0,
+              "narrative": 0.85,
+              "gaze": 0.75,
+              "essence": 0.65
+            }
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_012",
+        "adn_path": "narrative_intent.narrative_archetypes.LEGAL_TESTIMONY.required_elements.material_evidence",
+        "pif_operation": {
+          "type": "legal_evidence_enhancement",
+          "parameters": {
+            "mirror_reflection_intensity": 85,
+            "signature_visibility": 95,
+            "date_precision": 100,
+            "symbol_encoding_strength": 90
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_013",
+        "adn_path": "gaze_psychology.gaze_strategies.MICROSCOPIC_SCRUTINY.visual_techniques.distraction_elimination",
+        "pif_operation": {
+          "type": "distraction_elimination_system",
+          "parameters": {
+            "surface_texture": 0.02,
+            "background_noise": 0.05,
+            "competing_elements": 0.10,
+            "random_patterns": 0.00
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_014",
+        "adn_path": "gaze_psychology.gaze_strategies.MICROSCOPIC_SCRUTINY.visual_techniques.detail_accessibility",
+        "pif_operation": {
+          "type": "detail_universal_access",
+          "parameters": {
+            "edge_sharpness": 0.99,
+            "micro_detail_density": 0.95,
+            "contrast_local": 0.85,
+            "color_clarity": 0.90
+          }
+        }
+      },
+      {
+        "id": "VANEYCK_015",
+        "adn_path": "historical_constraints.historical_database.tools_by_period.1400-1450",
+        "pif_operation": {
+          "type": "period_tool_simulation",
+          "parameters": {
+            "brush_types": ["martre_fin", "soie_moyen"],
+            "mediums": ["huile_lin_cuite", "résine_mastic"],
+            "pigment_form": "poudre",
+            "lighting": "naturelle_nord"
+          }
+        }
+      }
+    ],
+
+    "generation_pif": {
+      "operations_count": 52,
+      "control_sliders": [
+        {
+          "name": "Historical_Accuracy",
+          "parameter": "historical_constraints.priority",
+          "range": [0, 100],
+          "default": 100,
+          "non_negotiable": true
+        },
+        {
+          "name": "Surface_Smoothness",
+          "parameter": "surface_mirror_finish.level",
+          "range": [80, 100],
+          "default": 98
+        },
+        {
+          "name": "Detail_Uniformity",
+          "parameter": "detail_distribution.uniformity",
+          "range": [85, 100],
+          "default": 98
+        },
+        {
+          "name": "Divine_Light_Quality",
+          "parameter": "divine_light.simulation",
+          "range": [70, 100],
+          "default": 90
+        },
+        {
+          "name": "Legal_Symbol_Clarity",
+          "parameter": "symbol_legibility.intensity",
+          "range": [80, 100],
+          "default": 95
+        }
+      ],
+      "dependencies": [
+        {
+          "operation": "wood_panel_simulation",
+          "depends_on": ["period_pigment_limitation", "historical_accuracy_validation"]
+        },
+        {
+          "operation": "legal_testimony_enforcement",
+          "depends_on": ["microscopic_scrutiny_invitation", "detail_universal_access"]
+        },
+        {
+          "operation": "glazing_technique_simulation",
+          "depends_on": ["surface_mirror_finish", "distraction_elimination_system"]
+        },
+        {
+          "operation": "anachronism_correction_system",
+          "depends_on": ["period_pigment_limitation", "period_tool_simulation"]
+        }
+      ],
+      "priority_rules": {
+        "rule_1": "historical_constraints always override other parameters",
+        "rule_2": "narrative_intent overrides gaze_psychology conflicts",
+        "rule_3": "gaze_psychology overrides essence_analysis conflicts",
+        "rule_4": "legal_testimony requires maximum clarity at expense of artistic effects"
+      }
+    },
+
+    "conversion_formats": {
+      "krita": {
+        "brush_presets": [
+          {
+            "name": "VanEyck_Martre_Fine",
+            "settings": {
+              "brushType": "gpu_round",
+              "size": [1, 3],
+              "opacity": 0.95,
+              "flow": 0.90,
+              "smoothness": 0.98,
+              "textureVisibility": 0.02
+            }
+          },
+          {
+            "name": "VanEyck_Glazing_Layer",
+            "settings": {
+              "brushType": "gpu_glaze",
+              "size": [5, 15],
+              "opacity": 0.25,
+              "flow": 0.85,
+              "layer_simulation": true,
+              "drying_time": 0.7
+            }
+          },
+          {
+            "name": "VanEyck_Micro_Detail",
+            "settings": {
+              "brushType": "gpu_pixel",
+              "size": [1, 2],
+              "opacity": 1.0,
+              "flow": 1.0,
+              "precision": 0.99,
+              "anti_alias": false
+            }
+          }
+        ],
+        "gradient_maps": [
+          {
+            "name": "VanEyck_Lapis_Lazuli_Palette",
+            "colors": [
+              {"pos": 0.0, "color": "#1F3A93"},
+              {"pos": 0.3, "color": "#2A4AB5"},
+              {"pos": 0.6, "color": "#4169E1"},
+              {"pos": 0.8, "color": "#6495ED"},
+              {"pos": 1.0, "color": "#87CEEB"}
+            ],
+            "historical_accuracy": 0.98
+          },
+          {
+            "name": "VanEyck_Vermillon_Flesh",
+            "colors": [
+              {"pos": 0.0, "color": "#8B0000"},
+              {"pos": 0.2, "color": "#B22222"},
+              {"pos": 0.5, "color": "#E34234"},
+              {"pos": 0.7, "color": "#FF5349"},
+              {"pos": 0.9, "color": "#FF6B6B"},
+              {"pos": 1.0, "color": "#FFA07A"}
+            ],
+            "pigment_mix": "Vermillon + Blanc de plomb"
+          }
+        ],
+        "template_layers": [
+          {
+            "name": "Wood_Panel_Base",
+            "type": "filterLayer",
+            "opacity": 0.15,
+            "blendMode": "multiply",
+            "properties": {
+              "texture": "flemish_oak",
+              "grain_size": 0.8,
+              "joinery_visible": 0.15,
+              "age_cracks": 0.3
+            }
+          },
+          {
+            "name": "Gesso_Preparation",
+            "type": "paintLayer",
+            "opacity": 0.95,
+            "blendMode": "normal",
+            "properties": {
+              "surface": "perfectly_smooth",
+              "reflectivity": 0.02,
+              "texture_absence": 0.98
+            }
+          },
+          {
+            "name": "Underdrawing_Tempera",
+            "type": "vectorLayer",
+            "opacity": 0.05,
+            "blendMode": "darken",
+            "properties": {
+              "line_precision": 0.99,
+              "detail_density": 0.95,
+              "symbol_placement": "legal_testimony"
+            }
+          },
+          {
+            "name": "Glazing_Layers",
+            "type": "groupLayer",
+            "layers": [
+              {
+                "name": "Glaze_1",
+                "opacity": 0.25,
+                "blendMode": "color"
+              },
+              {
+                "name": "Glaze_2",
+                "opacity": 0.20,
+                "blendMode": "softLight"
+              },
+              {
+                "name": "Glaze_3",
+                "opacity": 0.15,
+                "blendMode": "overlay"
+              },
+              {
+                "name": "Glaze_4",
+                "opacity": 0.10,
+                "blendMode": "hardLight"
+              }
+            ]
+          },
+          {
+            "name": "Legal_Symbols",
+            "type": "vectorLayer",
+            "opacity": 1.0,
+            "blendMode": "normal",
+            "properties": {
+              "mirror_reflections": true,
+              "signature_visible": true,
+              "witness_figures": true,
+              "date_precision": true
+            }
+          },
+          {
+            "name": "Divine_Light_Overlay",
+            "type": "filterLayer",
+            "opacity": 0.30,
+            "blendMode": "screen",
+            "properties": {
+              "light_source_hidden": true,
+              "diffusion_perfect": 0.90,
+              "shadow_precision": 0.95
+            }
+          }
+        ],
+        "master_script": "ADN_CONVERTER_V7_VAN_EYCK_LEGAL.py"
+      },
+
+      "lut_3d": {
+        "size": 32,
+        "color_operations": [
+          {
+            "operation": "historical_pigment_limitation",
+            "parameters": {
+              "allowed_gamut": "1400-1450_flanders",
+              "modern_color_replacement": "auto_correct",
+              "lapis_lazuli_emulation": 0.85
+            }
+          },
+          {
+            "operation": "objectivity_enhancement",
+            "parameters": {
+              "emotional_coloring": 0.10,
+              "documentary_neutrality": 0.90,
+              "symbol_clarity_boost": 0.15
+            }
+          },
+          {
+            "operation": "divine_light_simulation",
+            "parameters": {
+              "source_obscuration": 0.85,
+              "diffusion_perfection": 0.90,
+              "celestial_quality": 0.75
+            }
+          },
+          {
+            "operation": "surface_perfection_filter",
+            "parameters": {
+              "texture_removal": 0.98,
+              "reflection_enhancement": 0.95,
+              "micro_contrast": 0.85
+            }
+          }
+        ],
+        "gamut_limitations": {
+          "forbidden_hex_codes": ["#003153", "#FFF600", "#50C878", "#E32636"],
+          "period_appropriate": true,
+          "correction_algorithm": "nearest_period_color"
+        }
+      },
+
+      "validation_profiles": {
+        "legal_testimony": {
+          "required_metrics": {
+            "detail_precision": 98,
+            "symbol_clarity": 95,
+            "color_objectivity": 90,
+            "surface_smoothness": 98
+          },
+          "forbidden_effects": [
+            "brush_strokes_visible",
+            "emotional_coloring",
+            "atmospheric_haze",
+            "excessive_texture"
+          ]
+        },
+        "microscopic_scrutiny": {
+          "required_metrics": {
+            "edge_sharpness": 0.99,
+            "detail_uniformity": 0.95,
+            "distraction_level": 0.05,
+            "viewing_distance": 35
+          }
+        }
+      }
+    },
+
+    "historical_correction_module": {
+      "detection_algorithms": [
+        {
+          "name": "pigment_anachronism_detector",
+          "sensitivity": 0.95,
+          "action": "auto_replace",
+          "correction_method": "nearest_historical_equivalent"
+        },
+        {
+          "name": "support_texture_detector",
+          "sensitivity": 0.90,
+          "action": "transform_to_wood_panel",
+          "parameters": {
+            "wood_type": "flemish_oak",
+            "age_simulation": 400
+          }
+        },
+        {
+          "name": "lighting_anachronism_detector",
+          "sensitivity": 0.85,
+          "action": "convert_to_natural_light",
+          "parameters": {
+            "window_direction": "north",
+            "diffusion_level": 0.90
+          }
+        },
+        {
+          "name": "technique_anachronism_detector",
+          "sensitivity": 0.80,
+          "actions": [
+            "reduce_impasto_if_thick",
+            "conceal_brush_marks",
+            "add_glazing_layers"
+          ]
+        }
+      ],
+      "correction_workflow": [
+        "1. Detect anachronistic pigments → replace",
+        "2. Detect modern support → convert to wood panel",
+        "3. Detect artificial lighting → natural light simulation",
+        "4. Detect modern techniques → historical technique enforcement",
+        "5. Validate historical compliance → generate report"
+      ]
+    },
+
+    "performance_optimization": {
+      "gpu_kernels": [
+        {
+          "name": "historical_pigment_correction",
+          "function": "replace_anachronistic_colors",
+          "batch_size": 2048,
+          "optimization": "parallel_gamut_mapping"
+        },
+        {
+          "name": "surface_perfection",
+          "function": "apply_mirror_finish",
+          "batch_size": 1024,
+          "optimization": "gpu_smoothing"
+        },
+        {
+          "name": "detail_uniformity_analysis",
+          "function": "analyze_detail_distribution",
+          "batch_size": 512,
+          "optimization": "parallel_density_calc"
+        },
+        {
+          "name": "wood_panel_simulation",
+          "function": "generate_historical_support",
+          "batch_size": 256,
+          "optimization": "procedural_texture_gen"
+        }
+      ],
+      "cpu_fallback": {
+        "enabled": true,
+        "batch_size": 128,
+        "threads": 8,
+        "historical_correction": true
+      },
+      "estimated_times": {
+        "gpu_mode": "8-12 seconds",
+        "cpu_mode": "25-35 seconds",
+        "historical_correction_extra": "+3-5 seconds"
+      }
+    },
+
+    "validation_metrics_v7": {
+      "conformity_tests": [
+        {
+          "test": "historical_accuracy",
+          "threshold": 0.96,
+          "weight": 0.30,
+          "non_negotiable": true
+        },
+        {
+          "test": "narrative_coherence",
+          "threshold": 0.94,
+          "weight": 0.25
+        },
+        {
+          "test": "gaze_effectiveness",
+          "threshold": 0.91,
+          "weight": 0.20
+        },
+        {
+          "test": "essence_fidelity",
+          "threshold": 0.95,
+          "weight": 0.15
+        },
+        {
+          "test": "legal_testimony_clarity",
+          "threshold": 0.96,
+          "weight": 0.10
+        }
+      ],
+      "target_conformity": 0.94,
+      "validation_images": 12,
+      "reference_set": "van_eyck_corpus_legal_testimony"
+    },
+
+    "parameter_resolution_rules": {
+      "hierarchy": [
+        {
+          "priority": 1,
+          "source": "historical_constraints",
+          "weight": 1.0,
+          "description": "Anachronism corrections are mandatory"
+        },
+        {
+          "priority": 2,
+          "source": "narrative_intent",
+          "weight": 0.85,
+          "description": "Legal testimony requires maximum clarity"
+        },
+        {
+          "priority": 3,
+          "source": "gaze_psychology",
+          "weight": 0.75,
+          "description": "Microscopic scrutiny dictates detail distribution"
+        },
+        {
+          "priority": 4,
+          "source": "essence_analysis",
+          "weight": 0.65,
+          "description": "Van Eyck's timeless frozen style"
+        }
+      ],
+      "conflict_examples": [
+        {
+          "parameter": "crackle_intensity",
+          "sources": [
+            "historical: 10 (400 years aging)",
+            "narrative: 5 (legal clarity)",
+            "gaze: 5 (detail visibility)",
+            "essence: 8 (period accurate)"
+          ],
+          "resolved_value": 6,
+          "reasoning": "Legal testimony overrides historical aging for this parameter"
+        },
+        {
+          "parameter": "brushmark_visibility",
+          "sources": [
+            "historical: 0 (Van Eyck concealed)",
+            "narrative: 2 (distracting)",
+            "gaze: 0 (distracting)",
+            "essence: 0 (imperfection)"
+          ],
+          "resolved_value": 0,
+          "reasoning": "All sources agree - eliminate brush marks"
+        }
+      ]
+    },
+
+    "system_log_events_v7": [
+      "[00.00] Initializing V7.0 PSYCHONARRATIVE HISTORICAL conversion...",
+      "[00.20] ✓ Layer 1: Essence analysis - TIMELESS_FROZEN detected (92%)",
+      "[00.45] ✓ Layer 2: Gaze psychology - MICROSCOPIC_SCRUTINY identified (89%)",
+      "[01.10] ✓ Layer 3: Narrative intent - LEGAL_TESTIMONY confirmed (94%)",
+      "[01.40] ► Layer 4: Historical validation...",
+      "[02.00] ⚠️  Historical: 2 anachronisms detected (Bleu de Prusse, Toile industrielle)",
+      "[02.30] ► Auto-correction: Lapis-lazuli replacement applied",
+      "[03.00] ► Auto-correction: Wood panel simulation (Flemish oak)",
+      "[03.30] ✓ Historical compliance achieved: 96% accuracy",
+      "[04.00] ► Parameter conflict resolution...",
+      "[04.30] ✓ Resolution: Historical > Narrative > Gaze > Essence",
+      "[05.00] ► Generating V7.0 bundle with 4-layer integration...",
+      "[05.30] ► Creating Krita template with 6 specialized layers",
+      "[06.00] ► Applying divine light simulation (source hidden: 85%)",
+      "[06.30] ► Enhancing legal symbols (clarity: 95%)",
+      "[07.00] ► Eliminating distractions (noise: 5%, texture: 2%)",
+      "[07.30] ► Uniformizing details (98% accessibility)",
+      "[08.00] ✓ V7.0 CONVERSION COMPLETE",
+      "[08.20] 📊 FINAL METRICS:",
+      "[08.25]   Historical accuracy: 96% ✓",
+      "[08.30]   Narrative coherence: 94% ✓",
+      "[08.35]   Gaze effectiveness: 91% ✓",
+      "[08.40]   Essence fidelity: 95% ✓",
+      "[08.45]   OVERALL RATING: 94% (Target: 94%+) ✓",
+      "[09.00] ✅ V7.0 BUNDLE READY: VAN_EYCK_LEGAL_TESTIMONY_1434.zip"
+    ],
+
+    "unique_v7_characteristics": [
+      "4-layer analysis integration (Essence + Gaze + Narrative + Historical)",
+      "Anachronism auto-detection and correction",
+      "Historical pigment gamut enforcement",
+      "Legal testimony narrative enhancement",
+      "Microscopic scrutiny gaze optimization",
+      "Parameter conflict resolution with weighted hierarchy",
+      "Period-accurate tool and technique simulation"
+    ],
+
+    "v7_improvements_over_v6": [
+      "Understands WHY Van Eyck was smooth (for legal scrutiny, not just style)",
+      "Corrects historical errors automatically (no bleu de Prusse in 1434)",
+      "Adds missing narrative elements (mirror reflections, legal symbols)",
+      "Orchestrates viewer gaze (forces microscopic observation)",
+      "Resolves parameter conflicts intelligently (history > narrative > gaze > essence)",
+      "Generates contextual bundles (not generic 'Van Eyck style')"
+    ]
+  }
+}
+```
+
+---
+
+## 🎯 **RÉSUMÉ DES PARAMÈTRES OPTIMAUX V7.0**
+
+### **ALGORITHMES CLÉS :**
+1. **Détection/correction anachronismes** : Auto-remplacement pigments modernes
+2. **Simulation support historique** : Transformation toile → panneau bois
+3. **Orchestration regard** : Forçage observation microscopique
+4. **Renforcement narration** : Ajout symboles témoignage légal
+5. **Résolution conflits** : Hiérarchie historique > narrative > regard > essence
+
+### **VALEURS CARACTÉRISTIQUES VAN EYCK LEGAL :**
+- **Surface lisse** : 98% (miroir parfait)
+- **Détails uniformes** : 98% (accessibilité totale)
+- **Lumière divine** : 90% (source cachée)
+- **Symboles légaux** : 95% (clarté maximale)
+- **Objectivité couleurs** : 90% (émotion minimisée)
+
+### **EXCEPTIONS AUX RÈGLES GÉNÉRALES :**
+- **Craquelures** : 6% seulement (clarté légale > vieillissement)
+- **Texture** : 2% maximum (distraction légale)
+- **Émotion** : 10% seulement (objectivité documentaire)
+
+### **CONFORMITÉ VISÉE :**
+- **Images génériques** : 94-96%
+- **Images intention claire** : 97-99%
+- **Limite** : 1-3% variations maître individuel
+
+Ces paramètres implémentent l'architecture V7 complète avec ses 4 couches d'analyse et son système auto-correctif, produisant des conversions **contextuellement intelligentes** plutôt que de simples filtres stylistiques.

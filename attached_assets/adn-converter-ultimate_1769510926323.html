@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADN CONVERTER V7.0 - Psychonarrative Historical</title>
+    
+    <!-- Typographies DISTINCTIVES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================
+           VARIABLES & RESET
+           ========================================== */
+        :root {
+            /* Palette Unique - Pas de violet générique */
+            --void: #050508;
+            --abyss: #0a0a12;
+            --carbon: #141420;
+            --slate: #1e1e2e;
+            
+            /* Accents distinctifs */
+            --cyan-glow: #00ffff;
+            --magenta-pulse: #ff006e;
+            --amber-spark: #ffbe0b;
+            --jade-core: #06ffa5;
+            
+            /* Texte */
+            --text-prime: #e8e8f0;
+            --text-second: #9ca3af;
+            --text-muted: #6b7280;
+            
+            /* Effets */
+            --border-glow: rgba(0, 255, 255, 0.3);
+            --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.8);
+            --shadow-neon: 0 0 30px rgba(0, 255, 255, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--void);
+            color: var(--text-prime);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* ==========================================
+           BACKGROUND EFFECTS
+           ========================================== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 25%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(255, 0, 110, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 190, 11, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .app-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ==========================================
+           TYPOGRAPHY
+           ========================================== */
+        .display-font {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .tech-font {
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 0.02em;
+        }
+        
+        /* ==========================================
+           GLASS PANELS
+           ========================================== */
+        .glass-panel {
+            background: rgba(20, 20, 32, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: var(--shadow-deep);
+        }
+        
+        .glass-panel:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            transition: border-color 0.3s ease;
+        }
+        
+        /* ==========================================
+           HEADER
+           ========================================== */
+        .header {
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--cyan-glow), var(--jade-core));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--void);
+            animation: pulse-glow 3s ease-in-out infinite;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.6); }
+            50% { box-shadow: 0 0 60px rgba(0, 255, 255, 0.9); }
+        }
+        
+        .title {
+            font-size: 3rem;
+            background: linear-gradient(90deg, 
+                var(--cyan-glow) 0%, 
+                var(--jade-core) 50%, 
+                var(--amber-spark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: title-shimmer 5s linear infinite;
+            background-size: 200% 100%;
+        }
+        
+        @keyframes title-shimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .subtitle {
+            color: var(--text-second);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            letter-spacing: 0.15em;
+        }
+        
+        .status-badge {
+            background: rgba(6, 255, 165, 0.1);
+            border: 1px solid var(--jade-core);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--jade-core);
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        /* ==========================================
+           MAIN LAYOUT
+           ========================================== */
+        .main-layout {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 2rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 2rem;
+        }
+        
+        /* ==========================================
+           CANVAS AREA - LA SOLUTION QUI MARCHE
+           ========================================== */
+        .canvas-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .canvas-container {
+            position: relative;
+            height: 700px;
+            overflow: hidden;
+        }
+        
+        /* ZONE D'AFFICHAGE - Utilise IMG pour centrage parfait */
+        .canvas-display {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--abyss);
+            position: relative;
+            border-radius: 16px;
+            border: 2px solid rgba(0, 255, 255, 0.2);
+            overflow: hidden;
+        }
+        
+        /* L'IMAGE - object-fit: contain GARANTI */
+        #artworkImage {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain; /* ✅ CETTE LIGNE RÉSOUT TOUT */
+            display: none;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Canvas caché pour le traitement */
+        #processingCanvas {
+            display: none;
+        }
+        
+        /* Placeholder quand pas d'image */
+        .canvas-placeholder {
+            text-align: center;
+            padding: 3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        
+        .placeholder-icon {
+            font-size: 5rem;
+            background: linear-gradient(135deg, var(--cyan-glow), var(--magenta-pulse));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .placeholder-title {
+            font-size: 1.8rem;
+            color: var(--cyan-glow);
+            margin-bottom: 0.5rem;
+        }
+        
+        .placeholder-subtitle {
+            color: var(--text-second);
+            font-size: 1rem;
+        }
+        
+        /* Scan line effect */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--cyan-glow), 
+                transparent);
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(700px); }
+        }
+        
+        /* ==========================================
+           CONTROLS
+           ========================================== */
+        .canvas-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cyan-glow), var(--jade-core));
+            color: var(--void);
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 255, 255, 0.6);
+        }
+        
+        .btn-secondary {
+            background: rgba(30, 30, 46, 0.8);
+            color: var(--text-prime);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(40, 40, 56, 0.9);
+            border-color: var(--cyan-glow);
+        }
+        
+        .btn-export {
+            background: linear-gradient(135deg, var(--amber-spark), var(--magenta-pulse));
+            color: var(--void);
+            box-shadow: 0 4px 20px rgba(255, 190, 11, 0.4);
+        }
+        
+        .btn-export:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 190, 11, 0.6);
+        }
+        
+        /* ==========================================
+           PARAMETERS PANEL
+           ========================================== */
+        .params-panel {
+            display: flex;
+            flex-direction: column;
+            max-height: 900px;
+        }
+        
+        .panel-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .panel-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .panel-subtitle {
+            color: var(--text-second);
+            font-size: 0.9rem;
+        }
+        
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+        
+        /* Custom scrollbar */
+        .panel-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .panel-content::-webkit-scrollbar-track {
+            background: rgba(0, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        
+        .panel-content::-webkit-scrollbar-thumb {
+            background: var(--cyan-glow);
+            border-radius: 4px;
+        }
+        
+        /* ==========================================
+           DIMENSION SECTIONS
+           ========================================== */
+        .dimension-section {
+            background: rgba(10, 10, 18, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .dimension-section:hover {
+            border-color: rgba(0, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .dimension-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .dimension-title {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .dimension-value {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--cyan-glow);
+        }
+        
+        /* Master slider */
+        .master-slider-container {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(0, 255, 255, 0.2);
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            color: var(--text-second);
+            font-size: 0.9rem;
+        }
+        
+        /* Slider custom styling */
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, 
+                var(--jade-core) 0%, 
+                var(--amber-spark) 50%, 
+                var(--magenta-pulse) 100%);
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .slider:hover {
+            opacity: 1;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--cyan-glow);
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--cyan-glow);
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        }
+        
+        /* Sub parameters */
+        .param-item {
+            margin-bottom: 1rem;
+        }
+        
+        .param-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .param-name {
+            color: var(--text-prime);
+        }
+        
+        .param-value {
+            color: var(--cyan-glow);
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        .param-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(0, 255, 255, 0.2);
+            outline: none;
+        }
+        
+        .param-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--cyan-glow);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+        
+        .param-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--cyan-glow);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+        
+        /* ==========================================
+           PROCESSING OVERLAY
+           ========================================== */
+        .processing-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 8, 0.95);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        
+        .processing-content {
+            text-align: center;
+        }
+        
+        .processing-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(0, 255, 255, 0.1);
+            border-top: 4px solid var(--cyan-glow);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .processing-title {
+            font-size: 2rem;
+            color: var(--cyan-glow);
+            margin-bottom: 1rem;
+        }
+        
+        .processing-subtitle {
+            color: var(--text-second);
+            margin-bottom: 1.5rem;
+        }
+        
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(0, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyan-glow), var(--jade-core));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 1200px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .params-panel {
+                max-height: 600px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .canvas-container {
+                height: 500px;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* ==========================================
+           UTILITY CLASSES
+           ========================================== */
+        .hidden {
+            display: none !important;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <!-- Grid overlay -->
+    <div class="grid-overlay"></div>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header glass-panel">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <div>
+                        <h1 class="title display-font">ADN CONVERTER V7.0</h1>
+                        <p class="subtitle tech-font">PSYCHONARRATIVE HISTORICAL • FLUID EDITION</p>
+                    </div>
+                </div>
+                
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    <span class="tech-font">MASTER PROCESSOR ONLINE</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main layout -->
+        <main class="main-layout">
+            <!-- Canvas section -->
+            <div class="canvas-section">
+                <!-- Canvas container -->
+                <div class="canvas-container glass-panel">
+                    <div class="canvas-display">
+                        <!-- L'IMAGE qui affiche ton artwork - object-fit: contain GARANTI -->
+                        <img id="artworkImage" alt="NFT Artwork">
+                        
+                        <!-- Canvas caché pour le traitement -->
+                        <canvas id="processingCanvas"></canvas>
+                        
+                        <!-- Placeholder -->
+                        <div id="canvasPlaceholder" class="canvas-placeholder">
+                            <div class="placeholder-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3 class="placeholder-title display-font">CANVAS READY</h3>
+                            <p class="placeholder-subtitle">Upload your NFT artwork to begin transformation</p>
+                        </div>
+                        
+                        <!-- Scan line -->
+                        <div class="scan-line"></div>
+                        
+                        <!-- Processing overlay -->
+                        <div id="processingOverlay" class="processing-overlay">
+                            <div class="processing-content">
+                                <div class="processing-spinner"></div>
+                                <h3 class="processing-title display-font">PROCESSING ADN</h3>
+                                <p class="processing-subtitle">Applying 6D cognitive parameters...</p>
+                                <div class="progress-bar">
+                                    <div id="progressFill" class="progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Controls -->
+                <div class="canvas-controls">
+                    <button id="uploadBtn" class="btn btn-secondary">
+                        <i class="fas fa-upload"></i>
+                        Upload Artwork
+                    </button>
+                    
+                    <button id="processBtn" class="btn btn-primary" disabled>
+                        <i class="fas fa-play"></i>
+                        Process ADN
+                    </button>
+                    
+                    <button id="exportBtn" class="btn btn-export" disabled>
+                        <i class="fas fa-download"></i>
+                        Export V7.0.2
+                    </button>
+                    
+                    <button id="resetBtn" class="btn btn-secondary" disabled>
+                        <i class="fas fa-redo"></i>
+                        Reset
+                    </button>
+                    
+                    <!-- Hidden file input -->
+                    <input type="file" id="fileInput" accept="image/*" class="hidden">
+                </div>
+            </div>
+            
+            <!-- Parameters panel -->
+            <aside class="params-panel glass-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title display-font">ADN PARAMETERS</h2>
+                    <p class="panel-subtitle">Granular Mix 0-100% • Master Slider Control</p>
+                </div>
+                
+                <div class="panel-content">
+                    <!-- Dimension 1: Temps-Espace -->
+                    <div class="dimension-section">
+                        <div class="dimension-header">
+                            <h3 class="dimension-title">
+                                <i class="fas fa-hourglass-half"></i>
+                                <span>TEMPS-ESPACE</span>
+                            </h3>
+                            <span id="timeValue" class="dimension-value">78%</span>
+                        </div>
+                        
+                        <div class="master-slider-container">
+                            <div class="slider-label">
+                                <span>Intensité globale</span>
+                                <span class="tech-font">Master</span>
+                            </div>
+                            <input type="range" id="timeMaster" class="slider" min="0" max="100" value="78">
+                        </div>
+                        
+                        <div class="param-item">
+                            <div class="param-label">
+                                <span class="param-name">Timeless Frozen</span>
+                                <span class="param-value">45%</span>
+                            </div>
+                            <input type="range" class="param-slider" min="0" max="100" value="45" data-param="timeless">
+                        </div>
+                        
+                        <div class="param-item">
+                            <div class="param-label">
+                                <span class="param-name">Atmospheric Duration</span>
+                                <span class="param-value">60%</span>
+                            </div>
+                            <input type="range" class="param-slider" min="0" max="100" value="60" data-param="atmospheric">
+                        </div>
+                        
+                        <div class="param-item">
+                            <div class="param-label">
+                                <span class="param-name">Dramatic Moment</span>
+                                <span class="param-value">75%</span>
+                            </div>
+                            <input type="range" class="param-slider" min="0" max="100" value="75" data-param="dramatic">
+                        </div>
+                        
+                        <div class="param-item">
+                            <div class="param-label">
+                                <span class="param-name">Motion Blur</span>
+                                <span class="param-value">30%</span>
+                            </div>
+                            <input type="range" class="param-slider" min="0" max="100" value="30" data-param="motion">
+                        </div>
+                    </div>
+                    
+                    <!-- Dimension 2: Matière-Esprit -->
+                    <div class="dimension-section">
+                        <div class="dimension-header">
+                            <h3 class="dimension-title">
+                                <i class="fas fa-brush"></i>
+                                <span>MATIÈRE-ESPRIT</span>
+                            </h3>
+                            <span id="matterValue" class="dimension-value">72%</span>
+                        </div>
+                        
+                        <div class="master-slider-container">
+                            <div class="slider-label">
+                                <span>Intensité globale</span>
+                                <span class="tech-font">Master</span>
+                            </div>
+                            <input type="range" id="matterMaster" class="slider" min="0" max="100" value="72">
+                        </div>
+                        
+                        <div class="param-item">
+                            <div class="param-label">
+                                <span class="param-name">Divine Through Material</span>
+                                <span class="param-value">88%</span>
+                            </div>
+                            <input type="range" class="param-slider" min="0" max="100" value="88" data-param="divine">
+                        </div>
+                        
+                        <div class="param-item">
+                            <div class="param-label">
+                                <span class="param-name">Material Precision</span>
+                                <span class="param-value">92%</span>
+                            </div>
+                            <input type="range" class="param-slider" min="0" max="100" value="92" data-param="precision">
+                        </div>
+                    </div>
+                    
+                    <!-- Dimension 3: Lumière-Révélation -->
+                    <div class="dimension-section">
+                        <div class="dimension-header">
+                            <h3 class="dimension-title">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>LUMIÈRE-RÉVÉLATION</span>
+                            </h3>
+                            <span id="lightValue" class="dimension-value">81%</span>
+                        </div>
+                        
+                        <div class="master-slider-container">
+                            <div class="slider-label">
+                                <span>Intensité globale</span>
+                                <span class="tech-font">Master</span>
+                            </div>
+                            <input type="range" id="lightMaster" class="slider" min="0" max="100" value="81">
+                        </div>
+                        
+                        <div class="param-item">
+                            <div class="param-label">
+                                <span class="param-name">Light as Divine Proof</span>
+                                <span class="param-value">95%</span>
+                            </div>
+                            <input type="range" class="param-slider" min="0" max="100" value="95" data-param="lightproof">
+                        </div>
+                        
+                        <div class="param-item">
+                            <div class="param-label">
+                                <span class="param-name">Shadow Softness</span>
+                                <span class="param-value">64%</span>
+                            </div>
+                            <input type="range" class="param-slider" min="0" max="100" value="64" data-param="shadow">
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+    
+    <script>
+        // ==========================================
+        // VARIABLES GLOBALES
+        // ==========================================
+        let uploadedImage = null;
+        let processedImage = null;
+        
+        const artworkImage = document.getElementById('artworkImage');
+        const processingCanvas = document.getElementById('processingCanvas');
+        const ctx = processingCanvas.getContext('2d');
+        const placeholder = document.getElementById('canvasPlaceholder');
+        const processingOverlay = document.getElementById('processingOverlay');
+        const progressFill = document.getElementById('progressFill');
+        
+        const uploadBtn = document.getElementById('uploadBtn');
+        const processBtn = document.getElementById('processBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const fileInput = document.getElementById('fileInput');
+        
+        // ==========================================
+        // UPLOAD D'IMAGE
+        // ==========================================
+        uploadBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please select a valid image file');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                uploadedImage = new Image();
+                uploadedImage.onload = function() {
+                    // Afficher l'image avec object-fit: contain (CENTRAGE PARFAIT)
+                    artworkImage.src = event.target.result;
+                    artworkImage.style.display = 'block';
+                    
+                    // Cacher le placeholder
+                    placeholder.style.display = 'none';
+                    
+                    // Activer les boutons
+                    processBtn.disabled = false;
+                    resetBtn.disabled = false;
+                    
+                    console.log('✅ Image uploaded:', uploadedImage.width, 'x', uploadedImage.height);
+                };
+                uploadedImage.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+        
+        // ==========================================
+        // TRAITEMENT ADN
+        // ==========================================
+        processBtn.addEventListener('click', async function() {
+            if (!uploadedImage) return;
+            
+            // Afficher l'overlay de processing
+            processingOverlay.style.display = 'flex';
+            progressFill.style.width = '0%';
+            
+            // Simuler le traitement progressif
+            for (let i = 0; i <= 100; i += 5) {
+                await new Promise(resolve => setTimeout(resolve, 50));
+                progressFill.style.width = i + '%';
+            }
+            
+            // Traiter l'image
+            await processImageWithADN();
+            
+            // Cacher l'overlay
+            processingOverlay.style.display = 'none';
+            
+            // Activer l'export
+            exportBtn.disabled = false;
+            
+            console.log('✅ ADN processing complete');
+        });
+        
+        // ==========================================
+        // FONCTION DE TRAITEMENT (avec canvas caché)
+        // ==========================================
+        async function processImageWithADN() {
+            // Configurer le canvas caché avec la taille de l'image originale
+            processingCanvas.width = uploadedImage.width;
+            processingCanvas.height = uploadedImage.height;
+            
+            // Dessiner l'image originale
+            ctx.drawImage(uploadedImage, 0, 0);
+            
+            // Récupérer les valeurs des paramètres
+            const timeMaster = document.getElementById('timeMaster').value;
+            const matterMaster = document.getElementById('matterMaster').value;
+            const lightMaster = document.getElementById('lightMaster').value;
+            
+            // Appliquer les effets
+            const imageData = ctx.getImageData(0, 0, processingCanvas.width, processingCanvas.height);
+            const data = imageData.data;
+            
+            // Effet de luminosité basé sur lightMaster
+            const brightness = 0.8 + (lightMaster / 100) * 0.4;
+            
+            // Effet de contraste basé sur matterMaster
+            const contrast = 0.8 + (matterMaster / 100) * 0.5;
+            
+            // Effet temporel basé sur timeMaster
+            const temporalShift = timeMaster / 100 * 0.15;
+            
+            for (let i = 0; i < data.length; i += 4) {
+                // Appliquer luminosité
+                data[i] = Math.min(255, data[i] * brightness);
+                data[i + 1] = Math.min(255, data[i + 1] * brightness);
+                data[i + 2] = Math.min(255, data[i + 2] * brightness);
+                
+                // Appliquer contraste
+                data[i] = Math.min(255, ((data[i] - 128) * contrast) + 128);
+                data[i + 1] = Math.min(255, ((data[i + 1] - 128) * contrast) + 128);
+                data[i + 2] = Math.min(255, ((data[i + 2] - 128) * contrast) + 128);
+                
+                // Décalage temporel (teinte cyan)
+                data[i + 2] = Math.min(255, data[i + 2] + (255 * temporalShift));
+            }
+            
+            ctx.putImageData(imageData, 0, 0);
+            
+            // Convertir le canvas en image et l'afficher
+            processedImage = processingCanvas.toDataURL('image/png');
+            artworkImage.src = processedImage;
+        }
+        
+        // ==========================================
+        // EXPORT
+        // ==========================================
+        exportBtn.addEventListener('click', function() {
+            if (!processedImage && !uploadedImage) {
+                alert('No artwork to export');
+                return;
+            }
+            
+            // Créer le lien de téléchargement
+            const link = document.createElement('a');
+            link.download = `adn-converter-v7-${Date.now()}.png`;
+            link.href = processedImage || artworkImage.src;
+            link.click();
+            
+            console.log('✅ Artwork exported (V7.0.2 - Pure image, no canvas frame)');
+        });
+        
+        // ==========================================
+        // RESET
+        // ==========================================
+        resetBtn.addEventListener('click', function() {
+            if (!confirm('Reset canvas and parameters?')) return;
+            
+            // Réinitialiser l'affichage
+            artworkImage.style.display = 'none';
+            artworkImage.src = '';
+            placeholder.style.display = 'block';
+            
+            // Réinitialiser les variables
+            uploadedImage = null;
+            processedImage = null;
+            
+            // Désactiver les boutons
+            processBtn.disabled = true;
+            exportBtn.disabled = true;
+            resetBtn.disabled = true;
+            
+            // Réinitialiser le file input
+            fileInput.value = '';
+            
+            console.log('✅ Canvas reset');
+        });
+        
+        // ==========================================
+        // GESTION DES SLIDERS
+        // ==========================================
+        
+        // Master sliders
+        document.getElementById('timeMaster').addEventListener('input', function() {
+            document.getElementById('timeValue').textContent = this.value + '%';
+        });
+        
+        document.getElementById('matterMaster').addEventListener('input', function() {
+            document.getElementById('matterValue').textContent = this.value + '%';
+        });
+        
+        document.getElementById('lightMaster').addEventListener('input', function() {
+            document.getElementById('lightValue').textContent = this.value + '%';
+        });
+        
+        // Sub-parameter sliders
+        document.querySelectorAll('.param-slider').forEach(slider => {
+            slider.addEventListener('input', function() {
+                const valueDisplay = this.parentElement.querySelector('.param-value');
+                if (valueDisplay) {
+                    valueDisplay.textContent = this.value + '%';
+                }
+            });
+        });
+        
+        // ==========================================
+        // ANIMATIONS
+        // ==========================================
+        
+        // Animation du titre
+        const title = document.querySelector('.title');
+        let hue = 180;
+        setInterval(() => {
+            hue = (hue + 0.5) % 360;
+        }, 50);
+        
+        console.log('🚀 ADN CONVERTER V7.0 initialized');
+        console.log('✅ Canvas ready with object-fit: contain');
+        console.log('✅ Perfect centering guaranteed');
+    </script>
+</body>
+</html>

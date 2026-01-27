@@ -1,0 +1,173 @@
+Voici une liste de sites et services proposant l'upscaling gratuit d'images, avec ceux qui offrent des API gratuites en priorité :
+
+📡 AVEC API GRATUITE
+1. DeepAI Image Upscaling API
+Site : deepai.org
+
+API Gratuite : Oui (100 appels/mois gratuit)
+
+Limitations : 500x500px max en entrée, format JPEG/PNG
+
+Avantages : Simple à utiliser, résultats corrects
+
+Exemple d'appel API :
+
+bash
+curl -F 'image=@your_image.jpg' https://api.deepai.org/api/torch-srgan
+2. Let's Enhance API
+Site : letsenhance.io
+
+API Gratuite : 10 crédits gratuits (10 images)
+
+Limitations : Après crédits gratuits, payant
+
+Qualité : Très bonne qualité d'upscaling
+
+Documentation API : docs.letsenhance.io
+
+3. Upscale.media API
+Site : upscale.media
+
+API Gratuite : Oui (limité)
+
+Limite : 20 images/mois gratuitement
+
+Format : Jusqu'à 4x upscale
+
+Avantage : Interface simple et API REST
+
+4. Bigjpg API (Partiellement gratuit)
+Site : bigjpg.com
+
+API Gratuite : 20 images/mois en basse priorité
+
+Limitations : Queue de traitement plus longue
+
+Spécialité : Excellent pour images dessin/anime
+
+5. Replicate.com (Modèles open-source)
+Site : replicate.com
+
+API Gratuite : Oui (crédits initiaux gratuits)
+
+Modèles : Real-ESRGAN, GFPGAN, etc.
+
+Avantage : Plusieurs modèles d'upscaling disponibles
+
+Exemple :
+
+python
+import replicate
+output = replicate.run("nightmareai/real-esrgan:...", input={"image": open("image.png", "rb")})
+🌐 SITES WEB GRATUITS (sans API)
+6. Waifu2x
+Site : waifu2x.udp.jp
+
+Spécialité : Anime/illustrations
+
+Gratuit : Completement gratuit
+
+Limitations : 5MB max, pas d'API publique
+
+Alternative : waifu2x.booru.pics
+
+7. Image Upscaler
+Site : imageupscaler.com
+
+Gratuit : Jusqu'à 5 images/jour
+
+Limitations : 2000x2000px output max
+
+Qualité : Bonne pour photos réelles
+
+8. Fotor Image Enlarger
+Site : fotor.com/features/image-enlarger
+
+Gratuit : Usage basique gratuit
+
+Limitations : Watermark sur version gratuite
+
+Avantage : Interface intuitive
+
+9. Img.Upscaler
+Site : imgupscaler.com
+
+Gratuit : 3 images/jour
+
+Limitations : 4MB max par image
+
+Format : JPG, PNG, WebP
+
+10. PicWish
+Site : picwish.com/image-enlarger
+
+Gratuit : 3 images gratuitement
+
+Qualité : Bonne qualité d'upscaling
+
+Limitations : Après 3 images, payant
+
+🛠️ SELF-HOSTED / OPEN SOURCE (API gratuite si vous hébergez)
+11. Real-ESRGAN
+GitHub : xinntao/Real-ESRGAN
+
+Type : Open-source
+
+API : Oui (si vous déployez vous-même)
+
+Avantage : Meilleure qualité open-source disponible
+
+Déploiement simple : Avec Docker
+
+12. GFPGAN (Face restoration + upscaling)
+GitHub : TencentARC/GFPGAN
+
+Spécialité : Visages
+
+API : Déployable localement
+
+Idéal pour : Portraits, visages
+
+13. Cupscale (Interface GUI)
+GitHub : n00mkrad/cupscale
+
+Type : Interface pour ESRGAN
+
+Avantage : Local, pas de limitations
+
+Prérequis : GPU recommandé
+
+14. chaiNNer (Node-based upscaling)
+GitHub : chaiNNer-org/chaiNNer
+
+Avantage : Workflows complexes
+
+Local : 100% gratuit si vous avez le hardware
+
+⚡ API ALTERNATIVES AVEC CRÉDITS GRATUITS
+15. Hugging Face Spaces
+Site : huggingface.co/spaces
+
+API : Oui (via Inference API)
+
+Gratuit : Crédits mensuels gratuits
+
+Exemple : huggingface.co/spaces/akhaliq/Real-ESRGAN
+
+16. RunwayML
+Site : runwayml.com
+
+API : Oui
+
+Gratuit : Crédits d'essai gratuits
+
+Qualité : Professionnelle
+
+17. Eden AI (Aggregator)
+Site : edenai.co
+
+API : Oui (multiple providers)
+
+Gratuit : 1000 appels/mois gratuits
+
+Avantage : Compare plusieurs services

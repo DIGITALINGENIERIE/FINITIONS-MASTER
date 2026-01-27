@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: 240 33% 2%;
+  --abyss: 240 29% 5%;
+  --carbon: 240 20% 10%;
+  --slate: 240 15% 15%;
+  
+  --cyan-glow: 180 100% 50%;
+  --magenta-pulse: 340 100% 50%;
+  --amber-spark: 43 100% 52%;
+  --jade-core: 157 100% 50%;
+  
+  --background: var(--void);
+  --foreground: 240 10% 92%;
+  
+  --primary: var(--cyan-glow);
+  --primary-foreground: 240 33% 2%;
+  
+  --secondary: var(--slate);
+  --secondary-foreground: 240 10% 92%;
+  
+  --muted: var(--carbon);
+  --muted-foreground: 217 20% 55%;
+  
+  --accent: var(--jade-core);
+  --accent-foreground: 240 33% 2%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 180 50% 15%;
+  --input: var(--carbon);
+  --ring: var(--cyan-glow);
+  
+  --card: var(--abyss);
+  --card-foreground: 240 10% 92%;
+  
+  --radius: 0.75rem;
+  
+  --font-body: 'Rajdhani', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    font-weight: 500;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-wide uppercase;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: hsl(var(--cyan-glow) / 0.05);
+    border-radius: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--cyan-glow));
+    border-radius: 4px;
+  }
+
+  .glass-panel {
+    @apply bg-card/70 backdrop-blur-xl border border-cyan-500/15 rounded-2xl;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  }
+  
+  .glass-panel:hover {
+    @apply border-cyan-500/30 transition-colors duration-300;
+  }
+
+  .grid-overlay {
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .dimension-section {
+    @apply bg-black/40 border border-cyan-500/15 rounded-2xl p-4 mb-4 transition-all duration-300;
+  }
+  
+  .dimension-section:hover {
+    @apply border-cyan-500/40;
+    transform: translateY(-2px);
+  }
+
+  .param-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: hsl(var(--cyan-glow) / 0.2);
+    outline: none;
+  }
+  
+  .param-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: hsl(var(--cyan-glow));
+    cursor: pointer;
+    box-shadow: 0 0 10px hsl(var(--cyan-glow) / 0.6);
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .param-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 20px hsl(var(--cyan-glow) / 0.9);
+  }
+  
+  .param-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: hsl(var(--cyan-glow));
+    cursor: pointer;
+    box-shadow: 0 0 10px hsl(var(--cyan-glow) / 0.6);
+    border: none;
+  }
+
+  .master-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, 
+      hsl(var(--jade-core)) 0%, 
+      hsl(var(--amber-spark)) 50%, 
+      hsl(var(--magenta-pulse)) 100%);
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  
+  .master-slider:hover {
+    opacity: 1;
+  }
+  
+  .master-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid hsl(var(--cyan-glow));
+    cursor: pointer;
+    box-shadow: 0 0 15px hsl(var(--cyan-glow) / 0.8);
+  }
+  
+  .master-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid hsl(var(--cyan-glow));
+    cursor: pointer;
+    box-shadow: 0 0 15px hsl(var(--cyan-glow) / 0.8);
+  }
+
+  .scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      hsl(var(--cyan-glow)), 
+      transparent);
+    animation: scan 4s linear infinite;
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  @keyframes scan {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100%); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 40px hsl(var(--cyan-glow) / 0.6); }
+    50% { box-shadow: 0 0 60px hsl(var(--cyan-glow) / 0.9); }
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  @keyframes title-shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  
+  .title-shimmer {
+    background: linear-gradient(90deg, 
+      hsl(var(--cyan-glow)) 0%, 
+      hsl(var(--jade-core)) 50%, 
+      hsl(var(--amber-spark)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: title-shimmer 5s linear infinite;
+    background-size: 200% 100%;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  
+  .blink {
+    animation: blink 2s ease-in-out infinite;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-br from-cyan-400 to-emerald-400 text-black font-semibold uppercase tracking-wide;
+    box-shadow: 0 4px 20px hsl(var(--cyan-glow) / 0.4);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px hsl(var(--cyan-glow) / 0.6);
+  }
+  
+  .btn-export {
+    @apply bg-gradient-to-br from-amber-400 to-pink-500 text-black font-semibold uppercase tracking-wide;
+    box-shadow: 0 4px 20px hsl(var(--amber-spark) / 0.4);
+  }
+  
+  .btn-export:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px hsl(var(--amber-spark) / 0.6);
+  }
+}
