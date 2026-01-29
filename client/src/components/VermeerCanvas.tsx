@@ -49,28 +49,31 @@ export function VermeerCanvas({ imageUrl, config, width, height, onRef }: Vermee
     
     setIsProcessing(true);
     
-    try {
-      if (!processorRef.current) {
-        processorRef.current = new MasterProcessor();
+    // Use requestAnimationFrame to ensure UI thread is free for loader
+    requestAnimationFrame(async () => {
+      try {
+        if (!processorRef.current) {
+          processorRef.current = new MasterProcessor();
+        }
+        
+        await processorRef.current.loadImage(imageUrl);
+        const processedData = processorRef.current.process(config);
+        
+        const canvas = document.createElement('canvas');
+        canvas.width = processedData.width;
+        canvas.height = processedData.height;
+        const ctx = canvas.getContext('2d')!;
+        ctx.putImageData(processedData, 0, 0);
+        
+        setProcessedImage(canvas);
+        processedImageRef.current = canvas;
+        processedImageDataRef.current = processedData;
+      } catch (error) {
+        console.error("Processing error:", error);
+      } finally {
+        setIsProcessing(false);
       }
-      
-      await processorRef.current.loadImage(imageUrl);
-      const processedData = processorRef.current.process(config);
-      
-      const canvas = document.createElement('canvas');
-      canvas.width = processedData.width;
-      canvas.height = processedData.height;
-      const ctx = canvas.getContext('2d')!;
-      ctx.putImageData(processedData, 0, 0);
-      
-      setProcessedImage(canvas);
-      processedImageRef.current = canvas;
-      processedImageDataRef.current = processedData;
-    } catch (error) {
-      console.error("Processing error:", error);
-    } finally {
-      setIsProcessing(false);
-    }
+    });
   }, [imageUrl, image, config]);
 
   useEffect(() => {

@@ -42,7 +42,10 @@ export function Header({ onExport, onImportClick, onImportPreset }: HeaderProps)
         <Button 
             size="sm" 
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium shadow-lg shadow-primary/20"
-            onClick={onExport}
+            onClick={(e) => {
+              e.preventDefault();
+              onExport();
+            }}
             data-testid="button-download"
         >
           <Download className="w-4 h-4 mr-2" />

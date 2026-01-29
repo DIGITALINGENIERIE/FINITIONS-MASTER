@@ -350,15 +350,17 @@ export class MasterProcessor {
     const w = imageData.width;
     const h = imageData.height;
     
-    // Performance optimization: skip bilateral filter if image is too large or intensity is low
-    // or use a simplified version. For now, let's just use a faster gaussian approximation 
-    // for development if it's slowing down too much, or optimize the loop.
+    // Extreme optimization for preview: if image is large, skip bilateral or use a very fast blur
+    if (w * h > 1000000) {
+      this.applySCurveContrast(data, 0.1); // Fast alternative for feel
+      return;
+    }
     
     const result = new Uint8ClampedArray(data.length);
-    const radius = Math.min(3, Math.ceil(spatialSigma * 2)); // Cap radius for speed
+    const radius = Math.min(2, Math.ceil(spatialSigma * 1.5)); // Even smaller radius
     
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
+    for (let y = 0; y < h; y += 2) { // Downsample processing for speed
+      for (let x = 0; x < w; x += 2) {
         const idx = (y * w + x) * 4;
         let sumR = 0, sumG = 0, sumB = 0, sumW = 0;
         
@@ -375,10 +377,8 @@ export class MasterProcessor {
             if (nx < 0 || nx >= w) continue;
             
             const nIdx = (ny * w + nx) * 4;
-            
             const spatialDistSq = dx * dx + dy * dy;
             const colorDistSq = (r0 - data[nIdx])**2 + (g0 - data[nIdx+1])**2 + (b0 - data[nIdx+2])**2;
-            
             const weight = Math.exp(-spatialDistSq / (2 * spatialSigma * spatialSigma)) *
                           Math.exp(-colorDistSq / (2 * rangeSigma * rangeSigma));
             
@@ -389,10 +389,20 @@ export class MasterProcessor {
           }
         }
         
-        result[idx] = sumR / sumW;
-        result[idx + 1] = sumG / sumW;
-        result[idx + 2] = sumB / sumW;
-        result[idx + 3] = data[idx + 3];
+        const finalR = sumR / sumW;
+        const finalG = sumG / sumW;
+        const finalB = sumB / sumW;
+
+        // Fill 2x2 block
+        for(let iy=0; iy<2 && y+iy < h; iy++) {
+          for(let ix=0; ix<2 && x+ix < w; ix++) {
+            const targetIdx = ((y+iy) * w + (x+ix)) * 4;
+            result[targetIdx] = finalR;
+            result[targetIdx+1] = finalG;
+            result[targetIdx+2] = finalB;
+            result[targetIdx+3] = data[targetIdx+3];
+          }
+        }
       }
     }
     
