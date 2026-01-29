@@ -164,7 +164,7 @@ export default function Home() {
   const runDetection = useCallback((imgUrl: string) => {
     const img = new Image();
     img.crossOrigin = "anonymous";
-    img.onload = () => {
+    img.onload = async () => {
       const canvas = document.createElement('canvas');
       canvas.width = img.width;
       canvas.height = img.height;
@@ -174,9 +174,25 @@ export default function Home() {
       const result = detectOptimalMaster(imageData);
       setDetectionResult(result);
       setIsDetectionModalOpen(true);
+
+      // Auto-calibration via AI
+      try {
+        const response = await fetch("/api/calibrate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ imageUrl: imgUrl, master: result.suggestedMaster })
+        });
+        if (response.ok) {
+          const calibratedConfig = await response.json();
+          setConfig(calibratedConfig);
+          toast({ title: "Auto-Calibration Réussie", description: `Paramètres optimisés pour ${result.suggestedMaster} appliqués via IA.` });
+        }
+      } catch (err) {
+        console.error("AI Calibration failed:", err);
+      }
     };
     img.src = imgUrl;
-  }, []);
+  }, [toast]);
 
   const handleApplyDetectedPreset = (newConfig: DnaConfiguration, masterName: string) => {
     setConfig(newConfig);

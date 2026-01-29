@@ -4,6 +4,7 @@ import type { Server } from "http";
 import { storage } from "./storage";
 import { api } from "@shared/routes";
 import { z } from "zod";
+import { openai } from "./openai";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -11,6 +12,39 @@ export async function registerRoutes(
 ): Promise<Server> {
   
   // === PRESETS API ===
+  
+  app.post("/api/calibrate", async (req, res) => {
+    try {
+      const { imageUrl, master } = req.body;
+      if (!imageUrl || !master) {
+        return res.status(400).json({ message: "Image URL and master are required" });
+      }
+
+      const response = await openai.chat.completions.create({
+        model: "gpt-4o",
+        messages: [
+          {
+            role: "system",
+            content: "Tu es un expert en finitions artistiques pour œuvres NFT ultra-premium. Analyse l'image fournie et l'artiste spécifié pour recommander des paramètres techniques optimaux au format JSON. Ta réponse doit être uniquement un objet JSON valide correspondant à l'interface DnaConfiguration."
+          },
+          {
+            role: "user",
+            content: [
+              { type: "text", text: `Voici une œuvre de ${master}. Analyse-la et fournis les paramètres optimaux.` },
+              { type: "image_url", image_url: { url: imageUrl } }
+            ]
+          }
+        ],
+        response_format: { type: "json_object" }
+      });
+
+      const config = JSON.parse(response.choices[0].message.content || "{}");
+      res.json(config);
+    } catch (err) {
+      console.error("Calibration error:", err);
+      res.status(500).json({ message: "Failed to calibrate parameters" });
+    }
+  });
   
   app.get(api.presets.list.path, async (req, res) => {
     const presets = await storage.getPresets();
