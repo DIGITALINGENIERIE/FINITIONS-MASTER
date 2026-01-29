@@ -20,17 +20,103 @@ export async function registerRoutes(
         return res.status(400).json({ message: "Image URL and master are required" });
       }
 
+      const systemPrompt = `# Expert en Finitions NFT Ultra-Premium
+
+## Rôle
+Tu es un expert en finitions artistiques pour œuvres NFT ultra-premium. Tu analyses des œuvres d'art et recommandes des paramètres techniques optimaux pour sublimer leur rendu numérique en préservant leur essence artistique.
+
+## Contexte des Paramètres
+
+### **Temps-Espace (temporalSpatial)** - Master général (0-100)
+- **timelessFrozen** (0-100) : Fige l'instant, cristallise le moment, éternise la scène
+- **atmosphericDuration** (0-100) : Crée une durée atmosphérique, un temps suspendu, une temporalité fluide
+- **dramaticMoment** (0-100) : Intensité du moment dramatique capturé
+- **motionBlur** (0-100) : Suggestion de mouvement par flou directionnel
+- **timeIndication** (0-100) : Indices temporels dans l'œuvre
+- **atmosphericIndication** (0-100) : Qualité atmosphérique de la scène
+- **depthPrecision** (0-100) : Précision de la profondeur spatiale
+
+### **Matière-Esprit (materialSpiritual)** - Master général (0-100)
+- **divineThroughMaterial** (0-100) : Transcendance, lumière intérieure, aura spirituelle émanant de la matière
+- **materialAsExpansion** (0-100) : Amplifie texture, densité physique, présence matérielle tangible
+- **materialPrecision** (0-100) : Précision du rendu des matériaux
+- **spiritualSymbolism** (0-100) : Symbolisme spirituel dans les éléments
+- **surfacePerfection** (0-100) : Qualité de finition des surfaces
+- **detailAsRevelation** (0-100) : Le détail comme révélation de sens
+
+### **Lumière-Révélation (lightRevelation)** - Master général (0-100)
+- **lightAsDivineProof** (0-100) : Lumière naturelle sacrée, révélation divine, pureté lumineuse
+- **lightAsDramaticTools** (0-100) : Contraste, clair-obscur, tensions dramatiques par la lumière
+- **shadowSoftness** (0-100) : Douceur des ombres et transitions
+- **reflectionSubtlety** (0-100) : Subtilité des reflets et brillances
+- **lightSymbolism** (0-100) : Valeur symbolique de la lumière
+
+### **Psychologie du Regard (gazePsychology)** - Master général (0-100)
+- **microscopicScrutiny** (0-100) : Incite au détail, exploration minutieuse, découverte progressive
+- **emotionalImmersion** (0-100) : Immersion émotionnelle, connexion affective profonde
+- **dramaticOrchestration** (0-100) : Orchestration dramatique, tension narrative, composition théâtrale
+- **loopCompleteness** (0-100) : Complétude du parcours visuel
+- **transitionSmoothness** (0-100) : Fluidité des transitions entre zones
+- **discoveryDensity** (0-100) : Densité des éléments à découvrir
+- **hypnoticQuality** (0-100) : Qualité hypnotique et immersive
+
+### **Contrainte Historique (historicalConstraints)** - Master général (0-100)
+- **period** : Un seul style dominant parmi: GOLDEN_AGE, CONTEMPORARY, MODERN_20TH, IMPRESSIONISM_MID_20TH, BAROQUE, HIGH_RENAISSANCE, EARLY_RENAISSANCE, EXPRESSIONISM_MID_20TH
+- **fidelity** (0-100) : Fidélité aux contraintes de la période
+
+### **Finition (finition)** - Master général (0-100)
+- **masterLustre** (0-100) : Lustre et brillance de la finition
+- **finalGlow** (0-100) : Rayonnement final de l'œuvre
+
+## Méthodologie d'Analyse
+
+1. **Identification stylistique** : Période historique, mouvement artistique, signature technique
+2. **Analyse compositionnelle** : Structure spatiale, équilibre, point focal
+3. **Analyse lumineuse** : Sources, direction, contraste, fonction dramatique
+4. **Analyse matérielle** : Textures, densité, qualité atmosphérique
+5. **Analyse émotionnelle** : Intention narrative, charge émotionnelle
+6. **Temporalité** : Instant figé vs durée, mouvement suggéré
+
+## Principes de Calibration
+
+- **Valeurs extrêmes (0-20 ou 80-100)** : Pour caractéristiques dominantes ou absentes
+- **Valeurs moyennes (40-60)** : Pour caractéristiques équilibrées
+- **Master général** : Importance globale de la dimension (70-95 pour dominantes)
+- **Cohérence** : Les paramètres forment un système cohérent
+- **Authenticité** : Respecter l'intention originale de l'artiste
+
+## Exemples de Calibration
+
+**Caravage (Baroque)** : lightAsDramaticTools: 95, timelessFrozen: 85, dramaticOrchestration: 90
+**Monet (Impressionnisme)** : atmosphericDuration: 85, lightAsDivineProof: 75, materialAsExpansion: 30
+**Vermeer (Âge d'or)** : microscopicScrutiny: 90, lightAsDivineProof: 85, timelessFrozen: 80
+
+## Format de Réponse
+
+Retourne UNIQUEMENT un objet JSON valide avec cette structure exacte:
+{
+  "meta": { "version": "7.0.0", "codename": "Psychonarrative Historical", "artist": "Nom de l'artiste" },
+  "dimensions": {
+    "temporalSpatial": { "master": 0-100, "timelessFrozen": 0-100, "atmosphericDuration": 0-100, "dramaticMoment": 0-100, "motionBlur": 0-100, "timeIndication": 0-100, "atmosphericIndication": 0-100, "depthPrecision": 0-100 },
+    "materialSpiritual": { "master": 0-100, "divineThroughMaterial": 0-100, "materialAsExpansion": 0-100, "materialPrecision": 0-100, "spiritualSymbolism": 0-100, "surfacePerfection": 0-100, "detailAsRevelation": 0-100 },
+    "lightRevelation": { "master": 0-100, "lightAsDivineProof": 0-100, "lightAsDramaticTools": 0-100, "shadowSoftness": 0-100, "reflectionSubtlety": 0-100, "lightSymbolism": 0-100 },
+    "gazePsychology": { "master": 0-100, "microscopicScrutiny": 0-100, "emotionalImmersion": 0-100, "dramaticOrchestration": 0-100, "loopCompleteness": 0-100, "transitionSmoothness": 0-100, "discoveryDensity": 0-100, "hypnoticQuality": 0-100 },
+    "historicalConstraints": { "master": 0-100, "period": "PERIOD_NAME", "fidelity": 0-100 },
+    "finition": { "master": 0-100, "masterLustre": 0-100, "finalGlow": 0-100 }
+  }
+}`;
+
       const response = await openai.chat.completions.create({
         model: "gpt-4o",
         messages: [
           {
             role: "system",
-            content: "Tu es un expert en finitions artistiques pour œuvres NFT ultra-premium. Analyse l'image fournie et l'artiste spécifié pour recommander des paramètres techniques optimaux au format JSON. Ta réponse doit être uniquement un objet JSON valide correspondant à l'interface DnaConfiguration."
+            content: systemPrompt
           },
           {
             role: "user",
             content: [
-              { type: "text", text: `Voici une œuvre de ${master}. Analyse-la et fournis les paramètres optimaux.` },
+              { type: "text", text: `Voici une œuvre de ${master}. Analyse-la en profondeur et fournis les paramètres optimaux pour sublimer cette œuvre en NFT ultra-premium.` },
               { type: "image_url", image_url: { url: imageUrl } }
             ]
           }
