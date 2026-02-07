@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo, memo } from "react";
 import { DnaConfiguration } from "@shared/schema";
 import { usePresets, useCreatePreset, DEFAULT_CONFIGURATION } from "@/hooks/use-presets";
 import { Header } from "@/components/Header";
@@ -28,7 +28,7 @@ interface DimensionSectionProps {
   color?: string;
 }
 
-function DimensionSection({ icon, title, masterValue, onMasterChange, children, color = "text-cyan-400" }: DimensionSectionProps) {
+const DimensionSection = memo(({ icon, title, masterValue, onMasterChange, children, color = "text-cyan-400" }: DimensionSectionProps) => {
   const [isExpanded, setIsExpanded] = useState(true);
   
   return (
@@ -72,7 +72,7 @@ function DimensionSection({ icon, title, masterValue, onMasterChange, children, 
       )}
     </div>
   );
-}
+});
 
 interface ParamSliderProps {
   label: string;
@@ -81,7 +81,7 @@ interface ParamSliderProps {
   onChange: (v: number) => void;
 }
 
-function ParamSlider({ label, labelEn, value, onChange }: ParamSliderProps) {
+const ParamSlider = memo(({ label, labelEn, value, onChange }: ParamSliderProps) => {
   return (
     <div>
       <div className="flex justify-between mb-1.5">
@@ -99,10 +99,20 @@ function ParamSlider({ label, labelEn, value, onChange }: ParamSliderProps) {
       />
     </div>
   );
+});
+
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedValue(value), delay);
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+  return debouncedValue;
 }
 
 export default function Home() {
   const [config, setConfig] = useState<DnaConfiguration>(DEFAULT_CONFIGURATION);
+  const debouncedConfig = useDebounce(config, 50); // Petit délai pour fluidifier les réglages rapides
   const [imageUrl, setImageUrl] = useState<string>(SAMPLE_IMAGE_URL);
   const [canvasDimensions, setCanvasDimensions] = useState({ w: 800, h: 600 });
   const [newPresetName, setNewPresetName] = useState("");
@@ -318,7 +328,7 @@ export default function Home() {
                         
             <VermeerCanvas 
               imageUrl={imageUrl} 
-              config={config} 
+              config={debouncedConfig} 
               width={canvasDimensions.w - 48}
               height={canvasDimensions.h - 48} 
               onRef={(ref) => {

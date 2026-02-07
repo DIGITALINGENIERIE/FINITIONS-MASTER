@@ -31,11 +31,16 @@ export class MasterProcessor {
     });
   }
 
+  private renderTimeout: number | null = null;
+
   process(config: DnaConfiguration): ImageData {
     if (!this.originalImageData) {
       throw new Error("No image loaded");
     }
 
+    // Optimization: for very large images, process a downsampled version for the preview
+    // or use requestAnimationFrame to avoid blocking the main thread
+    
     const imageData = new ImageData(
       new Uint8ClampedArray(this.originalImageData.data),
       this.width,
@@ -350,17 +355,21 @@ export class MasterProcessor {
     const w = imageData.width;
     const h = imageData.height;
     
-    // Extreme optimization for preview: if image is large, skip bilateral or use a very fast blur
-    if (w * h > 1000000) {
-      this.applySCurveContrast(data, 0.1); // Fast alternative for feel
+    // Extreme optimization for preview: bilateral filter is O(N*R^2)
+    // We downsample the filter application significantly
+    const step = w * h > 500000 ? 4 : 2; 
+    
+    if (w * h > 2000000) {
+      this.applySCurveContrast(data, 0.1); 
       return;
     }
     
     const result = new Uint8ClampedArray(data.length);
-    const radius = Math.min(2, Math.ceil(spatialSigma * 1.5)); // Even smaller radius
+    result.set(data); // Pre-fill with original for non-processed pixels
+    const radius = Math.min(2, Math.ceil(spatialSigma * 1.2));
     
-    for (let y = 0; y < h; y += 2) { // Downsample processing for speed
-      for (let x = 0; x < w; x += 2) {
+    for (let y = 0; y < h; y += step) {
+      for (let x = 0; x < w; x += step) {
         const idx = (y * w + x) * 4;
         let sumR = 0, sumG = 0, sumB = 0, sumW = 0;
         
